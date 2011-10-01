@@ -1,0 +1,479 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BFCC6F22143795CF008C60EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F21143795CF008C60EF /* UIKit.framework */; };
+		BFCC6F24143795D0008C60EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F23143795CF008C60EF /* Foundation.framework */; };
+		BFCC6F26143795D0008C60EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F25143795D0008C60EF /* CoreGraphics.framework */; };
+		BFCC6F2C143795D0008C60EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F2A143795D0008C60EF /* InfoPlist.strings */; };
+		BFCC6F2E143795D0008C60EF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F2D143795D0008C60EF /* main.m */; };
+		BFCC6F32143795D0008C60EF /* SingMeToSleepAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */; };
+		BFCC6F36143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F35143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m */; };
+		BFCC6F39143795D0008C60EF /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F37143795D0008C60EF /* MainWindow_iPhone.xib */; };
+		BFCC6F3D143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F3C143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m */; };
+		BFCC6F40143795D0008C60EF /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F3E143795D0008C60EF /* MainWindow_iPad.xib */; };
+		BFCC6F48143795D0008C60EF /* SenTestingKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F47143795D0008C60EF /* SenTestingKit.framework */; };
+		BFCC6F49143795D0008C60EF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F21143795CF008C60EF /* UIKit.framework */; };
+		BFCC6F4A143795D0008C60EF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F23143795CF008C60EF /* Foundation.framework */; };
+		BFCC6F4B143795D0008C60EF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFCC6F25143795D0008C60EF /* CoreGraphics.framework */; };
+		BFCC6F53143795D0008C60EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F51143795D0008C60EF /* InfoPlist.strings */; };
+		BFCC6F55143795D0008C60EF /* SingMeToSleepTests.h in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F54143795D0008C60EF /* SingMeToSleepTests.h */; };
+		BFCC6F57143795D0008C60EF /* SingMeToSleepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F56143795D0008C60EF /* SingMeToSleepTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BFCC6F4C143795D0008C60EF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFCC6F14143795CF008C60EF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = BFCC6F1C143795CF008C60EF;
+			remoteInfo = SingMeToSleep;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		BFCC6F1D143795CF008C60EF /* SingMeToSleep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SingMeToSleep.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCC6F21143795CF008C60EF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		BFCC6F23143795CF008C60EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BFCC6F25143795D0008C60EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		BFCC6F29143795D0008C60EF /* SingMeToSleep-Info.plist */ = {isa = PBXFileReference; path = "SingMeToSleep-Info.plist"; sourceTree = "<group>"; };
+		BFCC6F2B143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFCC6F2D143795D0008C60EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		BFCC6F2F143795D0008C60EF /* SingMeToSleep-Prefix.pch */ = {isa = PBXFileReference; path = "SingMeToSleep-Prefix.pch"; sourceTree = "<group>"; };
+		BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */ = {isa = PBXFileReference; path = SingMeToSleepAppDelegate.h; sourceTree = "<group>"; };
+		BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingMeToSleepAppDelegate.m; sourceTree = "<group>"; };
+		BFCC6F34143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = SingMeToSleepAppDelegate_iPhone.h; path = iPhone/SingMeToSleepAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		BFCC6F35143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingMeToSleepAppDelegate_iPhone.m; path = iPhone/SingMeToSleepAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		BFCC6F38143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		BFCC6F3B143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.h */ = {isa = PBXFileReference; name = SingMeToSleepAppDelegate_iPad.h; path = iPad/SingMeToSleepAppDelegate_iPad.h; sourceTree = "<group>"; };
+		BFCC6F3C143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingMeToSleepAppDelegate_iPad.m; path = iPad/SingMeToSleepAppDelegate_iPad.m; sourceTree = "<group>"; };
+		BFCC6F3F143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		BFCC6F46143795D0008C60EF /* SingMeToSleepTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingMeToSleepTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BFCC6F47143795D0008C60EF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
+		BFCC6F50143795D0008C60EF /* SingMeToSleepTests-Info.plist */ = {isa = PBXFileReference; path = "SingMeToSleepTests-Info.plist"; sourceTree = "<group>"; };
+		BFCC6F52143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		BFCC6F54143795D0008C60EF /* SingMeToSleepTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingMeToSleepTests.h; sourceTree = "<group>"; };
+		BFCC6F56143795D0008C60EF /* SingMeToSleepTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingMeToSleepTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BFCC6F1A143795CF008C60EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F22143795CF008C60EF /* UIKit.framework in Frameworks */,
+				BFCC6F24143795D0008C60EF /* Foundation.framework in Frameworks */,
+				BFCC6F26143795D0008C60EF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFCC6F42143795D0008C60EF /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F48143795D0008C60EF /* SenTestingKit.framework in Frameworks */,
+				BFCC6F49143795D0008C60EF /* UIKit.framework in Frameworks */,
+				BFCC6F4A143795D0008C60EF /* Foundation.framework in Frameworks */,
+				BFCC6F4B143795D0008C60EF /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BFCC6F12143795CF008C60EF = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F27143795D0008C60EF /* SingMeToSleep */,
+				BFCC6F4E143795D0008C60EF /* SingMeToSleepTests */,
+				BFCC6F20143795CF008C60EF /* Frameworks */,
+				BFCC6F1E143795CF008C60EF /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BFCC6F1E143795CF008C60EF /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F1D143795CF008C60EF /* SingMeToSleep.app */,
+				BFCC6F46143795D0008C60EF /* SingMeToSleepTests.octest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BFCC6F20143795CF008C60EF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F21143795CF008C60EF /* UIKit.framework */,
+				BFCC6F23143795CF008C60EF /* Foundation.framework */,
+				BFCC6F25143795D0008C60EF /* CoreGraphics.framework */,
+				BFCC6F47143795D0008C60EF /* SenTestingKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BFCC6F27143795D0008C60EF /* SingMeToSleep */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */,
+				BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */,
+				BFCC6F33143795D0008C60EF /* iPhone */,
+				BFCC6F3A143795D0008C60EF /* iPad */,
+				BFCC6F28143795D0008C60EF /* Supporting Files */,
+			);
+			path = SingMeToSleep;
+			sourceTree = "<group>";
+		};
+		BFCC6F28143795D0008C60EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F29143795D0008C60EF /* SingMeToSleep-Info.plist */,
+				BFCC6F2A143795D0008C60EF /* InfoPlist.strings */,
+				BFCC6F2D143795D0008C60EF /* main.m */,
+				BFCC6F2F143795D0008C60EF /* SingMeToSleep-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFCC6F33143795D0008C60EF /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F34143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.h */,
+				BFCC6F35143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m */,
+				BFCC6F37143795D0008C60EF /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		BFCC6F3A143795D0008C60EF /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F3B143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.h */,
+				BFCC6F3C143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m */,
+				BFCC6F3E143795D0008C60EF /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+		BFCC6F4E143795D0008C60EF /* SingMeToSleepTests */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F54143795D0008C60EF /* SingMeToSleepTests.h */,
+				BFCC6F56143795D0008C60EF /* SingMeToSleepTests.m */,
+				BFCC6F4F143795D0008C60EF /* Supporting Files */,
+			);
+			path = SingMeToSleepTests;
+			sourceTree = "<group>";
+		};
+		BFCC6F4F143795D0008C60EF /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F50143795D0008C60EF /* SingMeToSleepTests-Info.plist */,
+				BFCC6F51143795D0008C60EF /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		BFCC6F1C143795CF008C60EF /* SingMeToSleep */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFCC6F5A143795D0008C60EF /* Build configuration list for PBXNativeTarget "SingMeToSleep" */;
+			buildPhases = (
+				BFCC6F19143795CF008C60EF /* Sources */,
+				BFCC6F1A143795CF008C60EF /* Frameworks */,
+				BFCC6F1B143795CF008C60EF /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SingMeToSleep;
+			productName = SingMeToSleep;
+			productReference = BFCC6F1D143795CF008C60EF /* SingMeToSleep.app */;
+			productType = "com.apple.product-type.application";
+		};
+		BFCC6F45143795D0008C60EF /* SingMeToSleepTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BFCC6F5D143795D0008C60EF /* Build configuration list for PBXNativeTarget "SingMeToSleepTests" */;
+			buildPhases = (
+				BFCC6F41143795D0008C60EF /* Sources */,
+				BFCC6F42143795D0008C60EF /* Frameworks */,
+				BFCC6F43143795D0008C60EF /* Resources */,
+				BFCC6F44143795D0008C60EF /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BFCC6F4D143795D0008C60EF /* PBXTargetDependency */,
+			);
+			name = SingMeToSleepTests;
+			productName = SingMeToSleepTests;
+			productReference = BFCC6F46143795D0008C60EF /* SingMeToSleepTests.octest */;
+			productType = "com.apple.product-type.bundle";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BFCC6F14143795CF008C60EF /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = BFCC6F17143795CF008C60EF /* Build configuration list for PBXProject "SingMeToSleep" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BFCC6F12143795CF008C60EF;
+			productRefGroup = BFCC6F1E143795CF008C60EF /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BFCC6F1C143795CF008C60EF /* SingMeToSleep */,
+				BFCC6F45143795D0008C60EF /* SingMeToSleepTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		BFCC6F1B143795CF008C60EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F2C143795D0008C60EF /* InfoPlist.strings in Resources */,
+				BFCC6F39143795D0008C60EF /* MainWindow_iPhone.xib in Resources */,
+				BFCC6F40143795D0008C60EF /* MainWindow_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFCC6F43143795D0008C60EF /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F53143795D0008C60EF /* InfoPlist.strings in Resources */,
+				BFCC6F55143795D0008C60EF /* SingMeToSleepTests.h in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BFCC6F44143795D0008C60EF /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# Run the unit tests in this test bundle.\n\"${SYSTEM_DEVELOPER_DIR}/Tools/RunUnitTests\"\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BFCC6F19143795CF008C60EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F2E143795D0008C60EF /* main.m in Sources */,
+				BFCC6F32143795D0008C60EF /* SingMeToSleepAppDelegate.m in Sources */,
+				BFCC6F36143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m in Sources */,
+				BFCC6F3D143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BFCC6F41143795D0008C60EF /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BFCC6F57143795D0008C60EF /* SingMeToSleepTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BFCC6F4D143795D0008C60EF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = BFCC6F1C143795CF008C60EF /* SingMeToSleep */;
+			targetProxy = BFCC6F4C143795D0008C60EF /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		BFCC6F2A143795D0008C60EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFCC6F2B143795D0008C60EF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		BFCC6F37143795D0008C60EF /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFCC6F38143795D0008C60EF /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		BFCC6F3E143795D0008C60EF /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFCC6F3F143795D0008C60EF /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		BFCC6F51143795D0008C60EF /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				BFCC6F52143795D0008C60EF /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		BFCC6F58143795D0008C60EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		BFCC6F59143795D0008C60EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		BFCC6F5B143795D0008C60EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SingMeToSleep/SingMeToSleep-Prefix.pch";
+				INFOPLIST_FILE = "SingMeToSleep/SingMeToSleep-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		BFCC6F5C143795D0008C60EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SingMeToSleep/SingMeToSleep-Prefix.pch";
+				INFOPLIST_FILE = "SingMeToSleep/SingMeToSleep-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		BFCC6F5E143795D0008C60EF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SingMeToSleep.app/SingMeToSleep";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SingMeToSleep/SingMeToSleep-Prefix.pch";
+				INFOPLIST_FILE = "SingMeToSleepTests/SingMeToSleepTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Debug;
+		};
+		BFCC6F5F143795D0008C60EF /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/SingMeToSleep.app/SingMeToSleep";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(DEVELOPER_LIBRARY_DIR)/Frameworks",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "SingMeToSleep/SingMeToSleep-Prefix.pch";
+				INFOPLIST_FILE = "SingMeToSleepTests/SingMeToSleepTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = octest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BFCC6F17143795CF008C60EF /* Build configuration list for PBXProject "SingMeToSleep" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFCC6F58143795D0008C60EF /* Debug */,
+				BFCC6F59143795D0008C60EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BFCC6F5A143795D0008C60EF /* Build configuration list for PBXNativeTarget "SingMeToSleep" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFCC6F5B143795D0008C60EF /* Debug */,
+				BFCC6F5C143795D0008C60EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		BFCC6F5D143795D0008C60EF /* Build configuration list for PBXNativeTarget "SingMeToSleepTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BFCC6F5E143795D0008C60EF /* Debug */,
+				BFCC6F5F143795D0008C60EF /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BFCC6F14143795CF008C60EF /* Project object */;
+}
