@@ -8,6 +8,7 @@
 
 #import "SingMeToSleepAppDelegate.h"
 
-@interface SingMeToSleepAppDelegate_iPad : SingMeToSleepAppDelegate
+@interface SingMeToSleepAppDelegate_iPad : SingMeToSleepAppDelegate 
+
 
 @end

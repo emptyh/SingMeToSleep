@@ -24,6 +24,12 @@
 		BFCC6F53143795D0008C60EF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F51143795D0008C60EF /* InfoPlist.strings */; };
 		BFCC6F55143795D0008C60EF /* SingMeToSleepTests.h in Resources */ = {isa = PBXBuildFile; fileRef = BFCC6F54143795D0008C60EF /* SingMeToSleepTests.h */; };
 		BFCC6F57143795D0008C60EF /* SingMeToSleepTests.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F56143795D0008C60EF /* SingMeToSleepTests.m */; };
+		BFCC6F671437B75E008C60EF /* MTHNumber.m in Sources */ = {isa = PBXBuildFile; fileRef = BFCC6F661437B75E008C60EF /* MTHNumber.m */; };
+		BFF108451437F78E00E1850C /* ClockController.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF108441437F78E00E1850C /* ClockController.m */; };
+		BFF1084A1437F7BE00E1850C /* ClockController_iphone.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF108481437F7BE00E1850C /* ClockController_iphone.m */; };
+		BFF1084B1437F7BE00E1850C /* ClockController_iphone.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF108491437F7BE00E1850C /* ClockController_iphone.xib */; };
+		BFF1084F1437F88C00E1850C /* ClockController_ipad.m in Sources */ = {isa = PBXBuildFile; fileRef = BFF1084D1437F88B00E1850C /* ClockController_ipad.m */; };
+		BFF108501437F88C00E1850C /* ClockController_ipad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BFF1084E1437F88C00E1850C /* ClockController_ipad.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,24 +47,34 @@
 		BFCC6F21143795CF008C60EF /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		BFCC6F23143795CF008C60EF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		BFCC6F25143795D0008C60EF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		BFCC6F29143795D0008C60EF /* SingMeToSleep-Info.plist */ = {isa = PBXFileReference; path = "SingMeToSleep-Info.plist"; sourceTree = "<group>"; };
+		BFCC6F29143795D0008C60EF /* SingMeToSleep-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SingMeToSleep-Info.plist"; sourceTree = "<group>"; };
 		BFCC6F2B143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFCC6F2D143795D0008C60EF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		BFCC6F2F143795D0008C60EF /* SingMeToSleep-Prefix.pch */ = {isa = PBXFileReference; path = "SingMeToSleep-Prefix.pch"; sourceTree = "<group>"; };
-		BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */ = {isa = PBXFileReference; path = SingMeToSleepAppDelegate.h; sourceTree = "<group>"; };
+		BFCC6F2F143795D0008C60EF /* SingMeToSleep-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "SingMeToSleep-Prefix.pch"; sourceTree = "<group>"; };
+		BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingMeToSleepAppDelegate.h; sourceTree = "<group>"; };
 		BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingMeToSleepAppDelegate.m; sourceTree = "<group>"; };
-		BFCC6F34143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = SingMeToSleepAppDelegate_iPhone.h; path = iPhone/SingMeToSleepAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		BFCC6F34143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SingMeToSleepAppDelegate_iPhone.h; path = iPhone/SingMeToSleepAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		BFCC6F35143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingMeToSleepAppDelegate_iPhone.m; path = iPhone/SingMeToSleepAppDelegate_iPhone.m; sourceTree = "<group>"; };
 		BFCC6F38143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
-		BFCC6F3B143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.h */ = {isa = PBXFileReference; name = SingMeToSleepAppDelegate_iPad.h; path = iPad/SingMeToSleepAppDelegate_iPad.h; sourceTree = "<group>"; };
+		BFCC6F3B143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = SingMeToSleepAppDelegate_iPad.h; path = iPad/SingMeToSleepAppDelegate_iPad.h; sourceTree = "<group>"; };
 		BFCC6F3C143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = SingMeToSleepAppDelegate_iPad.m; path = iPad/SingMeToSleepAppDelegate_iPad.m; sourceTree = "<group>"; };
 		BFCC6F3F143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
 		BFCC6F46143795D0008C60EF /* SingMeToSleepTests.octest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SingMeToSleepTests.octest; sourceTree = BUILT_PRODUCTS_DIR; };
 		BFCC6F47143795D0008C60EF /* SenTestingKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SenTestingKit.framework; path = Library/Frameworks/SenTestingKit.framework; sourceTree = DEVELOPER_DIR; };
-		BFCC6F50143795D0008C60EF /* SingMeToSleepTests-Info.plist */ = {isa = PBXFileReference; path = "SingMeToSleepTests-Info.plist"; sourceTree = "<group>"; };
+		BFCC6F50143795D0008C60EF /* SingMeToSleepTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "SingMeToSleepTests-Info.plist"; sourceTree = "<group>"; };
 		BFCC6F52143795D0008C60EF /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BFCC6F54143795D0008C60EF /* SingMeToSleepTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingMeToSleepTests.h; sourceTree = "<group>"; };
 		BFCC6F56143795D0008C60EF /* SingMeToSleepTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SingMeToSleepTests.m; sourceTree = "<group>"; };
+		BFCC6F651437B75E008C60EF /* MTHNumber.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHNumber.h; sourceTree = "<group>"; };
+		BFCC6F661437B75E008C60EF /* MTHNumber.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHNumber.m; sourceTree = "<group>"; };
+		BFF108431437F78E00E1850C /* ClockController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockController.h; sourceTree = "<group>"; };
+		BFF108441437F78E00E1850C /* ClockController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockController.m; sourceTree = "<group>"; };
+		BFF108471437F7BE00E1850C /* ClockController_iphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockController_iphone.h; sourceTree = "<group>"; };
+		BFF108481437F7BE00E1850C /* ClockController_iphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockController_iphone.m; sourceTree = "<group>"; };
+		BFF108491437F7BE00E1850C /* ClockController_iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockController_iphone.xib; sourceTree = "<group>"; };
+		BFF1084C1437F88B00E1850C /* ClockController_ipad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ClockController_ipad.h; sourceTree = "<group>"; };
+		BFF1084D1437F88B00E1850C /* ClockController_ipad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ClockController_ipad.m; sourceTree = "<group>"; };
+		BFF1084E1437F88C00E1850C /* ClockController_ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ClockController_ipad.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,8 +135,11 @@
 		BFCC6F27143795D0008C60EF /* SingMeToSleep */ = {
 			isa = PBXGroup;
 			children = (
+				BFCC6F641437B739008C60EF /* modal */,
 				BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */,
 				BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */,
+				BFF108431437F78E00E1850C /* ClockController.h */,
+				BFF108441437F78E00E1850C /* ClockController.m */,
 				BFCC6F33143795D0008C60EF /* iPhone */,
 				BFCC6F3A143795D0008C60EF /* iPad */,
 				BFCC6F28143795D0008C60EF /* Supporting Files */,
@@ -145,6 +164,9 @@
 				BFCC6F34143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.h */,
 				BFCC6F35143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m */,
 				BFCC6F37143795D0008C60EF /* MainWindow_iPhone.xib */,
+				BFF108471437F7BE00E1850C /* ClockController_iphone.h */,
+				BFF108481437F7BE00E1850C /* ClockController_iphone.m */,
+				BFF108491437F7BE00E1850C /* ClockController_iphone.xib */,
 			);
 			name = iPhone;
 			sourceTree = "<group>";
@@ -155,6 +177,9 @@
 				BFCC6F3B143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.h */,
 				BFCC6F3C143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m */,
 				BFCC6F3E143795D0008C60EF /* MainWindow_iPad.xib */,
+				BFF1084C1437F88B00E1850C /* ClockController_ipad.h */,
+				BFF1084D1437F88B00E1850C /* ClockController_ipad.m */,
+				BFF1084E1437F88C00E1850C /* ClockController_ipad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -176,6 +201,15 @@
 				BFCC6F51143795D0008C60EF /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BFCC6F641437B739008C60EF /* modal */ = {
+			isa = PBXGroup;
+			children = (
+				BFCC6F651437B75E008C60EF /* MTHNumber.h */,
+				BFCC6F661437B75E008C60EF /* MTHNumber.m */,
+			);
+			name = modal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,6 +282,8 @@
 				BFCC6F2C143795D0008C60EF /* InfoPlist.strings in Resources */,
 				BFCC6F39143795D0008C60EF /* MainWindow_iPhone.xib in Resources */,
 				BFCC6F40143795D0008C60EF /* MainWindow_iPad.xib in Resources */,
+				BFF1084B1437F7BE00E1850C /* ClockController_iphone.xib in Resources */,
+				BFF108501437F88C00E1850C /* ClockController_ipad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -287,6 +323,10 @@
 				BFCC6F32143795D0008C60EF /* SingMeToSleepAppDelegate.m in Sources */,
 				BFCC6F36143795D0008C60EF /* SingMeToSleepAppDelegate_iPhone.m in Sources */,
 				BFCC6F3D143795D0008C60EF /* SingMeToSleepAppDelegate_iPad.m in Sources */,
+				BFCC6F671437B75E008C60EF /* MTHNumber.m in Sources */,
+				BFF108451437F78E00E1850C /* ClockController.m in Sources */,
+				BFF1084A1437F7BE00E1850C /* ClockController_iphone.m in Sources */,
+				BFF1084F1437F88C00E1850C /* ClockController_ipad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +504,7 @@
 				BFCC6F5C143795D0008C60EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		BFCC6F5D143795D0008C60EF /* Build configuration list for PBXNativeTarget "SingMeToSleepTests" */ = {
 			isa = XCConfigurationList;
@@ -472,6 +513,7 @@
 				BFCC6F5F143795D0008C60EF /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

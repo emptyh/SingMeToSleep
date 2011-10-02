@@ -7,15 +7,32 @@
 //
 
 #import "SingMeToSleepAppDelegate.h"
+#import "SingMeToSleepAppDelegate_iPad.h"
+#import "SingMeToSleepAppDelegate_iPhone.h"
+#import "ClockController_ipad.h"
+#import "ClockController_iphone.h"
 
 @implementation SingMeToSleepAppDelegate
-
 @synthesize window = _window;
+
+
+
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    //put device check here
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
+        ClockController_ipad *clock=[[ClockController_ipad alloc]initWithNibName:nil bundle:nil];
+        [[self window]addSubview:[clock view]];
+    }else{
+        ClockController_iphone *clock=[[ClockController_iphone alloc]initWithNibName:nil bundle:nil];
+        [[self window]addSubview:[clock view]];
+    }
+    
+
+    
     return YES;
 }
 
@@ -63,5 +80,7 @@
     [_window release];
     [super dealloc];
 }
+
+
 
 @end

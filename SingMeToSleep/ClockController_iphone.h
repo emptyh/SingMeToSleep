@@ -1,14 +1,13 @@
 //
-//  SingMeToSleepAppDelegate_iPad.m
+//  ClockController_iphone.h
 //  SingMeToSleep
 //
 //  Created by Mike Hickman on 10/1/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import "SingMeToSleepAppDelegate_iPad.h"
 
-@implementation SingMeToSleepAppDelegate_iPad
-
+#import "ClockController.h"
+@interface ClockController_iphone : ClockController
 
 @end
