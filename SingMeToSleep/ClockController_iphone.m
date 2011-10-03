@@ -9,7 +9,36 @@
 #import "ClockController_iphone.h"
 
 @implementation ClockController_iphone
+@synthesize dotLabel;
+@synthesize tenSecondsLabel;
+@synthesize secondsLabel;
+@synthesize tensMinutesLabel;
+@synthesize minutesLabel;
+@synthesize hoursLabel;
+@synthesize tensHoursLabel;
 
+
+
+-(void)initScreen{
+    MTHNumber *num=[self createNumberFromLabelArray:tenSecondsLabel];
+    [super setTenSecondsNumber:num];
+    [super setSecondsNumber:[self createNumberFromLabelArray:secondsLabel]];
+    [super setTenMinutesNumber:[self createNumberFromLabelArray:tensMinutesLabel]];
+    [super setMinutesNumber:[self createNumberFromLabelArray:minutesLabel]];
+    [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
+    [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
+}
+
+- (void)dealloc {
+    [dotLabel release];
+    [tenSecondsLabel release];
+    [secondsLabel release];
+    [tensMinutesLabel release];
+    [minutesLabel release];
+    [hoursLabel release];
+    [tensHoursLabel release];
+    [super dealloc];
+}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,11 +76,8 @@
     // Return YES for supported orientations
     return YES;
 }
--(void)initScreen{
-    NSLog(@"needs built");
 
-}
 -(void)updateScreen{
-    
+    [super blink];
 }
 @end

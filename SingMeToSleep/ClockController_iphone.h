@@ -8,6 +8,30 @@
 
 
 #import "ClockController.h"
-@interface ClockController_iphone : ClockController
+@interface ClockController_iphone : ClockController{
+    NSArray *dotLabel;
+    NSArray *tenSecondsLabel;
+    NSArray *secondsLabel;
+    NSArray *tensMinutesLabel;
+    NSArray *minutesLabel;
+    NSArray *hoursLabel;
+    NSArray *tensHoursLabel;
+}
 
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *dotLabel;
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tenSecondsLabel;
+
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *secondsLabel;
+
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensMinutesLabel;
+
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *minutesLabel;
+
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *hoursLabel;
+
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensHoursLabel;
+
+
+
+-(void)updateScreen;
 @end
