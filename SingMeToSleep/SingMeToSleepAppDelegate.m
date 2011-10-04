@@ -13,11 +13,12 @@
 #import "ClockController_iphone.h"
 
 @implementation SingMeToSleepAppDelegate
+#pragma mark - Properties
 @synthesize window = _window;
 
 
 
-
+#pragma mark -App Life Cycle
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.

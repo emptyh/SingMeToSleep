@@ -10,6 +10,7 @@
 #import <UIKit/UIKit.h>
 
 @interface MTHNumber : NSObject{
+
     UILabel *topBar;
     UILabel *middleBar;
     UILabel *bottomBar;
@@ -19,6 +20,7 @@
     UILabel *rightLowerBar;
     
 }
+#pragma mark - properties
 @property (nonatomic, retain) UILabel *topBar;
 @property (nonatomic, retain) UILabel *middleBar;
 @property (nonatomic, retain) UILabel *bottomBar;
@@ -27,7 +29,7 @@
 @property (nonatomic, retain) UILabel *leftLowerBar;
 @property (nonatomic, retain) UILabel *rightLowerBar;
 
-
+#pragma mark - Methods
 -(void)setNumber:(int) number;
 
 

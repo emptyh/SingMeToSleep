@@ -9,6 +9,7 @@
 #import "ClockController.h"
 
 @implementation ClockController
+#pragma mark - Properties
 @synthesize tenSecondsNumber;
 @synthesize secondsNumber;
 @synthesize tenMinutesNumber;
@@ -17,7 +18,7 @@
 @synthesize hoursNumber;
 
 
-
+#pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -35,7 +36,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+
 
 /*
 // Implement loadView to create a view hierarchy programmatically, without using a nib.
@@ -90,6 +91,7 @@
     
     return number;
 }
+#pragma Universal Screen Updates
 -(void)blink{
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
@@ -124,6 +126,6 @@
     return [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
     
 }
-
+#pragma Music related methods
 
 @end

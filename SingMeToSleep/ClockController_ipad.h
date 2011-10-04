@@ -17,20 +17,18 @@ NSArray *minutesLabel;
 NSArray *hoursLabel;
 NSArray *tensHoursLabel;
 }
-
+#pragma mark - Properties
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *dotLabel;
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tenSecondsLabel;
-
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *secondsLabel;
-
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensMinutesLabel;
-
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *minutesLabel;
-
 @property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *hoursLabel;
+@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensHoursLabel;
 
-
+#pragma mark - Actions
+- (IBAction)selectMusicPressed:(id)sender;
+#pragma mark -Methods
 -(void)updateScreen;
 
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensHoursLabel;
 @end

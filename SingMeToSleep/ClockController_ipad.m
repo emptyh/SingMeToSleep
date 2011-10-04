@@ -10,6 +10,7 @@
 #import "MTHNumber.h"
 
 @implementation ClockController_ipad
+#pragma mark - Properties
 @synthesize dotLabel;
 @synthesize tenSecondsLabel;
 @synthesize secondsLabel;
@@ -18,6 +19,7 @@
 @synthesize hoursLabel;
 @synthesize tensHoursLabel;
 
+#pragma mark - View lifecycle
 - (void)dealloc {
     [dotLabel release];
     [tenSecondsLabel release];
@@ -29,15 +31,7 @@
     [super dealloc];
 }
 
--(void)initScreen{
-    MTHNumber *num=[self createNumberFromLabelArray:tenSecondsLabel];
-    [super setTenSecondsNumber:num];
-    [super setSecondsNumber:[self createNumberFromLabelArray:secondsLabel]];
-    [super setTenMinutesNumber:[self createNumberFromLabelArray:tensMinutesLabel]];
-    [super setMinutesNumber:[self createNumberFromLabelArray:minutesLabel]];
-    [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
-    [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
-}
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -55,7 +49,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -75,10 +69,22 @@
     // Return YES for supported orientations
 	return YES;
 }
+#pragma mark - iPad specific screen updates
+
+-(void)initScreen{
+    MTHNumber *num=[self createNumberFromLabelArray:tenSecondsLabel];
+    [super setTenSecondsNumber:num];
+    [super setSecondsNumber:[self createNumberFromLabelArray:secondsLabel]];
+    [super setTenMinutesNumber:[self createNumberFromLabelArray:tensMinutesLabel]];
+    [super setMinutesNumber:[self createNumberFromLabelArray:minutesLabel]];
+    [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
+    [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
+}
 -(void)updateScreen{
     
         [self blink];
    
 }
-
+- (IBAction)selectMusicPressed:(id)sender {
+}
 @end

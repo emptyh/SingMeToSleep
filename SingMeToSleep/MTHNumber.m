@@ -10,7 +10,7 @@
 
 @implementation MTHNumber
 
-
+#pragma mark - Properties
 @synthesize topBar;
 @synthesize middleBar;
 @synthesize bottomBar;
@@ -28,6 +28,7 @@
     
     return self;
 }
+#pragma mark - Methods
 -(void)setNumber:(int) number{
     UIColor *on=[UIColor redColor];
     UIColor *off=[UIColor blackColor];

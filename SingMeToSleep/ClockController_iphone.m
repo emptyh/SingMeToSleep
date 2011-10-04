@@ -9,6 +9,7 @@
 #import "ClockController_iphone.h"
 
 @implementation ClockController_iphone
+#pragma mark - Properties
 @synthesize dotLabel;
 @synthesize tenSecondsLabel;
 @synthesize secondsLabel;
@@ -19,16 +20,8 @@
 
 
 
--(void)initScreen{
-    MTHNumber *num=[self createNumberFromLabelArray:tenSecondsLabel];
-    [super setTenSecondsNumber:num];
-    [super setSecondsNumber:[self createNumberFromLabelArray:secondsLabel]];
-    [super setTenMinutesNumber:[self createNumberFromLabelArray:tensMinutesLabel]];
-    [super setMinutesNumber:[self createNumberFromLabelArray:minutesLabel]];
-    [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
-    [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
-}
 
+#pragma mark - View lifecycle
 - (void)dealloc {
     [dotLabel release];
     [tenSecondsLabel release];
@@ -56,7 +49,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+
 
 - (void)viewDidLoad
 {
@@ -77,7 +70,19 @@
     return YES;
 }
 
+#pragma mark - iPhone specific screen updates
+-(void)initScreen{
+    MTHNumber *num=[self createNumberFromLabelArray:tenSecondsLabel];
+    [super setTenSecondsNumber:num];
+    [super setSecondsNumber:[self createNumberFromLabelArray:secondsLabel]];
+    [super setTenMinutesNumber:[self createNumberFromLabelArray:tensMinutesLabel]];
+    [super setMinutesNumber:[self createNumberFromLabelArray:minutesLabel]];
+    [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
+    [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
+}
 -(void)updateScreen{
     [super blink];
+}
+- (IBAction)selectMusicPushed:(id)sender {
 }
 @end
