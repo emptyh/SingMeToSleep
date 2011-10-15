@@ -16,7 +16,7 @@
 @synthesize minutesNumber;
 @synthesize tenHoursNumber;
 @synthesize hoursNumber;
-
+@synthesize musicPlayer;
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -51,6 +51,8 @@
 {
     [super viewDidLoad];
     NSTimer *timer=[self createTimer];
+    musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
+    [self registerMediaPlayerNotifications];
     [self initScreen];
 }
 
@@ -58,6 +60,20 @@
 - (void)viewDidUnload
 {
     [super viewDidUnload];
+    [musicPlayer release];
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                    name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                                                  object: musicPlayer];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                    name: MPMusicPlayerControllerPlaybackStateDidChangeNotification
+                                                  object: musicPlayer];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver: self
+                                                    name: MPMusicPlayerControllerVolumeDidChangeNotification
+                                                  object: musicPlayer];
+    
+    [musicPlayer endGeneratingPlaybackNotifications];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -126,6 +142,86 @@
     return [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
     
 }
-#pragma Music related methods
-
+#pragma mark - Media Player Notification
+-(void)registerMediaPlayerNotifications{
+    NSNotificationCenter *notificationCenter=[NSNotificationCenter defaultCenter];
+    [notificationCenter addObserver:self 
+                           selector:@selector(handle_nowPlayingChanged:) 
+                        name:MPMusicPlayerControllerNowPlayingItemDidChangeNotification
+                             object:musicPlayer];
+    [notificationCenter addObserver:self
+                           selector:@selector(handle_playbackStateChanged:)
+                        name:MPMusicPlayerControllerPlaybackStateDidChangeNotification 
+                        object:musicPlayer];
+    [notificationCenter addObserver:self
+                           selector:@selector(handle_VolumeChanged:) 
+                        name:MPMusicPlayerControllerVolumeDidChangeNotification 
+                             object:musicPlayer];
+    [musicPlayer beginGeneratingPlaybackNotifications];
+}
+-(void)mediaPicker:(MPMediaPickerController *) mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
+    if(mediaItemCollection){
+        [musicPlayer setQueueWithItemCollection:mediaItemCollection];
+        [musicPlayer play];
+    }
+    [self dismissModalViewControllerAnimated:YES];
+}
+-(void)mediaPickerDidCancel:(MPMediaPickerController *) mediaPicker{
+    [self dismissModalViewControllerAnimated:YES];
+}
+-(void)handle_nowPlayingChanged:(id)notification{
+    MPMediaItem *song=[musicPlayer nowPlayingItem];
+    NSString *artist=@"Unknown";
+    NSString *title=@"Unknown";
+    if([song valueForProperty:MPMediaItemPropertyTitle]){
+        title=[song valueForProperty:MPMediaItemPropertyTitle];
+    }
+    if([song valueForProperty:MPMediaItemPropertyArtist]){
+        artist=[song valueForProperty:MPMediaItemPropertyArtist];
+    }
+    [self updateDisplayWithArtist:artist andTitle:title];
+}
+-(void)handle_playbackStateChanged:(id) notification{
+    MPMusicPlaybackState playbackState = [musicPlayer playbackState];
+    
+    if (playbackState == MPMusicPlaybackStatePaused) {
+        
+    } else if (playbackState == MPMusicPlaybackStatePlaying) {
+        
+    } else if (playbackState == MPMusicPlaybackStateStopped) {
+        
+        [musicPlayer stop];
+        
+    }
+}
+-(void)handle_VolumeChanged:(id)notification{
+    
+}
+#pragma mark - Music related methods
+-(void)playPause{
+    MPMusicPlaybackState playbackState=[musicPlayer playbackState];
+    if(playbackState==MPMusicPlaybackStatePaused){
+        [musicPlayer play];
+    }else if(playbackState==MPMusicPlaybackStatePlaying){
+        [musicPlayer pause];
+    }
+}
+-(void)nextTrack{
+    [musicPlayer skipToNextItem];
+}
+-(void)previousTrack{
+    [musicPlayer skipToPreviousItem];
+}
+-(void)volumeChanged:(float)newValue{
+    [musicPlayer setVolume:newValue];
+}
+-(void)selectMusic{
+    MPMediaPickerController *mediaPicker=[[MPMediaPickerController alloc]init];
+    
+    [mediaPicker setDelegate:self];
+    [mediaPicker setAllowsPickingMultipleItems:YES];
+    [mediaPicker setPrompt:@"Pick songs to sleep to"];
+    [self presentModalViewController:mediaPicker animated:YES];
+    [mediaPicker release];
+}
 @end

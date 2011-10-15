@@ -10,7 +10,7 @@
 #import "MTHNumber.h"
 #import <MediaPlayer/MediaPlayer.h>
 
-@interface ClockController : UIViewController{
+@interface ClockController : UIViewController<MPMediaPickerControllerDelegate>{
     MTHNumber *tenSecondsNumber;
     MTHNumber *secondsNumber;
     MTHNumber *tenMinutesNumber;
@@ -27,6 +27,7 @@
 @property (nonatomic,retain) MTHNumber *minutesNumber;
 @property (nonatomic,retain) MTHNumber *tenHoursNumber;
 @property (nonatomic,retain) MTHNumber *hoursNumber;
+@property (nonatomic,retain) MPMusicPlayerController *musicPlayer;
 
 #pragma mark - Methods
 -(NSTimer *)createTimer;
@@ -34,5 +35,14 @@
 -(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels;
 -(void) initScreen;
 -(void) selectMusic;
+-(void) playPause;
+-(void)previousTrack;
+-(void)nextTrack;
+-(void)volumeChanged:(float)newValue;
+-(void) registerMediaPlayerNotifications;
+-(void) changePlayPauseState;
+-(void) updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title;
+
+
 
 @end

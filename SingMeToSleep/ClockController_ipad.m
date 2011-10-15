@@ -18,6 +18,10 @@
 @synthesize minutesLabel;
 @synthesize hoursLabel;
 @synthesize tensHoursLabel;
+@synthesize artistLabel;
+@synthesize titleLabel;
+@synthesize playPauseButton;
+@synthesize volumeSlider;
 
 #pragma mark - View lifecycle
 - (void)dealloc {
@@ -28,6 +32,12 @@
     [minutesLabel release];
     [hoursLabel release];
     [tensHoursLabel release];
+    [artistLabel release];
+    [titleLabel release];
+    [volumeSlider release];
+    [playPauseButton release];
+    [volumeSlider release];
+    [titleLabel release];
     [super dealloc];
 }
 
@@ -59,6 +69,12 @@
 
 - (void)viewDidUnload
 {
+    [self setArtistLabel:nil];
+    [self setTitleLabel:nil];
+    [self setVolumeSlider:nil];
+    [self setPlayPauseButton:nil];
+    [self setVolumeSlider:nil];
+    [self setTitleLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -85,6 +101,40 @@
         [self blink];
    
 }
+-(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
+    [[self artistLabel] setText:artist];
+    [[self titleLabel] setText:title];
+}
 - (IBAction)selectMusicPressed:(id)sender {
+    [super selectMusic];
+}
+
+- (IBAction)previousPressed:(id)sender {
+    [super previousTrack];
+}
+
+- (IBAction)playPausePressed:(id)sender {
+    [super playPause];
+    [self changePlayPauseState];
+}
+
+- (IBAction)nextPressed:(id)sender {
+    [super nextTrack];
+}
+
+- (IBAction)volumeMoved:(id)sender {
+    float volume=[volumeSlider value];
+    [super volumeChanged:volume];
+}
+-(void)changePlayPauseState{
+    MPMusicPlaybackState playbackState=[[super musicPlayer] playbackState];
+    if (playbackState==MPMusicPlaybackStatePlaying){
+        UIImage *play=[UIImage imageNamed:@"playButton.png"];
+        [[self playPauseButton] setImage:play forState:UIControlStateNormal];
+    }else if(playbackState==MPMusicPlaybackStatePaused){
+        UIImage *pause=[UIImage imageNamed:@"pauseButton.png"];
+        [[self playPauseButton]setImage:pause forState:UIControlStateNormal];
+    }
+    
 }
 @end

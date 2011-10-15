@@ -80,6 +80,7 @@
 {
     [_window release];
     [super dealloc];
+    
 }
 
 
