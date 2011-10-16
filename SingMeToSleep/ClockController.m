@@ -17,6 +17,9 @@
 @synthesize tenHoursNumber;
 @synthesize hoursNumber;
 @synthesize musicPlayer;
+@synthesize timeTillSleep;
+@synthesize timeStarted;
+@synthesize minutesOfMusic;
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -54,6 +57,7 @@
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
     [self registerMediaPlayerNotifications];
     [self initScreen];
+    [self setMinutesOfMusic:15];
 }
 
 
@@ -170,6 +174,40 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 -(void)handle_nowPlayingChanged:(id)notification{
+    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
+    NSDate *now=[[NSDate alloc] init];
+    NSString *nowString=[formatter stringFromDate:now];
+    NSLog(nowString);
+    NSString *stop=[formatter stringFromDate:timeTillSleep];
+    NSLog(stop);
+    int foo=[[self timeTillSleep] timeIntervalSinceNow];
+    if([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0){
+        [musicPlayer stop];
+        MPMediaPropertyPredicate *whiteNoisePredicate=[MPMediaPropertyPredicate predicateWithValue:@"Whitenoise" forProperty:MPMediaItemPropertyArtist];
+        MPMediaQuery *query=[[MPMediaQuery alloc] init];
+        [query addFilterPredicate:whiteNoisePredicate];
+
+        NSArray *whiteNoise=[query items];
+        int totalSeconds=0;
+        for(MPMediaItem *item in whiteNoise){
+            NSNumber *duruation= [item valueForProperty:MPMediaItemPropertyPlaybackDuration];
+            int seconds = [duruation intValue];
+           
+            totalSeconds=totalSeconds+seconds;
+        }
+        int eightHours=28800;
+        int numberOfPlays=eightHours/totalSeconds;
+        NSMutableArray *playList=[[NSMutableArray alloc] init];
+        for (int i=0; i<numberOfPlays; i++) {
+            for (MPMediaItem *item in whiteNoise){
+                [playList addObject:item];
+            }
+        }
+        [musicPlayer setQueueWithItemCollection:[[MPMediaItemCollection alloc]initWithItems:playList]];
+        [musicPlayer play];
+        [self setTimeTillSleep:nil];
+    }
     MPMediaItem *song=[musicPlayer nowPlayingItem];
     NSString *artist=@"Unknown";
     NSString *title=@"Unknown";
@@ -188,16 +226,28 @@
         
     } else if (playbackState == MPMusicPlaybackStatePlaying) {
         
-    } else if (playbackState == MPMusicPlaybackStateStopped) {
-        
-        [musicPlayer stop];
-        
+       
     }
 }
 -(void)handle_VolumeChanged:(id)notification{
     
 }
 #pragma mark - Music related methods
+-(void)startTimer{
+    [self setTimeStarted:[[NSDate alloc] init]];
+    NSTimeInterval seconds=minutesOfMusic*60;
+    NSDate *newDate= [[self timeStarted]dateByAddingTimeInterval:seconds];
+    [self setTimeTillSleep:newDate];
+    
+    
+    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
+    NSString *start=[formatter stringFromDate:timeStarted];
+    NSLog(start);
+    NSString *stop=[formatter stringFromDate:timeTillSleep];
+    NSLog(stop);
+    
+}
 -(void)playPause{
     MPMusicPlaybackState playbackState=[musicPlayer playbackState];
     if(playbackState==MPMusicPlaybackStatePaused){

@@ -126,6 +126,10 @@
     float volume=[volumeSlider value];
     [super volumeChanged:volume];
 }
+
+- (IBAction)startTimerPressed:(id)sender {
+    [super startTimer];
+}
 -(void)changePlayPauseState{
     MPMusicPlaybackState playbackState=[[super musicPlayer] playbackState];
     if (playbackState==MPMusicPlaybackStatePlaying){

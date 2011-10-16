@@ -37,6 +37,7 @@ NSArray *tensHoursLabel;
 - (IBAction)playPausePressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 - (IBAction)volumeMoved:(id)sender;
+- (IBAction)startTimerPressed:(id)sender;
 #pragma mark -Methods
 -(void)updateScreen;
 

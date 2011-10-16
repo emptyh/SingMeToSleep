@@ -28,6 +28,9 @@
 @property (nonatomic,retain) MTHNumber *tenHoursNumber;
 @property (nonatomic,retain) MTHNumber *hoursNumber;
 @property (nonatomic,retain) MPMusicPlayerController *musicPlayer;
+@property (nonatomic,retain) NSDate *timeTillSleep;
+@property (nonatomic,retain) NSDate *timeStarted;
+@property int minutesOfMusic;
 
 #pragma mark - Methods
 -(NSTimer *)createTimer;
@@ -42,6 +45,7 @@
 -(void) registerMediaPlayerNotifications;
 -(void) changePlayPauseState;
 -(void) updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title;
+-(void) startTimer;
 
 
 
