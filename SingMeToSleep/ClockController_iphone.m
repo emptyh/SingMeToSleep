@@ -17,6 +17,10 @@
 @synthesize minutesLabel;
 @synthesize hoursLabel;
 @synthesize tensHoursLabel;
+@synthesize artistLabel;
+@synthesize titleLabel;
+@synthesize volumeSlider;
+@synthesize playPauseButton;
 
 
 
@@ -30,6 +34,10 @@
     [minutesLabel release];
     [hoursLabel release];
     [tensHoursLabel release];
+    [artistLabel release];
+    [titleLabel release];
+    [volumeSlider release];
+    [playPauseButton release];
     [super dealloc];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -59,6 +67,10 @@
 
 - (void)viewDidUnload
 {
+    [self setArtistLabel:nil];
+    [self setTitleLabel:nil];
+    [self setVolumeSlider:nil];
+    [self setPlayPauseButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -80,9 +92,48 @@
     [super setTenHoursNumber:[self createNumberFromLabelArray:tensHoursLabel]];
     [super setHoursNumber:[self createNumberFromLabelArray:hoursLabel]];
 }
+- (IBAction)nextPressed:(id)sender {
+    [super nextTrack];
+}
+
+- (IBAction)volumeChanged:(id)sender {
+    float volume=[volumeSlider value];
+    [super volumeChanged:volume];
+}
+
 -(void)updateScreen{
     [super blink];
 }
-- (IBAction)selectMusicPushed:(id)sender {
+- (IBAction)selectMusicPressed:(id)sender {
+    [super selectMusic];
+}
+
+- (IBAction)startTimerPressed:(id)sender {
+    [super startTimer];
+}
+
+
+- (IBAction)previousPressed:(id)sender {
+    [super previousTrack];
+}
+
+- (IBAction)playPausePressed:(id)sender {
+    [super playPause];
+    [self changePlayPauseState];
+}
+-(void)changePlayPauseState{
+    MPMusicPlaybackState playbackState=[[super musicPlayer] playbackState];
+    if (playbackState==MPMusicPlaybackStatePlaying){
+        UIImage *play=[UIImage imageNamed:@"playButton.png"];
+        [[self playPauseButton] setImage:play forState:UIControlStateNormal];
+    }else if(playbackState==MPMusicPlaybackStatePaused){
+        UIImage *pause=[UIImage imageNamed:@"pauseButton.png"];
+        [[self playPauseButton]setImage:pause forState:UIControlStateNormal];
+    }
+    
+}
+-(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
+    [[self artistLabel] setText:artist];
+    [[self titleLabel] setText:title];
 }
 @end
