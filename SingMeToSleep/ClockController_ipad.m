@@ -22,6 +22,11 @@
 @synthesize titleLabel;
 @synthesize playPauseButton;
 @synthesize volumeSlider;
+@synthesize currentTempLabel;
+@synthesize todayHigh;
+@synthesize todayLow;
+@synthesize tomorrowHigh;
+@synthesize tomorrowLow;
 
 #pragma mark - View lifecycle
 - (void)dealloc {
@@ -38,6 +43,12 @@
     [playPauseButton release];
     [volumeSlider release];
     [titleLabel release];
+    [currentTempLabel release];
+    [currentTempLabel release];
+    [todayHigh release];
+    [todayLow release];
+    [tomorrowHigh release];
+    [tomorrowLow release];
     [super dealloc];
 }
 
@@ -75,6 +86,12 @@
     [self setPlayPauseButton:nil];
     [self setVolumeSlider:nil];
     [self setTitleLabel:nil];
+    [self setCurrentTempLabel:nil];
+    [self setCurrentTempLabel:nil];
+    [self setTodayHigh:nil];
+    [self setTodayLow:nil];
+    [self setTomorrowHigh:nil];
+    [self setTomorrowLow:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -99,6 +116,7 @@
 -(void)updateScreen{
     
         [self blink];
+    [super weatherUpdate];
    
 }
 -(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
@@ -140,5 +158,15 @@
         [[self playPauseButton]setImage:pause forState:UIControlStateNormal];
     }
     
+}
+-(void)setCurrentTemp:(NSString *)temp{
+    [[self currentTempLabel] setText:temp];
+}
+-(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString *)todayHigh todayLow:(NSString *)todayLow tomorrowHigh:(id)tomorrowHigh tomorrowLow:(id)tomorrowLow{
+    [[self currentTempLabel] setText:current];
+    [[self todayHigh] setText:todayHigh];
+    [[self todayLow] setText:todayLow];
+    [[self tomorrowHigh] setText:tomorrowHigh];
+    [[self tomorrowLow] setText:tomorrowLow];
 }
 @end

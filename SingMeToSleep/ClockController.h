@@ -30,6 +30,7 @@
 @property (nonatomic,retain) MPMusicPlayerController *musicPlayer;
 @property (nonatomic,retain) NSDate *timeTillSleep;
 @property (nonatomic,retain) NSDate *timeStarted;
+@property (nonatomic, retain)NSDate *lastWeatherUpdate;
 @property int minutesOfMusic;
 
 #pragma mark - Methods
@@ -46,7 +47,9 @@
 -(void) changePlayPauseState;
 -(void) updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title;
 -(void) startTimer;
-
+-(void) weatherUpdate;
+-(void)setCurrentTemp:(NSString *)temp;
+-(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString*)todayHigh todayLow:(NSString*)todayLow tomorrowHigh:tomorrowHigh tomorrowLow: tomorrowLow;
 
 
 @end

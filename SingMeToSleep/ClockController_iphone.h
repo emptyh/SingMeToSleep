@@ -38,6 +38,7 @@
 - (IBAction)playPausePressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 - (IBAction)volumeChanged:(id)sender;
+
 #pragma mark - Methods
 -(void)updateScreen;
 -(void)changePlayPauseState;

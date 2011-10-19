@@ -96,6 +96,8 @@
     [super nextTrack];
 }
 
+
+
 - (IBAction)volumeChanged:(id)sender {
     float volume=[volumeSlider value];
     [super volumeChanged:volume];

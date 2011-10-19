@@ -8,6 +8,10 @@
 
 #import "ClockController.h"
 
+#import "MTHWeather.h"
+#import "MTHForecast.h"
+#import "MTHWeatherFactory.h"
+
 @implementation ClockController
 #pragma mark - Properties
 @synthesize tenSecondsNumber;
@@ -20,6 +24,7 @@
 @synthesize timeTillSleep;
 @synthesize timeStarted;
 @synthesize minutesOfMusic;
+@synthesize lastWeatherUpdate;
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -274,4 +279,22 @@
     [self presentModalViewController:mediaPicker animated:YES];
     [mediaPicker release];
 }
+#pragma mark - weather methods
+-(void)weatherUpdate{
+    if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]>10*60){
+        
+        NSTimeInterval tenMinutes=10*60;
+        lastWeatherUpdate=[[NSDate alloc]init];
+        MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
+        NSURL *weatherURL=[[NSURL alloc] initWithString:@"http://www.google.com/ig/api?weather=41042"];//should be dynamic
+        MTHWeather *weather=[factory getWeatherFromURL:weatherURL];
+        NSString *temp=[weather temp];
+   //     MTHForecast *tomorrow=[[weather forecasts] getObjects:0];
+        [self setCurrentTemp:temp];
+        
+        
+    }
+    
+}
+
 @end

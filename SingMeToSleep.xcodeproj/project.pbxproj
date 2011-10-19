@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		BF1831A6144E34B10024D841 /* MTHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A5144E34B10024D841 /* MTHWeather.m */; };
+		BF1831A9144E36480024D841 /* MTHForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A8144E36480024D841 /* MTHForecast.m */; };
+		BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AB144E37860024D841 /* MTHWeatherFactory.m */; };
+		BF1831AF144E3A700024D841 /* HSUStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AE144E3A700024D841 /* HSUStack.m */; };
 		BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */; };
 		BFBF955E144A27BA00F64ECB /* NextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF9559144A27BA00F64ECB /* NextButton.png */; };
 		BFBF955F144A27BA00F64ECB /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF955A144A27BA00F64ECB /* noArtworkImage.png */; };
@@ -49,6 +53,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		BF1831A4144E34B10024D841 /* MTHWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHWeather.h; sourceTree = "<group>"; };
+		BF1831A5144E34B10024D841 /* MTHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHWeather.m; sourceTree = "<group>"; };
+		BF1831A7144E36480024D841 /* MTHForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHForecast.h; sourceTree = "<group>"; };
+		BF1831A8144E36480024D841 /* MTHForecast.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHForecast.m; sourceTree = "<group>"; };
+		BF1831AA144E37860024D841 /* MTHWeatherFactory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHWeatherFactory.h; sourceTree = "<group>"; };
+		BF1831AB144E37860024D841 /* MTHWeatherFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHWeatherFactory.m; sourceTree = "<group>"; };
+		BF1831AD144E3A700024D841 /* HSUStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUStack.h; sourceTree = "<group>"; };
+		BF1831AE144E3A700024D841 /* HSUStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUStack.m; sourceTree = "<group>"; };
 		BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BFBF9559144A27BA00F64ECB /* NextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextButton.png; sourceTree = "<group>"; };
 		BFBF955A144A27BA00F64ECB /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
@@ -236,6 +248,14 @@
 			children = (
 				BFCC6F651437B75E008C60EF /* MTHNumber.h */,
 				BFCC6F661437B75E008C60EF /* MTHNumber.m */,
+				BF1831A4144E34B10024D841 /* MTHWeather.h */,
+				BF1831A5144E34B10024D841 /* MTHWeather.m */,
+				BF1831A7144E36480024D841 /* MTHForecast.h */,
+				BF1831A8144E36480024D841 /* MTHForecast.m */,
+				BF1831AA144E37860024D841 /* MTHWeatherFactory.h */,
+				BF1831AB144E37860024D841 /* MTHWeatherFactory.m */,
+				BF1831AD144E3A700024D841 /* HSUStack.h */,
+				BF1831AE144E3A700024D841 /* HSUStack.m */,
 			);
 			name = modal;
 			sourceTree = "<group>";
@@ -360,6 +380,10 @@
 				BFF108451437F78E00E1850C /* ClockController.m in Sources */,
 				BFF1084A1437F7BE00E1850C /* ClockController_iphone.m in Sources */,
 				BFF1084F1437F88C00E1850C /* ClockController_ipad.m in Sources */,
+				BF1831A6144E34B10024D841 /* MTHWeather.m in Sources */,
+				BF1831A9144E36480024D841 /* MTHForecast.m in Sources */,
+				BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */,
+				BF1831AF144E3A700024D841 /* HSUStack.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
