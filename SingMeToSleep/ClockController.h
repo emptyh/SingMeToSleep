@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import "MTHNumber.h"
 #import <MediaPlayer/MediaPlayer.h>
+#import "DataChanged.h"
 
-@interface ClockController : UIViewController<MPMediaPickerControllerDelegate>{
+@interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged>{
     MTHNumber *tenSecondsNumber;
     MTHNumber *secondsNumber;
     MTHNumber *tenMinutesNumber;
@@ -49,7 +50,7 @@
 -(void) startTimer;
 -(void) weatherUpdate;
 -(void)setCurrentTemp:(NSString *)temp;
--(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString*)todayHigh todayLow:(NSString*)todayLow tomorrowHigh:tomorrowHigh tomorrowLow: tomorrowLow;
+-(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString*)todayHigh todayLow:(NSString*)todayLow todayIconUrl:(NSString*)todayIconUrl tomorrowHigh:(NSString*)tomorrowHigh tomorrowLow:(NSString*)tomorrowLow tomorrowIconUrl:(NSString*)tomorrowIconUrl;
 
 
 @end

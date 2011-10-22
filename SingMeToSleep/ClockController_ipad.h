@@ -35,6 +35,8 @@ NSArray *tensHoursLabel;
 @property (retain, nonatomic) IBOutlet UILabel *todayLow;
 @property (retain, nonatomic) IBOutlet UILabel *tomorrowHigh;
 @property (retain, nonatomic) IBOutlet UILabel *tomorrowLow;
+@property (retain, nonatomic) IBOutlet UIImageView *tomorrowIcon;
+@property (retain, nonatomic) IBOutlet UIImageView *todayIcon;
 
 
 #pragma mark - Actions
@@ -44,6 +46,7 @@ NSArray *tensHoursLabel;
 - (IBAction)nextPressed:(id)sender;
 - (IBAction)volumeMoved:(id)sender;
 - (IBAction)startTimerPressed:(id)sender;
+- (IBAction)configScreenPressed:(id)sender;
 #pragma mark -Methods
 -(void)updateScreen;
 

@@ -27,9 +27,11 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         ClockController_ipad *clock=[[ClockController_ipad alloc]initWithNibName:nil bundle:nil];
         [[self window]addSubview:[clock view]];
+        [clock release];
     }else{
         ClockController_iphone *clock=[[ClockController_iphone alloc]initWithNibName:nil bundle:nil];
         [[self window]addSubview:[clock view]];
+        [clock release];
     }
     
 

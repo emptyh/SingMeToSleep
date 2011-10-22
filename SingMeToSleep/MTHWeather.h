@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "MTHForecast.h"
 
 @interface MTHWeather : NSObject
 
@@ -16,7 +17,7 @@
 @property (nonatomic,retain)NSString *temp;
 @property (nonatomic,retain)NSString *humidity;
 @property (nonatomic,retain)NSString *wind;
-@property (nonatomic,retain)NSMutableArray *conditions;
+@property (nonatomic,retain)MTHForecast *conditions;
 @property (nonatomic,retain)NSMutableArray *forecasts;
 
 @end

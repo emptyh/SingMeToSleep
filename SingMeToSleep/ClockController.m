@@ -179,21 +179,21 @@
     [self dismissModalViewControllerAnimated:YES];
 }
 -(void)handle_nowPlayingChanged:(id)notification{
-    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
-    [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
-    NSDate *now=[[NSDate alloc] init];
-    NSString *nowString=[formatter stringFromDate:now];
-    NSLog(nowString);
-    NSString *stop=[formatter stringFromDate:timeTillSleep];
-    NSLog(stop);
-    int foo=[[self timeTillSleep] timeIntervalSinceNow];
+    
+   
+    
+    
     if([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0){
+        NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+        [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
         [musicPlayer stop];
         MPMediaPropertyPredicate *whiteNoisePredicate=[MPMediaPropertyPredicate predicateWithValue:@"Whitenoise" forProperty:MPMediaItemPropertyArtist];
         MPMediaQuery *query=[[MPMediaQuery alloc] init];
         [query addFilterPredicate:whiteNoisePredicate];
-
+        
+        
         NSArray *whiteNoise=[query items];
+        [query release];
         int totalSeconds=0;
         for(MPMediaItem *item in whiteNoise){
             NSNumber *duruation= [item valueForProperty:MPMediaItemPropertyPlaybackDuration];
@@ -211,6 +211,9 @@
         }
         [musicPlayer setQueueWithItemCollection:[[MPMediaItemCollection alloc]initWithItems:playList]];
         [musicPlayer play];
+        [playList release];
+        [formatter release];
+        
         [self setTimeTillSleep:nil];
     }
     MPMediaItem *song=[musicPlayer nowPlayingItem];
@@ -239,7 +242,9 @@
 }
 #pragma mark - Music related methods
 -(void)startTimer{
-    [self setTimeStarted:[[NSDate alloc] init]];
+    NSDate *date=[[NSDate alloc] init];
+    [self setTimeStarted:date];
+    [date release];
     NSTimeInterval seconds=minutesOfMusic*60;
     NSDate *newDate= [[self timeStarted]dateByAddingTimeInterval:seconds];
     [self setTimeTillSleep:newDate];
@@ -251,6 +256,7 @@
     NSLog(start);
     NSString *stop=[formatter stringFromDate:timeTillSleep];
     NSLog(stop);
+    [formatter release];
     
 }
 -(void)playPause{
@@ -262,7 +268,7 @@
     }
 }
 -(void)nextTrack{
-    [musicPlayer skipToNextItem];
+    [[self musicPlayer] skipToNextItem];
 }
 -(void)previousTrack{
     [musicPlayer skipToPreviousItem];
@@ -281,20 +287,29 @@
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{
-    if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]>10*60){
+    if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<1*60*-1){
         
-        NSTimeInterval tenMinutes=10*60;
+        NSTimeInterval tenMinutes=1*60;
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
         NSURL *weatherURL=[[NSURL alloc] initWithString:@"http://www.google.com/ig/api?weather=41042"];//should be dynamic
         MTHWeather *weather=[factory getWeatherFromURL:weatherURL];
+        [factory release];
+        [weatherURL release];
         NSString *temp=[weather temp];
-   //     MTHForecast *tomorrow=[[weather forecasts] getObjects:0];
-        [self setCurrentTemp:temp];
+        MTHForecast *today=[[weather forecasts] objectAtIndex:0];
+        MTHForecast *tomorrow=[[weather forecasts] objectAtIndex:1];
+        [self setWeatherCurrent: temp todayHigh:[today highTemp] todayLow:[today lowTemp] todayIconUrl:[today forecastIcon]tomorrowHigh:[tomorrow highTemp] tomorrowLow:[tomorrow lowTemp] tomorrowIconUrl:[tomorrow forecastIcon]];
+ //       [self setCurrentTemp:temp];
         
         
     }
     
 }
+-(void)dataDidChange:(NSString *)source withValue:(NSString *)value{
+    if([source isEqualToString:@"minutesOfMusic"]){
+        [self setMinutesOfMusic:[value intValue]];
+    }
 
+}
 @end

@@ -15,5 +15,13 @@
 @synthesize temp;
 @synthesize wind;
 @synthesize conditions;
+@synthesize forecasts;
 
+-(id)init{
+    if( self=[super init] ){
+        forecasts=[[NSMutableArray alloc]init];
+        conditions=[[MTHForecast alloc]init];
+    }
+    return self;
+}
 @end

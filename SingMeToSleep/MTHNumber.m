@@ -31,7 +31,7 @@
 #pragma mark - Methods
 -(void)setNumber:(int) number{
     UIColor *on=[UIColor redColor];
-    UIColor *off=[UIColor blackColor];
+    UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.1];
     if(number==0){
         
         [topBar setBackgroundColor:on];
@@ -115,7 +115,7 @@
         [leftLowerBar setBackgroundColor:off];
         [rightLowerBar setBackgroundColor:on];
     }
-    
+    [off release];
     
 }
 

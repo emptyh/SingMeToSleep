@@ -11,6 +11,8 @@
 		BF1831A9144E36480024D841 /* MTHForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A8144E36480024D841 /* MTHForecast.m */; };
 		BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AB144E37860024D841 /* MTHWeatherFactory.m */; };
 		BF1831AF144E3A700024D841 /* HSUStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AE144E3A700024D841 /* HSUStack.m */; };
+		BF9A7F4A145245520078D981 /* ConfigScreen_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */; };
+		BF9A7F4B145245520078D981 /* ConfigScreen_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */; };
 		BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */; };
 		BFBF955E144A27BA00F64ECB /* NextButton.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF9559144A27BA00F64ECB /* NextButton.png */; };
 		BFBF955F144A27BA00F64ECB /* noArtworkImage.png in Resources */ = {isa = PBXBuildFile; fileRef = BFBF955A144A27BA00F64ECB /* noArtworkImage.png */; };
@@ -61,6 +63,10 @@
 		BF1831AB144E37860024D841 /* MTHWeatherFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHWeatherFactory.m; sourceTree = "<group>"; };
 		BF1831AD144E3A700024D841 /* HSUStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUStack.h; sourceTree = "<group>"; };
 		BF1831AE144E3A700024D841 /* HSUStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUStack.m; sourceTree = "<group>"; };
+		BF9A7F45145243C60078D981 /* DataChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChanged.h; sourceTree = "<group>"; };
+		BF9A7F47145245520078D981 /* ConfigScreen_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPad.h; sourceTree = "<group>"; };
+		BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen_iPad.m; sourceTree = "<group>"; };
+		BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigScreen_iPad.xib; sourceTree = "<group>"; };
 		BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MediaPlayer.framework; path = System/Library/Frameworks/MediaPlayer.framework; sourceTree = SDKROOT; };
 		BFBF9559144A27BA00F64ECB /* NextButton.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = NextButton.png; sourceTree = "<group>"; };
 		BFBF955A144A27BA00F64ECB /* noArtworkImage.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = noArtworkImage.png; sourceTree = "<group>"; };
@@ -183,6 +189,7 @@
 				BFCC6F33143795D0008C60EF /* iPhone */,
 				BFCC6F3A143795D0008C60EF /* iPad */,
 				BFCC6F28143795D0008C60EF /* Supporting Files */,
+				BF9A7F45145243C60078D981 /* DataChanged.h */,
 			);
 			path = SingMeToSleep;
 			sourceTree = "<group>";
@@ -220,6 +227,9 @@
 				BFF1084C1437F88B00E1850C /* ClockController_ipad.h */,
 				BFF1084D1437F88B00E1850C /* ClockController_ipad.m */,
 				BFF1084E1437F88C00E1850C /* ClockController_ipad.xib */,
+				BF9A7F47145245520078D981 /* ConfigScreen_iPad.h */,
+				BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */,
+				BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -337,6 +347,7 @@
 				BFBF9560144A27BA00F64ECB /* pauseButton.png in Resources */,
 				BFBF9561144A27BA00F64ECB /* playButton.png in Resources */,
 				BFBF9562144A27BA00F64ECB /* PreviousButton.png in Resources */,
+				BF9A7F4B145245520078D981 /* ConfigScreen_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -384,6 +395,7 @@
 				BF1831A9144E36480024D841 /* MTHForecast.m in Sources */,
 				BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */,
 				BF1831AF144E3A700024D841 /* HSUStack.m in Sources */,
+				BF9A7F4A145245520078D981 /* ConfigScreen_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
