@@ -15,6 +15,8 @@
 - (IBAction)minutesSpinnerChanged:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextField *minutesOfMusic;
 @property (retain, nonatomic)id<DataChanged>delegate;
+@property (retain, nonatomic) IBOutlet UISwitch *shuffleSwitch;
+@property (retain, nonatomic) IBOutlet UISwitch *floydProtectionSwitch;
 
 - (IBAction)minutesOfMusicChanged:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextField *minutesOfMusicText;

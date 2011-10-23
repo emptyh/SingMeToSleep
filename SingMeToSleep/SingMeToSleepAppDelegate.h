@@ -14,6 +14,6 @@
 
 #pragma mark - Properties
 @property (nonatomic, retain) IBOutlet UIWindow *window;
-
+@property (nonatomic, retain) NSMutableDictionary *config;
 
 @end

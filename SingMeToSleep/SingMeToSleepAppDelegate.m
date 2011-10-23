@@ -15,7 +15,7 @@
 @implementation SingMeToSleepAppDelegate
 #pragma mark - Properties
 @synthesize window = _window;
-
+@synthesize config;
 
 
 #pragma mark -App Life Cycle
@@ -23,6 +23,19 @@
 {
     // Override point for customization after application launch.
     [self.window makeKeyAndVisible];
+    NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *tempConfig=[userDefault valueForKeyPath:@"config"];
+    if(!tempConfig){
+        NSNumber *yes=[[NSNumber alloc]initWithBool:NO];
+        tempConfig=[[NSMutableDictionary alloc]init];
+        [tempConfig setValue:@"15" forKey:@"minutesOfMusic"];
+        [tempConfig setValue:yes forKey:@"floydProtection"];
+        [tempConfig setValue:yes forKey:@"shuffle"];
+        [userDefault setValue:tempConfig forKey:@"config"];
+    }
+    [self setConfig:tempConfig];
+   // [tempConfig release];
+    //[userDefault release];
     //put device check here
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         ClockController_ipad *clock=[[ClockController_ipad alloc]initWithNibName:nil bundle:nil];

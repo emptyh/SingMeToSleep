@@ -11,6 +11,7 @@
 #import "MTHWeather.h"
 #import "MTHForecast.h"
 #import "MTHWeatherFactory.h"
+#import "SingMeToSleepAppDelegate.h"
 
 @implementation ClockController
 #pragma mark - Properties
@@ -25,6 +26,7 @@
 @synthesize timeStarted;
 @synthesize minutesOfMusic;
 @synthesize lastWeatherUpdate;
+@synthesize floydProtection;
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -60,10 +62,11 @@
     [super viewDidLoad];
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
-    [musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
+    //[musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
     [self registerMediaPlayerNotifications];
     [self initScreen];
-    [self setMinutesOfMusic:15];
+    [self applyConfig];
+    //[self setMinutesOfMusic:15];
 }
 
 
@@ -285,6 +288,23 @@
     [mediaPicker setPrompt:@"Pick songs to sleep to"];
     [self presentModalViewController:mediaPicker animated:YES];
     [mediaPicker release];
+}
+-(void)configScreenDidUnload{
+    [self applyConfig];
+}
+-(void)applyConfig{
+    SingMeToSleepAppDelegate *delgate=[[UIApplication sharedApplication]delegate];
+    NSMutableDictionary *config=[delgate config];
+    BOOL shuffle= [[config valueForKey:@"shuffle"]boolValue];
+    BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
+    int minutes=[[config valueForKey:@"minutesOfMusic"] intValue];
+    [self setMinutesOfMusic:minutes];
+    if(shuffle){
+        [musicPlayer setShuffleMode:MPMusicShuffleModeSongs];
+    }else{
+        [musicPlayer setShuffleMode:MPMusicShuffleModeOff];
+    }
+    [self setFloydProtection:floydProtection];
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{

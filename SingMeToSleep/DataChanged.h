@@ -10,4 +10,5 @@
 
 @protocol DataChanged <NSObject>
 -(void)dataDidChange:(NSString*)source withValue:(NSString*)value;
+-(void)configScreenDidUnload;
 @end
