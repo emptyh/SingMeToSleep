@@ -3,7 +3,7 @@
 //  SingMeToSleep
 //
 //  Created by Mike Hickman on 10/18/11.
-//  Copyright (c) 2011 Hobsons. All rights reserved.
+//  Copyright (c) 2011 EmptyH Software. All rights reserved.
 //
 
 #import "MTHWeather.h"
