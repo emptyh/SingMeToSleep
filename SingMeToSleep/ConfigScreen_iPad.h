@@ -12,7 +12,12 @@
 @interface ConfigScreen_iPad : UIViewController
 - (IBAction)minutesChanged:(id)sender;
 - (IBAction)backPressed:(id)sender;
+- (IBAction)minutesSpinnerChanged:(id)sender;
 @property (retain, nonatomic) IBOutlet UITextField *minutesOfMusic;
 @property (retain, nonatomic)id<DataChanged>delegate;
+
+- (IBAction)minutesOfMusicChanged:(id)sender;
+@property (retain, nonatomic) IBOutlet UITextField *minutesOfMusicText;
+@property (retain, nonatomic) IBOutlet UIStepper *minutesOfMusicSpinner;
 -(id)initWithDelegate:(id<DataChanged>)delegate;
 @end

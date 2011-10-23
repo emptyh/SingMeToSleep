@@ -60,6 +60,7 @@
     [super viewDidLoad];
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
+    [musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
     [self registerMediaPlayerNotifications];
     [self initScreen];
     [self setMinutesOfMusic:15];

@@ -9,8 +9,10 @@
 #import "ConfigScreen_iPad.h"
 
 @implementation ConfigScreen_iPad
+@synthesize minutesOfMusicSpinner;
 @synthesize minutesOfMusic;
 @synthesize delegate;
+@synthesize minutesOfMusicText;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -21,6 +23,13 @@
     }
     return self;
 }
+
+
+- (IBAction)minutesOfMusicChanged:(id)sender {
+    NSString *mins=[NSString stringWithFormat:@"%i",[minutesOfMusicSpinner value]];
+    [[self minutesOfMusicText]setText:mins];
+}
+
 -(id)initWithDelegate:(id<DataChanged>)delegate{
     self = [super init];
     if (self) {
@@ -42,12 +51,18 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    if([[self minutesOfMusicSpinner] value]==0){
+        [[self minutesOfMusicSpinner]setValue:15];
+        [[self minutesOfMusicText]setText:@"15"];
+    }
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload
 {
     [self setMinutesOfMusic:nil];
+    [self setMinutesOfMusicText:nil];
+    [self setMinutesOfMusicSpinner:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -61,14 +76,23 @@
 
 
 - (void)dealloc {    
+    [minutesOfMusicText release];
+    [minutesOfMusicSpinner release];
     [super dealloc];
     [minutesOfMusic release];
 }
-- (IBAction)minutesChanged:(id)sender {
-}
+
 
 - (IBAction)backPressed:(id)sender {
-    [[self delegate]dataDidChange:@"minutesOfMusic" withValue:[[self minutesOfMusic]text]];
+    NSString *mins=[[self minutesOfMusicText]text];
+    [[self delegate]dataDidChange:@"minutesOfMusic" withValue:mins];
     [self dismissModalViewControllerAnimated:YES];
 }
+
+- (IBAction)minutesSpinnerChanged:(id)sender {
+    int minF=[minutesOfMusicSpinner value];
+    NSString *mins=[[NSString alloc] initWithFormat:@"%d",minF];
+    [[self minutesOfMusicText] setText:mins];
+}
+
 @end

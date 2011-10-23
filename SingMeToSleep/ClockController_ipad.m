@@ -158,7 +158,7 @@
 
 - (IBAction)configScreenPressed:(id)sender {
     ConfigScreen_iPad *config=[[ConfigScreen_iPad alloc]initWithDelegate:self];
-    [self setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [config setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:config animated:YES];
     [config release];                                                        
                                                     
