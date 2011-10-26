@@ -27,7 +27,7 @@
 @synthesize minutesOfMusic;
 @synthesize lastWeatherUpdate;
 @synthesize floydProtection;
-
+@synthesize millitaryTime;
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -97,8 +97,8 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels{
-    
-    MTHNumber *number=[[MTHNumber alloc]init];
+    MTHNumber *tempNumber=[[MTHNumber alloc]init];
+    MTHNumber *number=tempNumber;
     
     for(UILabel *label in labels){
         if([label tag]==0){
@@ -117,7 +117,7 @@
             [number setMiddleBar:label];
         }
     }
-    
+   // [tempNumber release];
     return number;
 }
 #pragma Universal Screen Updates
@@ -130,7 +130,20 @@
     NSString *hours=[parts objectAtIndex:0];
     NSString *minutes=[parts objectAtIndex:1];
     NSString *seconds=[parts objectAtIndex:2];
-    
+    int hoursInt=[hours intValue];
+    if(!millitaryTime && hoursInt>12){
+        hoursInt=hoursInt-12;
+        hours=[NSString stringWithFormat:@"%d",hoursInt];
+        if([hours length]==1){
+            hours=[@"0" stringByAppendingString:hours];
+        }
+        [self isPM:YES];
+    }else if (hoursInt==0){
+        hours=@"12";
+        [self isPM:NO];
+    }else{
+        [self isPM:NO];
+    }
     int tenHours=[[hours substringWithRange:NSMakeRange(0,1)] intValue];
     int oneHours=[[hours substringFromIndex:1]intValue];
     
@@ -139,7 +152,9 @@
     
     int tenSeconds=[[seconds substringWithRange:NSMakeRange(0, 1)] intValue];
     int oneSeconds=[[seconds substringFromIndex:1]intValue];
-    
+    if(tenHours==0){
+        tenHours=-1;
+    }
     [[self tenSecondsNumber]setNumber:tenSeconds];
     [[self secondsNumber]setNumber:oneSeconds];
     [[self tenMinutesNumber]setNumber:tenMinutes];
@@ -213,8 +228,10 @@
                 [playList addObject:item];
             }
         }
-        [musicPlayer setQueueWithItemCollection:[[MPMediaItemCollection alloc]initWithItems:playList]];
+        MPMediaItemCollection *collection=[[MPMediaItemCollection alloc]initWithItems:playList];
+        [musicPlayer setQueueWithItemCollection:collection];
         [musicPlayer play];
+        [collection release];
         [playList release];
         [formatter release];
         
@@ -297,7 +314,9 @@
     NSMutableDictionary *config=[delgate config];
     BOOL shuffle= [[config valueForKey:@"shuffle"]boolValue];
     BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
+    BOOL millitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
     int minutes=[[config valueForKey:@"minutesOfMusic"] intValue];
+    [self setMillitaryTime:millitaryTime];
     [self setMinutesOfMusic:minutes];
     if(shuffle){
         [musicPlayer setShuffleMode:MPMusicShuffleModeSongs];
@@ -310,19 +329,19 @@
 -(void)weatherUpdate{
     if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<1*60*-1){
         
-        NSTimeInterval tenMinutes=1*60;
+        NSTimeInterval tenMinutes=10*60;
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
         NSURL *weatherURL=[[NSURL alloc] initWithString:@"http://www.google.com/ig/api?weather=41042"];//should be dynamic
         MTHWeather *weather=[factory getWeatherFromURL:weatherURL];
-        [factory release];
-        [weatherURL release];
+        
         NSString *temp=[weather temp];
         MTHForecast *today=[[weather forecasts] objectAtIndex:0];
         MTHForecast *tomorrow=[[weather forecasts] objectAtIndex:1];
         [self setWeatherCurrent: temp todayHigh:[today highTemp] todayLow:[today lowTemp] todayIconUrl:[today forecastIcon]tomorrowHigh:[tomorrow highTemp] tomorrowLow:[tomorrow lowTemp] tomorrowIconUrl:[tomorrow forecastIcon]];
  //       [self setCurrentTemp:temp];
-        
+        [factory release];
+        [weatherURL release];
         
     }
     

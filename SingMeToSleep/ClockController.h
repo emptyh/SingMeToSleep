@@ -34,6 +34,7 @@
 @property (nonatomic, retain)NSDate *lastWeatherUpdate;
 @property int minutesOfMusic;
 @property BOOL floydProtection;
+@property BOOL millitaryTime;
 
 #pragma mark - Methods
 -(NSTimer *)createTimer;
@@ -53,5 +54,6 @@
 -(void)setCurrentTemp:(NSString *)temp;
 -(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString*)todayHigh todayLow:(NSString*)todayLow todayIconUrl:(NSString*)todayIconUrl tomorrowHigh:(NSString*)tomorrowHigh tomorrowLow:(NSString*)tomorrowLow tomorrowIconUrl:(NSString*)tomorrowIconUrl;
 -(void)applyConfig;
+-(void)isPM:(BOOL)pm;
 
 @end

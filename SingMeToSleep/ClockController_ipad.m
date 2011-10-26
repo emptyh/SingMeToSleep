@@ -30,6 +30,9 @@
 @synthesize tomorrowLow;
 @synthesize tomorrowIcon;
 @synthesize todayIcon;
+@synthesize PMLabel;
+@synthesize AMLabel;
+
 
 #pragma mark - View lifecycle
 - (void)dealloc {
@@ -54,6 +57,8 @@
     [tomorrowLow release];
     [tomorrowIcon release];
     [todayIcon release];
+    [PMLabel release];
+    [AMLabel release];
     [super dealloc];
 }
 
@@ -99,6 +104,8 @@
     [self setTomorrowLow:nil];
     [self setTomorrowIcon:nil];
     [self setTodayIcon:nil];
+    [self setPMLabel:nil];
+    [self setAMLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -184,6 +191,7 @@
             tomorrowHigh:(NSString *)tomorrowHigh 
              tomorrowLow:(NSString *)tomorrowLow
             tomorrowIconUrl:(NSString *)tomorrowIconUrl{
+    
     [[self currentTempLabel] setText:current];
     [[self todayHigh] setText:todayHigh];
     [[self todayLow] setText:todayLow];
@@ -196,5 +204,18 @@
     UIImage *tomorrowImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tomorrowIconUrl]]];
     [[self todayIcon]setImage:todayImage];
     [[self tomorrowIcon]setImage:tomorrowImage];
+}
+-(void)isPM:(BOOL)pm{
+    UIColor *on=[UIColor redColor];
+    UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.1];
+    if(pm){
+        [[self PMLabel]setTextColor:on];
+        [[self AMLabel]setTextColor:off];
+    }else{
+        [[self PMLabel]setTextColor:off];
+        [[self AMLabel]setTextColor:on];
+    }
+    [off release];
+    [on release];
 }
 @end

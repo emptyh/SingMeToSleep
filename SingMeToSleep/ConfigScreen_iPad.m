@@ -15,6 +15,7 @@
 @synthesize delegate;
 @synthesize shuffleSwitch;
 @synthesize floydProtectionSwitch;
+@synthesize millitaryTime;
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -57,9 +58,11 @@
     NSMutableDictionary *config=[delagate config];
     BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
     BOOL shuffle=[[config valueForKey:@"shuffle"]boolValue];
+    BOOL millitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
     NSString *minutesOfMusic=[config valueForKey:@"minutesOfMusic"];
     [[self minutesOfMusicText]setText:minutesOfMusic];
     [[self minutesOfMusicSpinner]setValue:[minutesOfMusic intValue]];
+    [[self millitaryTime]setOn:millitaryTime];
     [[self shuffleSwitch]setOn:shuffle];
     [[self floydProtectionSwitch]setOn:floydProtection];
     
@@ -75,6 +78,7 @@
     [self setMinutesOfMusicSpinner:nil];
     [self setShuffleSwitch:nil];
     [self setFloydProtectionSwitch:nil];
+    [self setMillitaryTime:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -92,6 +96,7 @@
     [minutesOfMusicSpinner release];
     [shuffleSwitch release];
     [floydProtectionSwitch release];
+    [millitaryTime release];
     [super dealloc];
 }
 
@@ -102,7 +107,9 @@
     NSMutableDictionary *config=[appDelegate config];
     [config setValue:mins forKey:@"minutesOfMusic"];
     BOOL shuffle=[shuffleSwitch isOn];
+    BOOL millitaryTime=[[self millitaryTime]isOn];
     BOOL floydProtection=[floydProtectionSwitch isOn];
+    [config setValue:[NSNumber numberWithBool:millitaryTime] forKey:@"millitaryTime"];
     [config setValue:[NSNumber numberWithBool:shuffle] forKey:@"shuffle"];
     [config setValue:[NSNumber numberWithBool:floydProtection] forKey:@"floydProtection"];
     [appDelegate setConfig:config];
@@ -116,6 +123,7 @@
     int minF=[minutesOfMusicSpinner value];
     NSString *mins=[[NSString alloc] initWithFormat:@"%d",minF];
     [[self minutesOfMusicText] setText:mins];
+    [mins release];
 }
 
 @end

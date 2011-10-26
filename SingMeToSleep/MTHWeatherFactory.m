@@ -26,6 +26,7 @@
     NSXMLParser *parser=[[NSXMLParser alloc]initWithContentsOfURL:url];
     [parser setDelegate:self];
     [parser parse];
+    [parser release];
     return weather;
 }
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
@@ -71,7 +72,8 @@
     }else if([elementName isEqualToString:@"wind_conditions"]){
         [weather setConditionIcon:currentData];
     }
-    
+  //  [currentData release];
+  //  [elementName release];
     
 
     

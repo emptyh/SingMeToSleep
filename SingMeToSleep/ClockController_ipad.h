@@ -37,6 +37,8 @@ NSArray *tensHoursLabel;
 @property (retain, nonatomic) IBOutlet UILabel *tomorrowLow;
 @property (retain, nonatomic) IBOutlet UIImageView *tomorrowIcon;
 @property (retain, nonatomic) IBOutlet UIImageView *todayIcon;
+@property (retain, nonatomic) IBOutlet UILabel *PMLabel;
+@property (retain, nonatomic) IBOutlet UILabel *AMLabel;
 
 
 #pragma mark - Actions

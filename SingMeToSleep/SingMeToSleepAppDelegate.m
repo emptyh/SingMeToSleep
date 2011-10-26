@@ -32,8 +32,12 @@
         [tempConfig setValue:yes forKey:@"floydProtection"];
         [tempConfig setValue:yes forKey:@"shuffle"];
         [userDefault setValue:tempConfig forKey:@"config"];
+     //   [yes release];
+        //[tempConfig release];
     }
+    
     [self setConfig:tempConfig];
+    
    // [tempConfig release];
     //[userDefault release];
     //put device check here

@@ -24,4 +24,12 @@
     }
     return self;
 }
+-(void)dealloc{
+    [forecasts release];
+    [conditions release];
+    [self dealloc];
+    [super dealloc];
+    
+}
+
 @end
