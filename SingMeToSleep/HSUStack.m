@@ -20,7 +20,7 @@
 }
 - (void)dealloc {
     [m_array release];
-    [self dealloc];
+  //  [self dealloc];
     [super dealloc];
 }
 -(BOOL)containsString:(id)string{

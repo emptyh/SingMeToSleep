@@ -328,8 +328,7 @@
 #pragma mark - weather methods
 -(void)weatherUpdate{
     if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<1*60*-1){
-        
-        NSTimeInterval tenMinutes=10*60;
+        [lastWeatherUpdate release];
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
         NSURL *weatherURL=[[NSURL alloc] initWithString:@"http://www.google.com/ig/api?weather=41042"];//should be dynamic
@@ -338,10 +337,20 @@
         NSString *temp=[weather temp];
         MTHForecast *today=[[weather forecasts] objectAtIndex:0];
         MTHForecast *tomorrow=[[weather forecasts] objectAtIndex:1];
-        [self setWeatherCurrent: temp todayHigh:[today highTemp] todayLow:[today lowTemp] todayIconUrl:[today forecastIcon]tomorrowHigh:[tomorrow highTemp] tomorrowLow:[tomorrow lowTemp] tomorrowIconUrl:[tomorrow forecastIcon]];
+        NSString *todayHigh=[[[NSString alloc]initWithFormat:@"%@",[today highTemp]]autorelease];
+        NSString *todayLow= [[[NSString alloc]initWithFormat:@"%@",[today lowTemp]]autorelease];
+        NSString *todayIconUrl=[[[NSString alloc]initWithFormat:@"%@",[today forecastIcon]]autorelease];
+        
+        NSString *tomorrowHigh=[[[NSString alloc]initWithFormat:@"%@",[tomorrow highTemp]]autorelease];
+        NSString *tomorrowLow=[[[NSString alloc]initWithFormat:@"%@",[tomorrow lowTemp]]autorelease];
+        NSString *tomorrowIconUrl=[[[NSString alloc] initWithFormat:@"%@",[tomorrow forecastIcon]]autorelease];
+        
+        [self setWeatherCurrent: temp todayHigh:todayHigh todayLow:todayLow todayIconUrl:todayIconUrl tomorrowHigh:tomorrowHigh tomorrowLow:tomorrowLow tomorrowIconUrl:tomorrowIconUrl];
  //       [self setCurrentTemp:temp];
+       
         [factory release];
         [weatherURL release];
+    //    [weather release];
         
     }
     

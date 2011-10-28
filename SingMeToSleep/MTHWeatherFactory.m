@@ -21,6 +21,11 @@
     }
     return self;
 }
+-(void)dealloc{
+    [tags release];
+    [forcast release];
+    [weather release];
+}
 -(MTHWeather*)getWeatherFromURL:(NSURL*)url{
     
     NSXMLParser *parser=[[NSXMLParser alloc]initWithContentsOfURL:url];
@@ -52,6 +57,7 @@
    //     [weather setConditions:forcast];
     
     }else if([elementName isEqualToString:@"forecast_conditions"]){
+        [forcast release];
         forcast=[[MTHForecast alloc]init];
         [[weather forecasts]addObject:forcast];
       
