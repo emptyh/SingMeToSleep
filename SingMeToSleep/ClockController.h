@@ -55,5 +55,6 @@
 -(void)setWeatherCurrent:(NSString *)current todayHigh:(NSString*)todayHigh todayLow:(NSString*)todayLow todayIconUrl:(NSString*)todayIconUrl tomorrowHigh:(NSString*)tomorrowHigh tomorrowLow:(NSString*)tomorrowLow tomorrowIconUrl:(NSString*)tomorrowIconUrl;
 -(void)applyConfig;
 -(void)isPM:(BOOL)pm;
+-(void)startWhiteNoise;
 
 @end

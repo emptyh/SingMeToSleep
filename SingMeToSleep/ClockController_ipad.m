@@ -216,6 +216,6 @@
         [[self AMLabel]setTextColor:on];
     }
     [off release];
-    [on release];
+   // [on release];
 }
 @end

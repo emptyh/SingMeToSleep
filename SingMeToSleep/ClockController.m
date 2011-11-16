@@ -97,7 +97,7 @@
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 -(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels{
-    MTHNumber *tempNumber=[[MTHNumber alloc]init];
+    MTHNumber *tempNumber=[[[MTHNumber alloc]init]autorelease];
     MTHNumber *number=tempNumber;
     
     for(UILabel *label in labels){
@@ -197,47 +197,51 @@
 -(void)mediaPickerDidCancel:(MPMediaPickerController *) mediaPicker{
     [self dismissModalViewControllerAnimated:YES];
 }
+-(void)startWhiteNoise{
+    NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
+    [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
+    [musicPlayer stop];
+    MPMediaPropertyPredicate *whiteNoisePredicate=[MPMediaPropertyPredicate predicateWithValue:@"Whitenoise" forProperty:MPMediaItemPropertyArtist];
+    MPMediaQuery *query=[[MPMediaQuery alloc] init];
+    [query addFilterPredicate:whiteNoisePredicate];
+    
+    
+    NSArray *whiteNoise=[query items];
+    [query release];
+    int totalSeconds=0;
+    for(MPMediaItem *item in whiteNoise){
+        NSNumber *duruation= [item valueForProperty:MPMediaItemPropertyPlaybackDuration];
+        int seconds = [duruation intValue];
+        
+        totalSeconds=totalSeconds+seconds;
+    }
+    int eightHours=28800;
+    int numberOfPlays=eightHours/totalSeconds;
+    NSMutableArray *playList=[[NSMutableArray alloc] init];
+    for (int i=0; i<numberOfPlays; i++) {
+        for (MPMediaItem *item in whiteNoise){
+            [playList addObject:item];
+        }
+    }
+    MPMediaItemCollection *collection=[[MPMediaItemCollection alloc]initWithItems:playList];
+    [musicPlayer setQueueWithItemCollection:collection];
+    [musicPlayer play];
+    [collection release];
+    [playList release];
+    [formatter release];
+    
+    [self setTimeTillSleep:nil];
+}
 -(void)handle_nowPlayingChanged:(id)notification{
     
    
     
-    
-    if([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0){
-        NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
-        [musicPlayer stop];
-        MPMediaPropertyPredicate *whiteNoisePredicate=[MPMediaPropertyPredicate predicateWithValue:@"Whitenoise" forProperty:MPMediaItemPropertyArtist];
-        MPMediaQuery *query=[[MPMediaQuery alloc] init];
-        [query addFilterPredicate:whiteNoisePredicate];
-        
-        
-        NSArray *whiteNoise=[query items];
-        [query release];
-        int totalSeconds=0;
-        for(MPMediaItem *item in whiteNoise){
-            NSNumber *duruation= [item valueForProperty:MPMediaItemPropertyPlaybackDuration];
-            int seconds = [duruation intValue];
-           
-            totalSeconds=totalSeconds+seconds;
-        }
-        int eightHours=28800;
-        int numberOfPlays=eightHours/totalSeconds;
-        NSMutableArray *playList=[[NSMutableArray alloc] init];
-        for (int i=0; i<numberOfPlays; i++) {
-            for (MPMediaItem *item in whiteNoise){
-                [playList addObject:item];
-            }
-        }
-        MPMediaItemCollection *collection=[[MPMediaItemCollection alloc]initWithItems:playList];
-        [musicPlayer setQueueWithItemCollection:collection];
-        [musicPlayer play];
-        [collection release];
-        [playList release];
-        [formatter release];
-        
-        [self setTimeTillSleep:nil];
-    }
     MPMediaItem *song=[musicPlayer nowPlayingItem];
+    if(([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0) || !song){
+        [self startWhiteNoise];
+
+    }
+    
     NSString *artist=@"Unknown";
     NSString *title=@"Unknown";
     if([song valueForProperty:MPMediaItemPropertyTitle]){
@@ -327,7 +331,7 @@
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{
-    if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<1*60*-1){
+    if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<10*60*-1){
         [lastWeatherUpdate release];
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
