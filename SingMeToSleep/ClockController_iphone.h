@@ -29,6 +29,8 @@
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 @property (retain, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (retain, nonatomic) IBOutlet UIButton *playPauseButton;
+@property (retain, nonatomic) IBOutlet UILabel *AMLabel;
+@property (retain, nonatomic) IBOutlet UILabel *PMLabel;
 
 #pragma mark - Actions
 - (IBAction)selectMusicPushed:(id)sender;
@@ -42,4 +44,5 @@
 #pragma mark - Methods
 -(void)updateScreen;
 -(void)changePlayPauseState;
+-(void)isPM:(BOOL)pm;
 @end

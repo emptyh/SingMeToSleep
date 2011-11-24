@@ -10,6 +10,7 @@
 #import "MTHNumber.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "DataChanged.h"
+#import "MTHAlarm.h"
 
 @interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged>{
     MTHNumber *tenSecondsNumber;

@@ -11,6 +11,7 @@
 		BF1831A9144E36480024D841 /* MTHForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A8144E36480024D841 /* MTHForecast.m */; };
 		BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AB144E37860024D841 /* MTHWeatherFactory.m */; };
 		BF1831AF144E3A700024D841 /* HSUStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AE144E3A700024D841 /* HSUStack.m */; };
+		BF34E97414783FB2008E7931 /* MTHAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34E97314783FB2008E7931 /* MTHAlarm.m */; };
 		BF9A7F4A145245520078D981 /* ConfigScreen_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */; };
 		BF9A7F4B145245520078D981 /* ConfigScreen_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */; };
 		BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */; };
@@ -63,6 +64,8 @@
 		BF1831AB144E37860024D841 /* MTHWeatherFactory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHWeatherFactory.m; sourceTree = "<group>"; };
 		BF1831AD144E3A700024D841 /* HSUStack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HSUStack.h; sourceTree = "<group>"; };
 		BF1831AE144E3A700024D841 /* HSUStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUStack.m; sourceTree = "<group>"; };
+		BF34E97214783FB2008E7931 /* MTHAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHAlarm.h; sourceTree = "<group>"; };
+		BF34E97314783FB2008E7931 /* MTHAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHAlarm.m; sourceTree = "<group>"; };
 		BF9A7F45145243C60078D981 /* DataChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChanged.h; sourceTree = "<group>"; };
 		BF9A7F47145245520078D981 /* ConfigScreen_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPad.h; sourceTree = "<group>"; };
 		BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen_iPad.m; sourceTree = "<group>"; };
@@ -266,6 +269,8 @@
 				BF1831AB144E37860024D841 /* MTHWeatherFactory.m */,
 				BF1831AD144E3A700024D841 /* HSUStack.h */,
 				BF1831AE144E3A700024D841 /* HSUStack.m */,
+				BF34E97214783FB2008E7931 /* MTHAlarm.h */,
+				BF34E97314783FB2008E7931 /* MTHAlarm.m */,
 			);
 			name = modal;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 				BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */,
 				BF1831AF144E3A700024D841 /* HSUStack.m in Sources */,
 				BF9A7F4A145245520078D981 /* ConfigScreen_iPad.m in Sources */,
+				BF34E97414783FB2008E7931 /* MTHAlarm.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

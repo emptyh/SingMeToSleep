@@ -66,6 +66,16 @@
     [self registerMediaPlayerNotifications];
     [self initScreen];
     [self applyConfig];
+    
+    
+    //debug alarm
+    MTHAlarm *alarm=[[MTHAlarm alloc]init];
+    [alarm setAlarmTime:@"22:00"];
+    [alarm addActiveDay:Thursday];
+    [alarm calcNextAlarmTime];
+    
+    
+    //end debug
     //[self setMinutesOfMusic:15];
 }
 

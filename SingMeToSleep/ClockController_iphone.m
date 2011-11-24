@@ -21,6 +21,8 @@
 @synthesize titleLabel;
 @synthesize volumeSlider;
 @synthesize playPauseButton;
+@synthesize AMLabel;
+@synthesize PMLabel;
 
 
 
@@ -38,6 +40,8 @@
     [titleLabel release];
     [volumeSlider release];
     [playPauseButton release];
+    [AMLabel release];
+    [PMLabel release];
     [super dealloc];
 }
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -71,6 +75,8 @@
     [self setTitleLabel:nil];
     [self setVolumeSlider:nil];
     [self setPlayPauseButton:nil];
+    [self setAMLabel:nil];
+    [self setPMLabel:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -137,5 +143,18 @@
 -(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
     [[self artistLabel] setText:artist];
     [[self titleLabel] setText:title];
+}
+-(void)isPM:(BOOL)pm{
+    UIColor *on=[UIColor redColor];
+    UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.1];
+    if(pm){
+        [[self PMLabel]setTextColor:on];
+        [[self AMLabel]setTextColor:off];
+    }else{
+        [[self PMLabel]setTextColor:off];
+        [[self AMLabel]setTextColor:on];
+    }
+    [off release];
+    // [on release];
 }
 @end
