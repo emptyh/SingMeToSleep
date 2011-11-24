@@ -74,7 +74,7 @@
     [alarm addActiveDay:Thursday];
     [alarm calcNextAlarmTime];
     
-    
+    [self moveVolumeSlider:[musicPlayer volume]];
     //end debug
     //[self setMinutesOfMusic:15];
 }
@@ -274,6 +274,7 @@
 }
 -(void)handle_VolumeChanged:(id)notification{
     
+    [self moveVolumeSlider:[musicPlayer volume]];
 }
 #pragma mark - Music related methods
 -(void)startTimer{
@@ -310,6 +311,7 @@
 }
 -(void)volumeChanged:(float)newValue{
     [musicPlayer setVolume:newValue];
+    
 }
 -(void)selectMusic{
     MPMediaPickerController *mediaPicker=[[MPMediaPickerController alloc]init];

@@ -79,6 +79,7 @@
     [self setShuffleSwitch:nil];
     [self setFloydProtectionSwitch:nil];
     [self setMillitaryTime:nil];
+    [self setDayPressed:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -117,6 +118,15 @@
     [userDefault setValue:config forKey:@"config"];
     [delegate configScreenDidUnload];
     [self dismissModalViewControllerAnimated:YES];
+}
+
+- (IBAction)dayPressed:(id)sender {
+    if([sender titleColorForState:UIControlStateNormal]==[UIColor greenColor]){
+        [sender setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }else{
+        [sender setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];   
+    }
+        
 }
 
 - (IBAction)minutesSpinnerChanged:(id)sender {

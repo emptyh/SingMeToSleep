@@ -12,7 +12,8 @@
 @interface ConfigScreen_iPad : UIViewController
 - (IBAction)minutesChanged:(id)sender;
 - (IBAction)backPressed:(id)sender;
-- (IBAction)minutesSpinnerChanged:(id)sender;
+- (IBAction)dayPressed:(id)sender;
+
 //@property (retain, nonatomic) IBOutlet UITextField *minutesOfMusic;
 @property (retain, nonatomic)id<DataChanged>delegate;
 @property (retain, nonatomic) IBOutlet UISwitch *shuffleSwitch;

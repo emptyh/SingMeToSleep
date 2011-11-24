@@ -57,5 +57,5 @@
 -(void)applyConfig;
 -(void)isPM:(BOOL)pm;
 -(void)startWhiteNoise;
-
+-(void)moveVolumeSlider:(float)newValue;
 @end

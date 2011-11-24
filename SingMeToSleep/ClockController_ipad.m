@@ -158,7 +158,9 @@
     float volume=[volumeSlider value];
     [super volumeChanged:volume];
 }
-
+-(void)moveVolumeSlider:(float)newValue{
+    [volumeSlider setValue:newValue];
+}
 - (IBAction)startTimerPressed:(id)sender {
     [super startTimer];
 }
