@@ -1,4 +1,4 @@
-Sing Me to Sleep is designed to play music for a pre-determined time and then fade into white noise for eight hours.  It functions as a clock and shows the weather for today and tomorrow (currently hard-coded to my zip but I do play to implement GPS functionality eventually).
+Sing Me to Sleep is designed to play music for a pre-determined time and then fade into white noise for eight hours.  It functions as a clock and shows the weather for today and tomorrow (currently hard-coded to my zip but I do plan to implement GPS functionality eventually).
 
 I began this project as an attempt to learn Objective C.  I've been a Java developer for a number of years and I have wanted to code for the iPad/iPhone for a while.  Currently most of my focus on this app is for the iPad, but I do plan to eventually get the iPhone portion working as well, but the demands of my real job don't leave me a lot of time to code for fun.  If there are any developers out there interested in working on the iPhone side of this app or if you are interested in helping with bug fixes and feature enhancements send me an email at flynx42 at me dot com.
 
