@@ -1,0 +1,8 @@
+Sing Me to Sleep is designed to play music for a pre-determined time and then fade into white noise for eight hours.  It functions as a clock and shows the weather for today and tomorrow (currently hard-coded to my zip but I do play to implement GPS functionality eventually).
+
+I began this project as an attempt to learn Objective C.  I've been a Java developer for a number of years and I have wanted to code for the iPad/iPhone for a while.  Currently most of my focus on this app is for the iPad, but I do plan to eventually get the iPhone portion working as well, but the demands of my real job don't leave me a lot of time to code for fun.  If there are any developers out there interested in working on the iPhone side of this app or if you are interested in helping with bug fixes and feature enhancements send me an email at flynx42 at me dot com.
+
+This code is freely available for noncomercial purposes.  I hope that my experiements in Objective C can help others.  This app is in an Alpha version and currently is only marginally stable.  The Alarms (when completed) should not be used as your sole mechinism for waking up, until you have thouroughly tested for memory leaks (in other words if your late for work or school, its not my fault, you have been warned).
+
+Enjoy and happy coding!
+ 
