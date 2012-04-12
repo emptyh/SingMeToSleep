@@ -28,6 +28,7 @@
 @synthesize lastWeatherUpdate;
 @synthesize floydProtection;
 @synthesize millitaryTime;
+@synthesize alarm;
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -69,10 +70,10 @@
     
     
     //debug alarm
-    MTHAlarm *alarm=[[MTHAlarm alloc]init];
-    [alarm setAlarmTime:@"22:00"];
-    [alarm addActiveDay:Thursday];
-    [alarm calcNextAlarmTime];
+    [self setAlarm:[[MTHAlarm alloc]init]];
+    [[self alarm] setAlarmTime:@"16:24"];
+    [[self alarm] addActiveDay:Thursday];
+    [[self alarm] calcNextAlarmTime];
     
     [self moveVolumeSlider:[musicPlayer volume]];
     //end debug
@@ -132,6 +133,9 @@
 }
 #pragma Universal Screen Updates
 -(void)blink{
+    if([[self alarm]shouldAlarmSound]){
+        NSLog(@"bong");
+    }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
     NSString *now=[dformat stringFromDate:[NSDate date]];

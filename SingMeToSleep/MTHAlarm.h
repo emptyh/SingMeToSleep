@@ -13,6 +13,7 @@
     
 }
 typedef enum{
+    Wrap=0,
     Sunday=1,
     Monday=2,
     Tuesday=3,
@@ -36,6 +37,7 @@ typedef enum{
 -(void)stopAlarm;
 -(void)addActiveDay:(WeekDay) day;
 -(void)removeActiveDay:(WeekDay)day;
--(Boolean)shouldSetOnDay:(NSDate*)date;
+-(Boolean)shouldSetOnDay:(WeekDay)day;
+-(int)convertStringTimeToIntSeconds:(NSString*)time;
 
 @end

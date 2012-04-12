@@ -36,6 +36,7 @@
 @property int minutesOfMusic;
 @property BOOL floydProtection;
 @property BOOL millitaryTime;
+@property (nonatomic, retain) MTHAlarm *alarm;
 
 #pragma mark - Methods
 -(NSTimer *)createTimer;
