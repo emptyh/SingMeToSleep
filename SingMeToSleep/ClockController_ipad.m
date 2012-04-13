@@ -22,7 +22,6 @@
 @synthesize artistLabel;
 @synthesize titleLabel;
 @synthesize playPauseButton;
-@synthesize SelectMusicButton;
 @synthesize volumeSlider;
 @synthesize currentTempLabel;
 @synthesize todayHigh;
@@ -60,7 +59,6 @@
     [todayIcon release];
     [PMLabel release];
     [AMLabel release];
-    [SelectMusicButton release];
     [super dealloc];
 }
 
@@ -108,7 +106,6 @@
     [self setTodayIcon:nil];
     [self setPMLabel:nil];
     [self setAMLabel:nil];
-    [self setSelectMusicButton:nil];
     [super viewDidUnload];
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
@@ -136,22 +133,7 @@
     [super weatherUpdate];
    
 }
--(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
-    [[self artistLabel] setText:artist];
-    [[self titleLabel] setText:title];
-}
--(void)alarmSounding{
-    [[[self SelectMusicButton]titleLabel] setText:@"I'm Up Damnit"];
-}
-- (IBAction)selectMusicPressed:(id)sender {
-    UIButton *button=(UIButton*)sender;
-   // NSLog([[button titleLabel]text]);
-    if([[[button titleLabel]text]isEqualToString:@"I'm Up Damnit"]){
-        [super stopAlarm];
-    }else{
-        [super selectMusic];
-    }
-}
+
 
 - (IBAction)previousPressed:(id)sender {
     [super previousTrack];
@@ -231,5 +213,9 @@
     }
     [off release];
    // [on release];
+}
+-(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{
+    [[self artistLabel] setText:artist];
+    [[self titleLabel] setText:title];
 }
 @end

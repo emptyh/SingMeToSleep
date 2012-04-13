@@ -109,12 +109,17 @@
     [super volumeChanged:volume];
 }
 
+- (IBAction)configScreenPressed:(id)sender {
+    ConfigScreen_iPhone *config=[[ConfigScreen_iPhone alloc]initWithDelegate:self];
+    [config setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
+    [self presentModalViewController:config animated:YES];
+    [config release];   
+}
+
 -(void)updateScreen{
     [super blink];
 }
-- (IBAction)selectMusicPressed:(id)sender {
-    [super selectMusic];
-}
+
 
 - (IBAction)startTimerPressed:(id)sender {
     [super startTimer];
@@ -160,4 +165,5 @@
 -(void)moveVolumeSlider:(float)newValue{
     [volumeSlider setValue:newValue];
 }
+
 @end

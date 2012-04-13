@@ -15,6 +15,7 @@
 
 @implementation ClockController
 #pragma mark - Properties
+@synthesize SelectMusicButton;
 @synthesize tenSecondsNumber;
 @synthesize secondsNumber;
 @synthesize tenMinutesNumber;
@@ -29,6 +30,7 @@
 @synthesize floydProtection;
 @synthesize millitaryTime;
 @synthesize alarm;
+@synthesize hasAlarmStopped;
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -84,6 +86,7 @@
 
 - (void)viewDidUnload
 {
+    [self setSelectMusicButton:nil];
     [super viewDidUnload];
     [musicPlayer release];
     [[NSNotificationCenter defaultCenter] removeObserver: self
@@ -144,18 +147,29 @@
 }
 -(void)stopAlarm{
     [audioPlayer stop];
-    [alarm setActive:NO];
+    [self setHasAlarmStopped:YES];
+  //  [alarm setActive:NO];
 }
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    
+    if ([musicPlayer volume]<1) {
+        [musicPlayer setVolume:[musicPlayer volume]+.1];
+    }
+    if([self hasAlarmStopped]){
+        [musicPlayer setVolume:oldVolume];
+    }else{
+        [audioPlayer play];
+    }
     NSLog(@"hi there");
 }
+
 #pragma Universal Screen Updates
 -(void)blink{
     if([[self alarm]shouldAlarmSound]){
+        [alarm setActive:NO];
         NSLog(@"bong");
         [[self alarm]calcNextAlarmTime];
-        [audioPlayer setVolume:.1];
+        oldVolume=[[self musicPlayer]volume];
+        [[self musicPlayer] setVolume:.1];
         [self soundAlarm];
     }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
@@ -202,6 +216,16 @@
     [dformat release];
     
 }
+- (IBAction)selectMusicPressed:(id)sender {
+    UIButton *button=(UIButton*)sender;
+     NSLog([[button titleLabel]text]);
+    if([[[button titleLabel]text]isEqualToString:@"I'm Up Damnit"]){
+        [self stopAlarm];
+    }else{
+        [self selectMusic];
+    }
+}
+
 -(NSTimer *)createTimer{
     return [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
     
@@ -433,5 +457,15 @@
         [self setMinutesOfMusic:[value intValue]];
     }
 
+}
+
+-(void)alarmSounding{
+    [[[self SelectMusicButton]titleLabel] setText:@"I'm Up Damnit"];
+}
+
+
+- (void)dealloc {
+    [SelectMusicButton release];
+    [super dealloc];
 }
 @end

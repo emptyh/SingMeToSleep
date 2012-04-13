@@ -29,7 +29,7 @@ NSArray *tensHoursLabel;
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (retain, nonatomic) IBOutlet UIButton *playPauseButton;
-@property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
+
 @property (retain, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (retain, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (retain, nonatomic) IBOutlet UILabel *todayHigh;
@@ -43,7 +43,6 @@ NSArray *tensHoursLabel;
 
 
 #pragma mark - Actions
-- (IBAction)selectMusicPressed:(id)sender;
 - (IBAction)previousPressed:(id)sender;
 - (IBAction)playPausePressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;

@@ -8,6 +8,7 @@
 
 
 #import "ClockController.h"
+#import "ConfigScreen_iPhone.h"
 @interface ClockController_iphone : ClockController{
     NSArray *dotLabel;
     NSArray *tenSecondsLabel;
@@ -33,13 +34,12 @@
 @property (retain, nonatomic) IBOutlet UILabel *PMLabel;
 
 #pragma mark - Actions
-- (IBAction)selectMusicPushed:(id)sender;
 - (IBAction)startTimerPressed:(id)sender;
-- (IBAction)selectMusicPressed:(id)sender;
 - (IBAction)previousPressed:(id)sender;
 - (IBAction)playPausePressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 - (IBAction)volumeChanged:(id)sender;
+- (IBAction)configScreenPressed:(id)sender;
 
 #pragma mark - Methods
 -(void)updateScreen;

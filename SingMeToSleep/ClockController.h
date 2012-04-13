@@ -22,10 +22,12 @@
     MTHNumber *hoursNumber;
     
     AVAudioPlayer *audioPlayer;
+    float oldVolume;
     
 }
 
 #pragma mark - Properties
+@property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
 @property (nonatomic,retain) MTHNumber *tenSecondsNumber;
 @property (nonatomic,retain) MTHNumber *secondsNumber;
 @property (nonatomic,retain) MTHNumber *tenMinutesNumber;
@@ -40,8 +42,12 @@
 @property BOOL floydProtection;
 @property BOOL millitaryTime;
 @property (nonatomic, retain) MTHAlarm *alarm;
+@property Boolean hasAlarmStopped;
+
+
 
 #pragma mark - Methods
+- (IBAction)selectMusicPressed:(id)sender;
 -(NSTimer *)createTimer;
 -(void) blink;
 -(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels;
