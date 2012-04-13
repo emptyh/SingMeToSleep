@@ -15,7 +15,7 @@
 @implementation SingMeToSleepAppDelegate
 #pragma mark - Properties
 @synthesize window = _window;
-@synthesize config;
+
 
 
 #pragma mark -App Life Cycle
@@ -36,7 +36,7 @@
         //[tempConfig release];
     }
     
-    [self setConfig:tempConfig];
+   // [self setConfig:tempConfig];
     
    // [tempConfig release];
     //[userDefault release];

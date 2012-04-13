@@ -145,7 +145,7 @@
 }
 - (IBAction)selectMusicPressed:(id)sender {
     UIButton *button=(UIButton*)sender;
-    NSLog([[button titleLabel]text]);
+   // NSLog([[button titleLabel]text]);
     if([[[button titleLabel]text]isEqualToString:@"I'm Up Damnit"]){
         [super stopAlarm];
     }else{

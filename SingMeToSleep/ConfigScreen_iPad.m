@@ -41,10 +41,10 @@
     [[self minutesOfMusicText]setText:mins];
 }
 
--(id)initWithDelegate:(id<DataChanged>)delegate{
+-(id)initWithDelegate:(id<DataChanged>)theDelegate{
     self = [super init];
     if (self) {
-        [self setDelegate:delegate];
+        [self setDelegate:theDelegate];
     }
     return self;
 }
@@ -62,21 +62,23 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    SingMeToSleepAppDelegate *delagate=[[UIApplication sharedApplication]delegate];
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *config=[userDefault valueForKey:@"config"];
     BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
     BOOL shuffle=[[config valueForKey:@"shuffle"]boolValue];
-    BOOL millitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
+    BOOL isMillitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
     NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
     NSMutableArray *daysActive=[alarm valueForKey:@"daysActive"];
     NSNumber *on=[[NSNumber alloc]initWithInt:1];
     NSString *alarmTime=[alarm valueForKey:@"alarmTime"];
     NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
     [formatter setDateFormat:@"HH:mm"];
+    if (!alarmTime) {//first time through, no values to read
+        return;
+    }
     NSDate *date=[formatter dateFromString:alarmTime];
     [timeSelector setDate:date];
-    NSLog(alarmTime);
+    NSLog(@"%@",alarmTime);
     if([[daysActive objectAtIndex:1] isEqual:on]){
         [[self SundayLabel] setTitleColor:[UIColor greenColor] forState:UIControlStateNormal];
     }
@@ -102,7 +104,7 @@
     NSString *minutesOfMusic=[config valueForKey:@"minutesOfMusic"];
     [[self minutesOfMusicText]setText:minutesOfMusic];
     [[self minutesOfMusicSpinner]setValue:[minutesOfMusic intValue]];
-    [[self millitaryTime]setOn:millitaryTime];
+    [[self millitaryTime]setOn:isMillitaryTime];
     [[self shuffleSwitch]setOn:shuffle];
     [[self floydProtectionSwitch]setOn:floydProtection];
     
@@ -113,13 +115,13 @@
 
 - (void)viewDidUnload
 {
-    [self setMinutesOfMusic:nil];
+    [super viewDidUnload];
     [self setMinutesOfMusicText:nil];
     [self setMinutesOfMusicSpinner:nil];
     [self setShuffleSwitch:nil];
     [self setFloydProtectionSwitch:nil];
     [self setMillitaryTime:nil];
-    [self setDayPressed:nil];
+  
     [self setSundayLabel:nil];
     [self setMondayLabel:nil];
     [self setTuesdayLabel:nil];
@@ -128,7 +130,7 @@
     [self setFridayLabel:nil];
     [self setSaturdayLabel:nil];
     [self setTimeSelector:nil];
-    [super viewDidUnload];
+    
     // Release any retained subviews of the main view.
     // e.g. self.myOutlet = nil;
 }
@@ -161,12 +163,12 @@
 - (IBAction)backPressed:(id)sender {
     NSString *mins=[[self minutesOfMusicText]text];
    NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *config=[userDefault valueForKey:@"config"];
+    NSMutableDictionary *config=[[[NSMutableDictionary alloc]init]autorelease];
     [config setValue:mins forKey:@"minutesOfMusic"];
-    BOOL shuffle=[shuffleSwitch isOn];
-    BOOL millitaryTime=[[self millitaryTime]isOn];
-    BOOL floydProtection=[floydProtectionSwitch isOn];
-    [config setValue:[NSNumber numberWithBool:millitaryTime] forKey:@"millitaryTime"];
+    BOOL shuffle=[[self shuffleSwitch] isOn];
+    BOOL isMillitaryTime=[[self millitaryTime]isOn];
+    BOOL floydProtection=[[self floydProtectionSwitch] isOn];
+    [config setValue:[NSNumber numberWithBool:isMillitaryTime] forKey:@"millitaryTime"];
     [config setValue:[NSNumber numberWithBool:shuffle] forKey:@"shuffle"];
     [config setValue:[NSNumber numberWithBool:floydProtection] forKey:@"floydProtection"];
     
@@ -175,7 +177,7 @@
     NSNumber *off=[[NSNumber alloc]initWithInt:0];
     NSNumber *on=[[NSNumber alloc]initWithInt:1];
     
-    NSMutableArray *daysActive=[[NSMutableArray arrayWithObjects:off,off,off,off,off,off,off,off, nil]autorelease];
+    NSMutableArray *daysActive=[NSMutableArray arrayWithObjects:off,off,off,off,off,off,off,off, nil];
     if([SundayLabel titleColorForState:UIControlStateNormal]==[UIColor greenColor]){
         [daysActive replaceObjectAtIndex:1 withObject:on];
     }

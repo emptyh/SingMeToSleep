@@ -315,9 +315,9 @@
     NSDateFormatter *formatter=[[NSDateFormatter alloc] init];
     [formatter setDateFormat:@"MM/dd/yyyy hh:mma"];
     NSString *start=[formatter stringFromDate:timeStarted];
-    NSLog(start);
+    NSLog(@"%@",start);
     NSString *stop=[formatter stringFromDate:timeTillSleep];
-    NSLog(stop);
+    NSLog(@"%@",stop);
     [formatter release];
     
 }
@@ -355,24 +355,24 @@
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *config=[userDefault valueForKey:@"config"];
     BOOL shuffle= [[config valueForKey:@"shuffle"]boolValue];
-    BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
-    BOOL millitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
+    BOOL isFloydProtection=[[config valueForKey:@"floydProtection"]boolValue];
+    BOOL isMillitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
     int minutes=[[config valueForKey:@"minutesOfMusic"] intValue];
-    [self setMillitaryTime:millitaryTime];
+    [self setMillitaryTime:isMillitaryTime];
     [self setMinutesOfMusic:minutes];
     if(shuffle){
         [musicPlayer setShuffleMode:MPMusicShuffleModeSongs];
     }else{
         [musicPlayer setShuffleMode:MPMusicShuffleModeOff];
     }
-    [self setFloydProtection:floydProtection];
+    [self setFloydProtection:isFloydProtection];
     
-    NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
-    NSString *newAlarmTime=[alarm valueForKey:@"alarmTime"];
-    NSMutableArray *activeDays=[alarm valueForKey:@"daysActive"];
+    NSMutableDictionary *newAlarm=[config valueForKey:@"alarm"];
+    NSString *newAlarmTime=[newAlarm valueForKey:@"alarmTime"];
+    NSMutableArray *activeDays=[newAlarm valueForKey:@"daysActive"];
     [self setAlarm:[[MTHAlarm alloc]init]];
     [[self alarm] setAlarmTime:newAlarmTime];
-    NSNumber *off=[[NSNumber alloc]initWithInt:0];
+   // NSNumber *off=[[NSNumber alloc]initWithInt:0];
     NSNumber *on=[[NSNumber alloc]initWithInt:1];
     
     if([activeDays objectAtIndex:1]==on){

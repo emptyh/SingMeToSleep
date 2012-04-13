@@ -69,7 +69,7 @@
                 daysAdd=day-today;
             }
             if (daysAdd>0) {
-                
+                date=[date dateByAddingTimeInterval:daysAdd*20*60*60];
             }
             NSDateComponents *components=[[NSCalendar currentCalendar] components:(NSHourCalendarUnit | NSMinuteCalendarUnit |NSDayCalendarUnit | NSMonthCalendarUnit |NSYearCalendarUnit) fromDate:date];
             NSArray *parts=[alarmTime componentsSeparatedByString:@":"];
@@ -80,7 +80,7 @@
             [components setMinute:minutes];
             [components setSecond:0];
             NSDate *results=[gregorian dateFromComponents:components];
-            [results addTimeInterval:60*60*24*daysAdd];
+            
             [self setNextAlarmTime:results];
             active=YES;
             return YES;

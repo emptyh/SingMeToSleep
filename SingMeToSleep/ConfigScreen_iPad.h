@@ -10,7 +10,7 @@
 #import "DataChanged.h"
 
 @interface ConfigScreen_iPad : UIViewController
-- (IBAction)minutesChanged:(id)sender;
+//- (IBAction)minutesChanged:(id)sender;
 - (IBAction)backPressed:(id)sender;
 - (IBAction)dayPressed:(id)sender;
 

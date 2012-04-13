@@ -157,4 +157,7 @@
     [off release];
     // [on release];
 }
+-(void)moveVolumeSlider:(float)newValue{
+    [volumeSlider setValue:newValue];
+}
 @end
