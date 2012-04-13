@@ -23,12 +23,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "344"
-         endingLineNumber = "344"
-         landmarkName = "-weatherUpdate"
+         startingLineNumber = "367"
+         endingLineNumber = "367"
+         landmarkName = "-applyConfig"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -37,11 +37,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ConfigScreen_iPad.m"
-         timestampString = "341114679.289308"
+         timestampString = "355967034.294698"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "32"
-         endingLineNumber = "32"
+         startingLineNumber = "40"
+         endingLineNumber = "40"
          landmarkName = "-minutesOfMusicChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -51,11 +51,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ConfigScreen_iPad.m"
-         timestampString = "341197900.372594"
+         timestampString = "355970500.506664"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "125"
-         endingLineNumber = "125"
+         startingLineNumber = "227"
+         endingLineNumber = "227"
          landmarkName = "-minutesSpinnerChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -65,11 +65,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "144"
-         endingLineNumber = "144"
+         startingLineNumber = "165"
+         endingLineNumber = "165"
          landmarkName = "-blink"
          landmarkType = "5">
       </FileBreakpoint>
@@ -79,12 +79,12 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "333"
-         endingLineNumber = "333"
-         landmarkName = "-applyConfig"
+         startingLineNumber = "352"
+         endingLineNumber = "352"
+         landmarkName = "-configScreenDidUnload"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -93,25 +93,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "329"
-         endingLineNumber = "329"
-         landmarkName = "-applyConfig"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "135"
-         endingLineNumber = "135"
+         startingLineNumber = "154"
+         endingLineNumber = "154"
          landmarkName = "-blink"
          landmarkType = "5">
       </FileBreakpoint>
@@ -121,11 +107,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController_ipad.m"
-         timestampString = "341201452.925962"
+         timestampString = "355964779.171777"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "195"
-         endingLineNumber = "195"
+         startingLineNumber = "209"
+         endingLineNumber = "209"
          landmarkName = "-setWeatherCurrent:todayHigh:todayLow:todayIconUrl:tomorrowHigh:tomorrowLow:tomorrowIconUrl:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -135,11 +121,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "257"
-         endingLineNumber = "257"
+         startingLineNumber = "278"
+         endingLineNumber = "278"
          landmarkName = "-handle_nowPlayingChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -149,11 +135,11 @@
          continueAfterRunningActions = "No"
          isPathRelative = "1"
          filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "343785201.659967"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "250"
-         endingLineNumber = "250"
+         startingLineNumber = "271"
+         endingLineNumber = "271"
          landmarkName = "-handle_nowPlayingChanged:"
          landmarkType = "5">
       </FileBreakpoint>
@@ -172,17 +158,121 @@
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
-         shouldBeEnabled = "Yes"
+         shouldBeEnabled = "No"
          ignoreCount = "0"
          continueAfterRunningActions = "No"
          isPathRelative = "1"
-         filePath = "SingMeToSleep/MTHAlarm.m"
-         timestampString = "343786955.453405"
+         filePath = "SingMeToSleep/ClockController.m"
+         timestampString = "355970968.696966"
          startingColumnNumber = "9223372036854775807"
          endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "28"
-         endingLineNumber = "28"
-         landmarkName = "-dealloc"
+         startingLineNumber = "335"
+         endingLineNumber = "335"
+         landmarkName = "-previousTrack"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/MTHAlarm.m"
+         timestampString = "355962633.065401"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "65"
+         endingLineNumber = "65"
+         landmarkName = "-shouldSetOnDay:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "No"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/ConfigScreen_iPad.m"
+         timestampString = "355970322.078859"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "200"
+         endingLineNumber = "200"
+         landmarkName = "-backPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/ConfigScreen_iPad.m"
+         timestampString = "355970322.078859"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "80"
+         endingLineNumber = "80"
+         landmarkName = "-viewDidLoad"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/ConfigScreen_iPad.m"
+         timestampString = "355970322.078859"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "179"
+         endingLineNumber = "179"
+         landmarkName = "-backPressed:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/ClockController.m"
+         timestampString = "355971064.705315"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "399"
+         endingLineNumber = "399"
+         landmarkName = "-applyConfig"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/MTHAlarm.m"
+         timestampString = "355971164.032997"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "74"
+         endingLineNumber = "74"
+         landmarkName = "-shouldSetOnDay:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/MTHAlarm.m"
+         timestampString = "355971256.711136"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "63"
+         endingLineNumber = "63"
+         landmarkName = "-shouldSetOnDay:"
+         landmarkType = "5">
+      </FileBreakpoint>
+      <FileBreakpoint
+         shouldBeEnabled = "Yes"
+         ignoreCount = "0"
+         continueAfterRunningActions = "No"
+         filePath = "SingMeToSleep/ClockController.m"
+         timestampString = "355971447.260168"
+         startingColumnNumber = "9223372036854775807"
+         endingColumnNumber = "9223372036854775807"
+         startingLineNumber = "391"
+         endingLineNumber = "391"
+         landmarkName = "-applyConfig"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>

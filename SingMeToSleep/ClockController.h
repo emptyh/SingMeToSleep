@@ -7,18 +7,21 @@
 //
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "MTHNumber.h"
 #import <MediaPlayer/MediaPlayer.h>
 #import "DataChanged.h"
 #import "MTHAlarm.h"
 
-@interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged>{
+@interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged,AVAudioPlayerDelegate>{
     MTHNumber *tenSecondsNumber;
     MTHNumber *secondsNumber;
     MTHNumber *tenMinutesNumber;
     MTHNumber *minutesNumber;
     MTHNumber *tensHourNumber;
     MTHNumber *hoursNumber;
+    
+    AVAudioPlayer *audioPlayer;
     
 }
 
@@ -59,4 +62,6 @@
 -(void)isPM:(BOOL)pm;
 -(void)startWhiteNoise;
 -(void)moveVolumeSlider:(float)newValue;
+-(void)stopAlarm;
+-(void)alarmSounding;
 @end

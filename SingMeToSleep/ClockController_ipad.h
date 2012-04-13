@@ -29,6 +29,7 @@ NSArray *tensHoursLabel;
 @property (retain, nonatomic) IBOutlet UILabel *titleLabel;
 
 @property (retain, nonatomic) IBOutlet UIButton *playPauseButton;
+@property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
 @property (retain, nonatomic) IBOutlet UISlider *volumeSlider;
 @property (retain, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (retain, nonatomic) IBOutlet UILabel *todayHigh;

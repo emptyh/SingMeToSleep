@@ -31,6 +31,7 @@ typedef enum{
 
 
 
+
 -(Boolean)shouldAlarmSound;
 -(void)soundAlarm;
 -(void)calcNextAlarmTime;
@@ -39,5 +40,6 @@ typedef enum{
 -(void)removeActiveDay:(WeekDay)day;
 -(Boolean)shouldSetOnDay:(WeekDay)day;
 -(int)convertStringTimeToIntSeconds:(NSString*)time;
+
 
 @end

@@ -61,6 +61,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/alarm2.mp3",[[NSBundle mainBundle] resourcePath]]];
+    NSError *error=Nil;
+    audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
+    [audioPlayer setDelegate:self];
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
     //[musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
@@ -70,10 +74,7 @@
     
     
     //debug alarm
-    [self setAlarm:[[MTHAlarm alloc]init]];
-    [[self alarm] setAlarmTime:@"16:24"];
-    [[self alarm] addActiveDay:Thursday];
-    [[self alarm] calcNextAlarmTime];
+   
     
     [self moveVolumeSlider:[musicPlayer volume]];
     //end debug
@@ -131,10 +132,31 @@
    // [tempNumber release];
     return number;
 }
+#pragma mark - Alarm Methods
+-(void)soundAlarm{
+    MPMusicPlaybackState playbackState=[musicPlayer playbackState];
+    if(playbackState==MPMusicPlaybackStatePlaying){
+        [musicPlayer pause];
+    }
+        
+    [self alarmSounding];
+    [audioPlayer play];
+}
+-(void)stopAlarm{
+    [audioPlayer stop];
+    [alarm setActive:NO];
+}
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    
+    NSLog(@"hi there");
+}
 #pragma Universal Screen Updates
 -(void)blink{
     if([[self alarm]shouldAlarmSound]){
         NSLog(@"bong");
+        [[self alarm]calcNextAlarmTime];
+        [audioPlayer setVolume:.1];
+        [self soundAlarm];
     }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
@@ -330,8 +352,8 @@
     [self applyConfig];
 }
 -(void)applyConfig{
-    SingMeToSleepAppDelegate *delgate=[[UIApplication sharedApplication]delegate];
-    NSMutableDictionary *config=[delgate config];
+    NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
+    NSMutableDictionary *config=[userDefault valueForKey:@"config"];
     BOOL shuffle= [[config valueForKey:@"shuffle"]boolValue];
     BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
     BOOL millitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
@@ -344,6 +366,37 @@
         [musicPlayer setShuffleMode:MPMusicShuffleModeOff];
     }
     [self setFloydProtection:floydProtection];
+    
+    NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
+    NSString *newAlarmTime=[alarm valueForKey:@"alarmTime"];
+    NSMutableArray *activeDays=[alarm valueForKey:@"daysActive"];
+    [self setAlarm:[[MTHAlarm alloc]init]];
+    [[self alarm] setAlarmTime:newAlarmTime];
+    NSNumber *off=[[NSNumber alloc]initWithInt:0];
+    NSNumber *on=[[NSNumber alloc]initWithInt:1];
+    
+    if([activeDays objectAtIndex:1]==on){
+        [[self alarm] addActiveDay:Sunday];
+    }
+    if([activeDays objectAtIndex:2]==on){
+        [[self alarm] addActiveDay:Monday];
+    }
+    if([activeDays objectAtIndex:3]==on){
+        [[self alarm] addActiveDay:Tuesday];
+    }
+    if([activeDays objectAtIndex:4]==on){
+        [[self alarm] addActiveDay:Wednesday];
+    }
+    if([activeDays objectAtIndex:5]==on){
+        [[self alarm] addActiveDay:Thursday];
+    }
+    if([activeDays objectAtIndex:6]==on){
+        [[self alarm] addActiveDay:Friday];
+    }
+    if([activeDays objectAtIndex:7]==on){
+        [[self alarm] addActiveDay:Saturday];
+    }
+    [[self alarm] calcNextAlarmTime];
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{

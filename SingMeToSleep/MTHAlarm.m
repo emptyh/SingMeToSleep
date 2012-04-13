@@ -20,6 +20,7 @@
         NSNumber *off=[[NSNumber alloc]initWithInt:0];
         activeDays=[[NSMutableArray alloc]initWithObjects:off,off,off,off,off,off,off,off, nil];
         nextAlarmTime=[[NSDate alloc]init];
+        active=NO;
     }
     return self;
 }
@@ -81,6 +82,7 @@
             NSDate *results=[gregorian dateFromComponents:components];
             [results addTimeInterval:60*60*24*daysAdd];
             [self setNextAlarmTime:results];
+            active=YES;
             return YES;
         }
     }else {
@@ -88,7 +90,7 @@
     }
 }
 -(Boolean)shouldAlarmSound{
-    if(nextAlarmTime && [nextAlarmTime timeIntervalSinceNow]<0){
+    if(active && nextAlarmTime && [nextAlarmTime timeIntervalSinceNow]<0){
         NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
         [formatter setDateFormat:@"HH:mm"];
         NSLog(@"time set %@",[formatter stringFromDate:nextAlarmTime]);

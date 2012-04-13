@@ -27,7 +27,7 @@
     NSMutableDictionary *tempConfig=[userDefault valueForKeyPath:@"config"];
     if(!tempConfig){
         NSNumber *yes=[[NSNumber alloc]initWithBool:NO];
-        tempConfig=[[NSMutableDictionary alloc]init];
+        tempConfig=[[[NSMutableDictionary alloc]init]autorelease];
         [tempConfig setValue:@"15" forKey:@"minutesOfMusic"];
         [tempConfig setValue:yes forKey:@"floydProtection"];
         [tempConfig setValue:yes forKey:@"shuffle"];

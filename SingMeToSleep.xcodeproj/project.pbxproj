@@ -12,6 +12,9 @@
 		BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AB144E37860024D841 /* MTHWeatherFactory.m */; };
 		BF1831AF144E3A700024D841 /* HSUStack.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AE144E3A700024D841 /* HSUStack.m */; };
 		BF34E97414783FB2008E7931 /* MTHAlarm.m in Sources */ = {isa = PBXBuildFile; fileRef = BF34E97314783FB2008E7931 /* MTHAlarm.m */; };
+		BF6FBFF215378C1300521F73 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BF6FBFF115378C1300521F73 /* AVFoundation.framework */; };
+		BF6FBFF615378CB800521F73 /* alarm1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6FBFF515378CB800521F73 /* alarm1.mp3 */; };
+		BF6FBFF8153796FE00521F73 /* alarm2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BF6FBFF7153796FE00521F73 /* alarm2.mp3 */; };
 		BF9A7F4A145245520078D981 /* ConfigScreen_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */; };
 		BF9A7F4B145245520078D981 /* ConfigScreen_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */; };
 		BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */; };
@@ -66,6 +69,9 @@
 		BF1831AE144E3A700024D841 /* HSUStack.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HSUStack.m; sourceTree = "<group>"; };
 		BF34E97214783FB2008E7931 /* MTHAlarm.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHAlarm.h; sourceTree = "<group>"; };
 		BF34E97314783FB2008E7931 /* MTHAlarm.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHAlarm.m; sourceTree = "<group>"; };
+		BF6FBFF115378C1300521F73 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		BF6FBFF515378CB800521F73 /* alarm1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm1.mp3; sourceTree = "<group>"; };
+		BF6FBFF7153796FE00521F73 /* alarm2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = alarm2.mp3; sourceTree = "<group>"; };
 		BF9A7F45145243C60078D981 /* DataChanged.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataChanged.h; sourceTree = "<group>"; };
 		BF9A7F47145245520078D981 /* ConfigScreen_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPad.h; sourceTree = "<group>"; };
 		BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen_iPad.m; sourceTree = "<group>"; };
@@ -115,6 +121,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BF6FBFF215378C1300521F73 /* AVFoundation.framework in Frameworks */,
 				BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */,
 				BFCC6F22143795CF008C60EF /* UIKit.framework in Frameworks */,
 				BFCC6F24143795D0008C60EF /* Foundation.framework in Frameworks */,
@@ -136,6 +143,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		BF6FBFF415378CA700521F73 /* resources */ = {
+			isa = PBXGroup;
+			children = (
+				BF6FBFF515378CB800521F73 /* alarm1.mp3 */,
+				BF6FBFF7153796FE00521F73 /* alarm2.mp3 */,
+			);
+			name = resources;
+			sourceTree = "<group>";
+		};
 		BFBF9558144A278300F64ECB /* Images */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,6 +168,7 @@
 		BFCC6F12143795CF008C60EF = {
 			isa = PBXGroup;
 			children = (
+				BF6FBFF115378C1300521F73 /* AVFoundation.framework */,
 				BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */,
 				BFCC6F27143795D0008C60EF /* SingMeToSleep */,
 				BFCC6F4E143795D0008C60EF /* SingMeToSleepTests */,
@@ -184,6 +201,7 @@
 		BFCC6F27143795D0008C60EF /* SingMeToSleep */ = {
 			isa = PBXGroup;
 			children = (
+				BF6FBFF415378CA700521F73 /* resources */,
 				BFCC6F641437B739008C60EF /* modal */,
 				BFCC6F30143795D0008C60EF /* SingMeToSleepAppDelegate.h */,
 				BFCC6F31143795D0008C60EF /* SingMeToSleepAppDelegate.m */,
@@ -353,6 +371,8 @@
 				BFBF9561144A27BA00F64ECB /* playButton.png in Resources */,
 				BFBF9562144A27BA00F64ECB /* PreviousButton.png in Resources */,
 				BF9A7F4B145245520078D981 /* ConfigScreen_iPad.xib in Resources */,
+				BF6FBFF615378CB800521F73 /* alarm1.mp3 in Resources */,
+				BF6FBFF8153796FE00521F73 /* alarm2.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
