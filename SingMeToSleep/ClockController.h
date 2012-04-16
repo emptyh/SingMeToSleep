@@ -12,8 +12,10 @@
 #import <MediaPlayer/MediaPlayer.h>
 #import "DataChanged.h"
 #import "MTHAlarm.h"
+#import <CoreLocation/CLGeocoder.h>
+#import <MapKit/MapKit.h>
 
-@interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged,AVAudioPlayerDelegate>{
+@interface ClockController : UIViewController<MPMediaPickerControllerDelegate,DataChanged,AVAudioPlayerDelegate,CLLocationManagerDelegate>{
     MTHNumber *tenSecondsNumber;
     MTHNumber *secondsNumber;
     MTHNumber *tenMinutesNumber;
@@ -23,6 +25,9 @@
     
     AVAudioPlayer *audioPlayer;
     float oldVolume;
+    
+    NSString *zipcode;
+    CLLocationManager *locationManager;
     
 }
 

@@ -63,6 +63,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    locationManager = [[CLLocationManager alloc] init] ;
+    [locationManager setDelegate: self];
+    [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
+    [locationManager startUpdatingLocation];
+    
+    
     NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/alarm2.mp3",[[NSBundle mainBundle] resourcePath]]];
     NSError *error=Nil;
     audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
@@ -82,7 +89,18 @@
     //end debug
     //[self setMinutesOfMusic:15];
 }
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    
+    [locationManager stopUpdatingLocation];
+    
+    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark * placemark in placemarks) {
+            zipcode=[placemark postalCode];
+        }    
+    }];
 
+}
 
 - (void)viewDidUnload
 {
@@ -426,11 +444,15 @@
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{
+    if (!zipcode) {
+        return;
+    }
     if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<10*60*-1){
         [lastWeatherUpdate release];
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
-        NSURL *weatherURL=[[NSURL alloc] initWithString:@"http://www.google.com/ig/api?weather=41042"];//should be dynamic
+        NSString *urlString=[NSString stringWithFormat: @"http://www.google.com/ig/api?weather=%@",zipcode];
+        NSURL *weatherURL=[[NSURL alloc] initWithString:urlString];//should be dynamic
         MTHWeather *weather=[factory getWeatherFromURL:weatherURL];
         
         NSString *temp=[weather temp];

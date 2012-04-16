@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D3B8B5F153CABC1001701CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3B8B5E153CABC1001701CD /* CoreLocation.framework */; };
+		1D3B8B62153CAEFC001701CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3B8B61153CAEFC001701CD /* MapKit.framework */; };
 		1D6A0BAB153879CB0073BDEF /* ConfigScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BAA153879CB0073BDEF /* ConfigScreen.m */; };
 		1D6A0BB315387C130073BDEF /* ConfigScreen_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB115387C130073BDEF /* ConfigScreen_iPhone.m */; };
 		1D6A0BB415387C130073BDEF /* ConfigScreen_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB215387C130073BDEF /* ConfigScreen_iPhone.xib */; };
@@ -62,6 +64,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1D3B8B5E153CABC1001701CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		1D3B8B61153CAEFC001701CD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
 		1D6A0BA9153879CB0073BDEF /* ConfigScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen.h; sourceTree = "<group>"; };
 		1D6A0BAA153879CB0073BDEF /* ConfigScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen.m; sourceTree = "<group>"; };
 		1D6A0BB015387C130073BDEF /* ConfigScreen_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPhone.h; sourceTree = "<group>"; };
@@ -129,6 +133,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D3B8B62153CAEFC001701CD /* MapKit.framework in Frameworks */,
+				1D3B8B5F153CABC1001701CD /* CoreLocation.framework in Frameworks */,
 				BF6FBFF215378C1300521F73 /* AVFoundation.framework in Frameworks */,
 				BFBF9556144A22CE00F64ECB /* MediaPlayer.framework in Frameworks */,
 				BFCC6F22143795CF008C60EF /* UIKit.framework in Frameworks */,
@@ -176,6 +182,8 @@
 		BFCC6F12143795CF008C60EF = {
 			isa = PBXGroup;
 			children = (
+				1D3B8B61153CAEFC001701CD /* MapKit.framework */,
+				1D3B8B5E153CABC1001701CD /* CoreLocation.framework */,
 				BF6FBFF115378C1300521F73 /* AVFoundation.framework */,
 				BFBF9555144A22CE00F64ECB /* MediaPlayer.framework */,
 				BFCC6F27143795D0008C60EF /* SingMeToSleep */,
