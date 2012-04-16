@@ -146,8 +146,9 @@
     [audioPlayer play];
 }
 -(void)stopAlarm{
-    [audioPlayer stop];
+    [audioPlayer pause];
     [self setHasAlarmStopped:YES];
+    [musicPlayer setVolume:oldVolume];
   //  [alarm setActive:NO];
 }
 -(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
@@ -155,7 +156,7 @@
         [musicPlayer setVolume:[musicPlayer volume]+.1];
     }
     if([self hasAlarmStopped]){
-        [musicPlayer setVolume:oldVolume];
+        
     }else{
         [audioPlayer play];
     }
@@ -217,10 +218,11 @@
     
 }
 - (IBAction)selectMusicPressed:(id)sender {
-    UIButton *button=(UIButton*)sender;
-     NSLog([[button titleLabel]text]);
-    if([[[button titleLabel]text]isEqualToString:@"I'm Up Damnit"]){
+  //  UIButton *button=(UIButton*)sender;
+     NSLog([[SelectMusicButton titleLabel]text]);
+    if([[SelectMusicButton titleForState:UIControlStateNormal] isEqualToString: @"I'm Up Damnit"]){
         [self stopAlarm];
+        [[self SelectMusicButton]setTitle:@"Select Music" forState:UIControlStateNormal];
     }else{
         [self selectMusic];
     }
@@ -347,7 +349,7 @@
 }
 -(void)playPause{
     MPMusicPlaybackState playbackState=[musicPlayer playbackState];
-    if(playbackState==MPMusicPlaybackStatePaused){
+    if(playbackState==MPMusicPlaybackStatePaused || playbackState==MPMusicPlaybackStateInterrupted){
         [musicPlayer play];
     }else if(playbackState==MPMusicPlaybackStatePlaying){
         [musicPlayer pause];
@@ -460,7 +462,7 @@
 }
 
 -(void)alarmSounding{
-    [[[self SelectMusicButton]titleLabel] setText:@"I'm Up Damnit"];
+    [[self SelectMusicButton]setTitle:@"I'm Up Damnit" forState:UIControlStateNormal];
 }
 
 
