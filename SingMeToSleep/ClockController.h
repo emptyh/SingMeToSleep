@@ -33,6 +33,7 @@
 
 #pragma mark - Properties
 @property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
+@property (retain, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (nonatomic,retain) MTHNumber *tenSecondsNumber;
 @property (nonatomic,retain) MTHNumber *secondsNumber;
 @property (nonatomic,retain) MTHNumber *tenMinutesNumber;

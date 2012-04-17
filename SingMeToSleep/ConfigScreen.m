@@ -19,6 +19,7 @@
 @synthesize shuffleSwitch;
 @synthesize floydProtectionSwitch;
 @synthesize millitaryTime;
+@synthesize currentAlarmLabel;
 @synthesize SundayLabel;
 @synthesize MondayLabel;
 @synthesize TuesdayLabel;
@@ -27,7 +28,10 @@
 @synthesize FridayLabel;
 @synthesize SaturdayLabel;
 @synthesize timeSelector;
-
+@synthesize alarmPicker;
+@synthesize alarms;
+@synthesize audioPlayer;
+@synthesize alarmSound;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -37,6 +41,27 @@
     return self;
 }
 
+
+- (IBAction)selectAlarmPressed:(id)sender {
+    
+    
+    
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] 
+                                 initWithTitle:@"Select Alarm" 
+                                 delegate:self 
+                                 cancelButtonTitle:nil 
+                                 destructiveButtonTitle:@"Cancel" 
+                                 otherButtonTitles:@"Done", nil];
+    
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    
+    
+    [popupQuery showInView:self.view];
+    [popupQuery setFrame:CGRectMake(0,115,320, 680)];
+    [popupQuery addSubview:alarmPicker];
+    [[self alarmPicker] setFrame:CGRectMake(0, 150,320,300)];
+    [popupQuery release];
+}
 
 - (IBAction)minutesOfMusicChanged:(id)sender {
     NSString *mins=[NSString stringWithFormat:@"%i",[minutesOfMusicSpinner value]];
@@ -107,13 +132,21 @@
     [[self millitaryTime]setOn:isMillitaryTime];
     [[self shuffleSwitch]setOn:shuffle];
     [[self floydProtectionSwitch]setOn:floydProtection];
+    [self setAlarmSound:[config valueForKey:@"alarmSound"]];
+    [[self currentAlarmLabel] setText:[NSString stringWithFormat:@"%@",alarmSound]];
+    alarmPicker=[[UIPickerView alloc] init];
+    [alarmPicker setDelegate:self];
     
-
+    
+    NSArray *array=[[NSArray alloc]initWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
+    [self setAlarms:array];
 
     // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload{
+    [self setSelectAlarmButton:nil];
+    [self setCurrentAlarmLabel:nil];
     [super viewDidUnload];
     [self setMinutesOfMusicText:nil];
     [self setMinutesOfMusicSpinner:nil];
@@ -154,6 +187,10 @@
     [FridayLabel release];
     [SaturdayLabel release];
     [timeSelector release];
+    [alarmPicker release];
+    [audioPlayer release];
+    [alarmSound release];
+    [currentAlarmLabel release];
     [super dealloc];
 }
 
@@ -205,7 +242,7 @@
     NSString *alarmTime=[formatter stringFromDate:date];
     [alarm setValue:alarmTime forKey:@"alarmTime"];
     [config setValue:alarm forKey:@"alarm"];
-    
+    [config setValue:alarmSound  forKey:@"alarmSound"];
     [userDefault setValue:config forKey:@"config"];
     [userDefault synchronize];
     [delegate configScreenDidUnload];
@@ -227,5 +264,29 @@
     [[self minutesOfMusicText] setText:mins];
     [mins release];
 }
-
+#pragma mark - Picker Delegage Methods
+-(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
+    return 1;
+}
+-(NSInteger)pickerView:(UIPickerView *)pickerView numberOfRowsInComponent:(NSInteger)component{
+    return [[self alarms]count];
+}
+-(NSString *)pickerView:(UIPickerView *)pickerView titleForRow:(NSInteger)row forComponent:(NSInteger)component{
+    
+    return [[self alarms]objectAtIndex:row];
+}
+-(NSString *)pickerView:(UIPickerView*)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+    NSString *selected=[[self alarms]objectAtIndex:row];
+    NSLog([NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],selected]);
+    NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],selected]];
+    NSError *error=Nil;
+    if(audioPlayer){
+        [audioPlayer pause];
+    }
+    audioPlayer=[[AVPlayer playerWithURL:url ]retain];
+    [audioPlayer play];
+    alarmSound=selected;
+    [[self currentAlarmLabel]setText:[NSString stringWithFormat:@"%@",selected]];
+    return selected;
+}
 @end

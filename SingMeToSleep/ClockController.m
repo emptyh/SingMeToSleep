@@ -16,6 +16,7 @@
 @implementation ClockController
 #pragma mark - Properties
 @synthesize SelectMusicButton;
+@synthesize timeLeftLabel;
 @synthesize tenSecondsNumber;
 @synthesize secondsNumber;
 @synthesize tenMinutesNumber;
@@ -31,6 +32,7 @@
 @synthesize millitaryTime;
 @synthesize alarm;
 @synthesize hasAlarmStopped;
+
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -70,10 +72,7 @@
     [locationManager startUpdatingLocation];
     
     
-    NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/alarm2.mp3",[[NSBundle mainBundle] resourcePath]]];
-    NSError *error=Nil;
-    audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
-    [audioPlayer setDelegate:self];
+    
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
     //[musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
@@ -105,6 +104,7 @@
 - (void)viewDidUnload
 {
     [self setSelectMusicButton:nil];
+    [self setTimeLeftLabel:nil];
     [super viewDidUnload];
     [musicPlayer release];
     [[NSNotificationCenter defaultCenter] removeObserver: self
@@ -182,6 +182,7 @@
 }
 
 #pragma Universal Screen Updates
+
 -(void)blink{
     if([[self alarm]shouldAlarmSound]){
         [alarm setActive:NO];
@@ -441,6 +442,15 @@
         [[self alarm] addActiveDay:Saturday];
     }
     [[self alarm] calcNextAlarmTime];
+    
+    NSString *alarmSound=[config valueForKey:@"alarmSound"];
+    if(!alarmSound){
+        alarmSound=@"alarm1.mp3";
+    }
+    NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],alarmSound]];
+    NSError *error=Nil;
+    audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
+    [audioPlayer setDelegate:self];
 }
 #pragma mark - weather methods
 -(void)weatherUpdate{
@@ -490,6 +500,7 @@
 
 - (void)dealloc {
     [SelectMusicButton release];
+    [timeLeftLabel release];
     [super dealloc];
 }
 @end

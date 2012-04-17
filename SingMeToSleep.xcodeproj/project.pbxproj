@@ -12,6 +12,12 @@
 		1D6A0BAB153879CB0073BDEF /* ConfigScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BAA153879CB0073BDEF /* ConfigScreen.m */; };
 		1D6A0BB315387C130073BDEF /* ConfigScreen_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB115387C130073BDEF /* ConfigScreen_iPhone.m */; };
 		1D6A0BB415387C130073BDEF /* ConfigScreen_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB215387C130073BDEF /* ConfigScreen_iPhone.xib */; };
+		1D7CAF9D153DE36200347A9B /* BurglarAlarm.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF97153DE36200347A9B /* BurglarAlarm.mp3 */; };
+		1D7CAF9E153DE36200347A9B /* robot_dog.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF98153DE36200347A9B /* robot_dog.mp3 */; };
+		1D7CAF9F153DE36200347A9B /* School_Bell.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF99153DE36200347A9B /* School_Bell.mp3 */; };
+		1D7CAFA0153DE36200347A9B /* Sci_Fi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF9A153DE36200347A9B /* Sci_Fi.mp3 */; };
+		1D7CAFA1153DE36200347A9B /* Sub_Dive.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF9B153DE36200347A9B /* Sub_Dive.mp3 */; };
+		1D7CAFA2153DE36200347A9B /* Train.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 1D7CAF9C153DE36200347A9B /* Train.mp3 */; };
 		BF1831A6144E34B10024D841 /* MTHWeather.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A5144E34B10024D841 /* MTHWeather.m */; };
 		BF1831A9144E36480024D841 /* MTHForecast.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831A8144E36480024D841 /* MTHForecast.m */; };
 		BF1831AC144E37860024D841 /* MTHWeatherFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = BF1831AB144E37860024D841 /* MTHWeatherFactory.m */; };
@@ -71,6 +77,12 @@
 		1D6A0BB015387C130073BDEF /* ConfigScreen_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPhone.h; sourceTree = "<group>"; };
 		1D6A0BB115387C130073BDEF /* ConfigScreen_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen_iPhone.m; sourceTree = "<group>"; };
 		1D6A0BB215387C130073BDEF /* ConfigScreen_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConfigScreen_iPhone.xib; sourceTree = "<group>"; };
+		1D7CAF97153DE36200347A9B /* BurglarAlarm.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = BurglarAlarm.mp3; sourceTree = "<group>"; };
+		1D7CAF98153DE36200347A9B /* robot_dog.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = robot_dog.mp3; sourceTree = "<group>"; };
+		1D7CAF99153DE36200347A9B /* School_Bell.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = School_Bell.mp3; sourceTree = "<group>"; };
+		1D7CAF9A153DE36200347A9B /* Sci_Fi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sci_Fi.mp3; sourceTree = "<group>"; };
+		1D7CAF9B153DE36200347A9B /* Sub_Dive.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Sub_Dive.mp3; sourceTree = "<group>"; };
+		1D7CAF9C153DE36200347A9B /* Train.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Train.mp3; sourceTree = "<group>"; };
 		BF1831A4144E34B10024D841 /* MTHWeather.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHWeather.h; sourceTree = "<group>"; };
 		BF1831A5144E34B10024D841 /* MTHWeather.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTHWeather.m; sourceTree = "<group>"; };
 		BF1831A7144E36480024D841 /* MTHForecast.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTHForecast.h; sourceTree = "<group>"; };
@@ -160,6 +172,12 @@
 		BF6FBFF415378CA700521F73 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				1D7CAF97153DE36200347A9B /* BurglarAlarm.mp3 */,
+				1D7CAF98153DE36200347A9B /* robot_dog.mp3 */,
+				1D7CAF99153DE36200347A9B /* School_Bell.mp3 */,
+				1D7CAF9A153DE36200347A9B /* Sci_Fi.mp3 */,
+				1D7CAF9B153DE36200347A9B /* Sub_Dive.mp3 */,
+				1D7CAF9C153DE36200347A9B /* Train.mp3 */,
 				BF6FBFF515378CB800521F73 /* alarm1.mp3 */,
 				BF6FBFF7153796FE00521F73 /* alarm2.mp3 */,
 			);
@@ -395,6 +413,12 @@
 				BF6FBFF615378CB800521F73 /* alarm1.mp3 in Resources */,
 				BF6FBFF8153796FE00521F73 /* alarm2.mp3 in Resources */,
 				1D6A0BB415387C130073BDEF /* ConfigScreen_iPhone.xib in Resources */,
+				1D7CAF9D153DE36200347A9B /* BurglarAlarm.mp3 in Resources */,
+				1D7CAF9E153DE36200347A9B /* robot_dog.mp3 in Resources */,
+				1D7CAF9F153DE36200347A9B /* School_Bell.mp3 in Resources */,
+				1D7CAFA0153DE36200347A9B /* Sci_Fi.mp3 in Resources */,
+				1D7CAFA1153DE36200347A9B /* Sub_Dive.mp3 in Resources */,
+				1D7CAFA2153DE36200347A9B /* Train.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
