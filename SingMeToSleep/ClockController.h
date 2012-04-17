@@ -28,6 +28,7 @@
     
     NSString *zipcode;
     CLLocationManager *locationManager;
+    CLGeocoder * geoCoder;
     
 }
 

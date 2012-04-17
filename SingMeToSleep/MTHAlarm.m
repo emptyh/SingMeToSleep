@@ -32,7 +32,7 @@
     
 }
 -(void)calcNextAlarmTime{
-    NSDate *alarm=[[NSDate alloc]init];
+   // NSDate *alarm=[[NSDate alloc]init];
    long oneDay=86400;
     for (int i=1; i<8; i++) {
         if([self shouldSetOnDay:i]){

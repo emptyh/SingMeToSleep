@@ -92,7 +92,7 @@
     
     [locationManager stopUpdatingLocation];
     
-    CLGeocoder * geoCoder = [[CLGeocoder alloc] init];
+    geoCoder = [[[CLGeocoder alloc] init]autorelease];
     [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark * placemark in placemarks) {
             zipcode=[placemark postalCode];
@@ -415,10 +415,11 @@
     NSMutableDictionary *newAlarm=[config valueForKey:@"alarm"];
     NSString *newAlarmTime=[newAlarm valueForKey:@"alarmTime"];
     NSMutableArray *activeDays=[newAlarm valueForKey:@"daysActive"];
-    [self setAlarm:[[MTHAlarm alloc]init]];
+    MTHAlarm *tempAlarm=[[[MTHAlarm alloc]init]autorelease];
+    [self setAlarm:tempAlarm];
     [[self alarm] setAlarmTime:newAlarmTime];
    // NSNumber *off=[[NSNumber alloc]initWithInt:0];
-    NSNumber *on=[[NSNumber alloc]initWithInt:1];
+    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     
     if([activeDays objectAtIndex:1]==on){
         [[self alarm] addActiveDay:Sunday];
@@ -449,6 +450,9 @@
     }
     NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],alarmSound]];
     NSError *error=Nil;
+    if(audioPlayer){
+        [audioPlayer release];
+    }
     audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
     [audioPlayer setDelegate:self];
 }
@@ -501,6 +505,7 @@
 - (void)dealloc {
     [SelectMusicButton release];
     [timeLeftLabel release];
+    [geoCoder release];
     [super dealloc];
 }
 @end

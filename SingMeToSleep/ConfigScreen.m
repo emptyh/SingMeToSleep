@@ -138,14 +138,13 @@
     [alarmPicker setDelegate:self];
     
     
-    NSArray *array=[[NSArray alloc]initWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
+    NSArray *array=[[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil]autorelease];
     [self setAlarms:array];
 
-    // Do any additional setup after loading the view from its nib.
 }
 
 - (void)viewDidUnload{
-    [self setSelectAlarmButton:nil];
+  //  [self setSelectAlarmButton:nil];
     [self setCurrentAlarmLabel:nil];
     [super viewDidUnload];
     [self setMinutesOfMusicText:nil];
@@ -247,6 +246,9 @@
     [userDefault synchronize];
     [delegate configScreenDidUnload];
     [self dismissModalViewControllerAnimated:YES];
+    [on release];
+    [off release];
+    
 }
 
 - (IBAction)dayPressed:(id)sender {
@@ -282,6 +284,7 @@
     NSError *error=Nil;
     if(audioPlayer){
         [audioPlayer pause];
+        [audioPlayer release];
     }
     audioPlayer=[[AVPlayer playerWithURL:url ]retain];
     [audioPlayer play];
