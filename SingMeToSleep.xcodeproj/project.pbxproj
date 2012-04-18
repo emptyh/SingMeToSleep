@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		1D3B8B5F153CABC1001701CD /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3B8B5E153CABC1001701CD /* CoreLocation.framework */; };
 		1D3B8B62153CAEFC001701CD /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1D3B8B61153CAEFC001701CD /* MapKit.framework */; };
+		1D5B0D25153EE97E00F3C8F2 /* AlarmPopover.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D5B0D23153EE97E00F3C8F2 /* AlarmPopover.m */; };
+		1D5B0D26153EE97E00F3C8F2 /* AlarmPopover.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D5B0D24153EE97E00F3C8F2 /* AlarmPopover.xib */; };
 		1D6A0BAB153879CB0073BDEF /* ConfigScreen.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BAA153879CB0073BDEF /* ConfigScreen.m */; };
 		1D6A0BB315387C130073BDEF /* ConfigScreen_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB115387C130073BDEF /* ConfigScreen_iPhone.m */; };
 		1D6A0BB415387C130073BDEF /* ConfigScreen_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1D6A0BB215387C130073BDEF /* ConfigScreen_iPhone.xib */; };
@@ -72,6 +74,9 @@
 /* Begin PBXFileReference section */
 		1D3B8B5E153CABC1001701CD /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		1D3B8B61153CAEFC001701CD /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		1D5B0D22153EE97E00F3C8F2 /* AlarmPopover.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AlarmPopover.h; sourceTree = "<group>"; };
+		1D5B0D23153EE97E00F3C8F2 /* AlarmPopover.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AlarmPopover.m; sourceTree = "<group>"; };
+		1D5B0D24153EE97E00F3C8F2 /* AlarmPopover.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AlarmPopover.xib; sourceTree = "<group>"; };
 		1D6A0BA9153879CB0073BDEF /* ConfigScreen.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen.h; sourceTree = "<group>"; };
 		1D6A0BAA153879CB0073BDEF /* ConfigScreen.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConfigScreen.m; sourceTree = "<group>"; };
 		1D6A0BB015387C130073BDEF /* ConfigScreen_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConfigScreen_iPhone.h; sourceTree = "<group>"; };
@@ -290,6 +295,9 @@
 				BF9A7F47145245520078D981 /* ConfigScreen_iPad.h */,
 				BF9A7F48145245520078D981 /* ConfigScreen_iPad.m */,
 				BF9A7F49145245520078D981 /* ConfigScreen_iPad.xib */,
+				1D5B0D22153EE97E00F3C8F2 /* AlarmPopover.h */,
+				1D5B0D23153EE97E00F3C8F2 /* AlarmPopover.m */,
+				1D5B0D24153EE97E00F3C8F2 /* AlarmPopover.xib */,
 			);
 			name = iPad;
 			sourceTree = "<group>";
@@ -419,6 +427,7 @@
 				1D7CAFA0153DE36200347A9B /* Sci_Fi.mp3 in Resources */,
 				1D7CAFA1153DE36200347A9B /* Sub_Dive.mp3 in Resources */,
 				1D7CAFA2153DE36200347A9B /* Train.mp3 in Resources */,
+				1D5B0D26153EE97E00F3C8F2 /* AlarmPopover.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -470,6 +479,7 @@
 				BF34E97414783FB2008E7931 /* MTHAlarm.m in Sources */,
 				1D6A0BAB153879CB0073BDEF /* ConfigScreen.m in Sources */,
 				1D6A0BB315387C130073BDEF /* ConfigScreen_iPhone.m in Sources */,
+				1D5B0D25153EE97E00F3C8F2 /* AlarmPopover.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

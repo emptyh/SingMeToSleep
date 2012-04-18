@@ -44,6 +44,25 @@
 }
 
 
+- (IBAction)selectAlarmPressed:(id)sender {
+    
+    UIActionSheet *popupQuery = [[UIActionSheet alloc] 
+                                 initWithTitle:@"Select Alarm" 
+                                 delegate:self 
+                                 cancelButtonTitle:nil 
+                                 destructiveButtonTitle:@"Cancel" 
+                                 otherButtonTitles:@"Done", nil];
+    
+    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
+    
+    
+    [popupQuery showInView:self.view];
+    [popupQuery setFrame:CGRectMake(0,115,320, 680)];
+    [popupQuery addSubview:[super alarmPicker]];
+    [[self alarmPicker] setFrame:CGRectMake(0, 150,320,300)];
+    [popupQuery release];
+}
+
 - (IBAction)setTimePressed:(id)sender {
     UIActionSheet *popupQuery = [[UIActionSheet alloc] 
                                  initWithTitle:@"User Type" 
@@ -61,4 +80,5 @@
     [[self timeSelector] setFrame:CGRectMake(0, 150,320,300)];
     [popupQuery release];
 }
+
 @end

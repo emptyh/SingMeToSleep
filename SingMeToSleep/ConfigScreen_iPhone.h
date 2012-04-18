@@ -9,6 +9,7 @@
 #import "ConfigScreen.h"
 
 @interface ConfigScreen_iPhone : ConfigScreen
+- (IBAction)selectAlarmPressed:(id)sender;
 
 - (IBAction)setTimePressed:(id)sender;
 @end

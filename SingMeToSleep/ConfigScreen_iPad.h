@@ -8,7 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "ConfigScreen.h"
+#import "AlarmPopover.h"
 
-@interface ConfigScreen_iPad : ConfigScreen
+@interface ConfigScreen_iPad : ConfigScreen{
+    UIPopoverController *popoverController;
+   
+    AlarmPopover *alarmPopover;
+}
+
 
 @end

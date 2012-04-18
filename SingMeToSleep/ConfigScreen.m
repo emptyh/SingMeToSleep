@@ -42,26 +42,7 @@
 }
 
 
-- (IBAction)selectAlarmPressed:(id)sender {
-    
-    
-    
-    UIActionSheet *popupQuery = [[UIActionSheet alloc] 
-                                 initWithTitle:@"Select Alarm" 
-                                 delegate:self 
-                                 cancelButtonTitle:nil 
-                                 destructiveButtonTitle:@"Cancel" 
-                                 otherButtonTitles:@"Done", nil];
-    
-    popupQuery.actionSheetStyle = UIActionSheetStyleBlackOpaque;
-    
-    
-    [popupQuery showInView:self.view];
-    [popupQuery setFrame:CGRectMake(0,115,320, 680)];
-    [popupQuery addSubview:alarmPicker];
-    [[self alarmPicker] setFrame:CGRectMake(0, 150,320,300)];
-    [popupQuery release];
-}
+
 
 - (IBAction)minutesOfMusicChanged:(id)sender {
     NSString *mins=[NSString stringWithFormat:@"%i",[minutesOfMusicSpinner value]];
@@ -138,7 +119,7 @@
     [alarmPicker setDelegate:self];
     
     
-    NSArray *array=[[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil]autorelease];
+    NSArray *array=[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
     [self setAlarms:array];
 
 }
