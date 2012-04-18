@@ -33,6 +33,14 @@
 @synthesize alarm;
 @synthesize hasAlarmStopped;
 
+@synthesize currentTempLabel;
+@synthesize todayHigh;
+@synthesize todayLow;
+@synthesize tomorrowHigh;
+@synthesize tomorrowLow;
+@synthesize tomorrowIcon;
+@synthesize todayIcon;
+
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -88,18 +96,22 @@
     //end debug
     //[self setMinutesOfMusic:15];
 }
--(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+- (void)dealloc {
+    [SelectMusicButton release];
+    [timeLeftLabel release];
+    [geoCoder release];
     
-    [locationManager stopUpdatingLocation];
-    
-    geoCoder = [[[CLGeocoder alloc] init]autorelease];
-    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
-        for (CLPlacemark * placemark in placemarks) {
-            zipcode=[placemark postalCode];
-        }    
-    }];
-
+    [currentTempLabel release];
+    [currentTempLabel release];
+    [todayHigh release];
+    [todayLow release];
+    [tomorrowHigh release];
+    [tomorrowLow release];
+    [tomorrowIcon release];
+    [todayIcon release];
+    [super dealloc];
 }
+
 
 - (void)viewDidUnload
 {
@@ -457,6 +469,18 @@
     [audioPlayer setDelegate:self];
 }
 #pragma mark - weather methods
+-(void)locationManager:(CLLocationManager *)manager didUpdateToLocation:(CLLocation *)newLocation fromLocation:(CLLocation *)oldLocation{
+    
+    [locationManager stopUpdatingLocation];
+    
+    geoCoder = [[[CLGeocoder alloc] init]autorelease];
+    [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
+        for (CLPlacemark * placemark in placemarks) {
+            zipcode=[placemark postalCode];
+        }    
+    }];
+    
+}
 -(void)weatherUpdate{
     if (!zipcode) {
         return;
@@ -502,10 +526,27 @@
 }
 
 
-- (void)dealloc {
-    [SelectMusicButton release];
-    [timeLeftLabel release];
-    [geoCoder release];
-    [super dealloc];
+
+
+-(void)setWeatherCurrent:(NSString *)current 
+               todayHigh:(NSString *)todayHigh 
+                todayLow:(NSString *)todayLow 
+            todayIconUrl:(NSString *)todayIconUrl
+            tomorrowHigh:(NSString *)tomorrowHigh 
+             tomorrowLow:(NSString *)tomorrowLow
+         tomorrowIconUrl:(NSString *)tomorrowIconUrl{
+    
+    [[self currentTempLabel] setText:current];
+    [[self todayHigh] setText:todayHigh];
+    [[self todayLow] setText:todayLow];
+    [[self tomorrowHigh] setText:tomorrowHigh];
+    [[self tomorrowLow] setText:tomorrowLow];
+    NSString *base=@"http://www.google.com";
+    todayIconUrl=[base stringByAppendingString:todayIconUrl];
+    tomorrowIconUrl=[base stringByAppendingString:tomorrowIconUrl];
+    UIImage *todayImage =    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:todayIconUrl]]];
+    UIImage *tomorrowImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tomorrowIconUrl]]];
+    [[self todayIcon]setImage:todayImage];
+    [[self tomorrowIcon]setImage:tomorrowImage];
 }
 @end

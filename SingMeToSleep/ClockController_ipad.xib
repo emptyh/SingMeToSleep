@@ -2201,62 +2201,6 @@
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">currentTempLabel</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="539389727"/>
-					</object>
-					<int key="connectionID">120</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">todayHigh</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="184951216"/>
-					</object>
-					<int key="connectionID">135</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">todayLow</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="254864104"/>
-					</object>
-					<int key="connectionID">136</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tomorrowHigh</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="1043976380"/>
-					</object>
-					<int key="connectionID">137</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tomorrowLow</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="647155008"/>
-					</object>
-					<int key="connectionID">138</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">tomorrowIcon</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="527408067"/>
-					</object>
-					<int key="connectionID">141</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
-						<string key="label">todayIcon</string>
-						<reference key="source" ref="841351856"/>
-						<reference key="destination" ref="527414064"/>
-					</object>
-					<int key="connectionID">142</int>
-				</object>
-				<object class="IBConnectionRecord">
-					<object class="IBCocoaTouchOutletConnection" key="connection">
 						<string key="label">PMLabel</string>
 						<reference key="source" ref="841351856"/>
 						<reference key="destination" ref="109399079"/>
@@ -2286,6 +2230,62 @@
 						<reference key="destination" ref="18357294"/>
 					</object>
 					<int key="connectionID">153</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">currentTempLabel</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="539389727"/>
+					</object>
+					<int key="connectionID">154</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">todayIcon</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="527414064"/>
+					</object>
+					<int key="connectionID">155</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">todayHigh</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="184951216"/>
+					</object>
+					<int key="connectionID">156</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">todayLow</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="254864104"/>
+					</object>
+					<int key="connectionID">157</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tomorrowIcon</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="527408067"/>
+					</object>
+					<int key="connectionID">158</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tomorrowHigh</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="1043976380"/>
+					</object>
+					<int key="connectionID">159</int>
+				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">tomorrowLow</string>
+						<reference key="source" ref="841351856"/>
+						<reference key="destination" ref="647155008"/>
+					</object>
+					<int key="connectionID">160</int>
 				</object>
 				<object class="IBConnectionRecord">
 					<object class="IBCocoaTouchEventConnection" key="connection">
@@ -2950,7 +2950,7 @@
 				<reference key="dict.values" ref="0"/>
 			</object>
 			<nil key="sourceID"/>
-			<int key="maxID">153</int>
+			<int key="maxID">160</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes"/>
 		<int key="IBDocument.localizationMode">0</int>

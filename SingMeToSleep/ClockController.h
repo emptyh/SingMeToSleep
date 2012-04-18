@@ -51,6 +51,13 @@
 @property (nonatomic, retain) MTHAlarm *alarm;
 @property Boolean hasAlarmStopped;
 
+@property (retain, nonatomic) IBOutlet UILabel *currentTempLabel;
+@property (retain, nonatomic) IBOutlet UILabel *todayHigh;
+@property (retain, nonatomic) IBOutlet UILabel *todayLow;
+@property (retain, nonatomic) IBOutlet UILabel *tomorrowHigh;
+@property (retain, nonatomic) IBOutlet UILabel *tomorrowLow;
+@property (retain, nonatomic) IBOutlet UIImageView *tomorrowIcon;
+@property (retain, nonatomic) IBOutlet UIImageView *todayIcon;
 
 
 #pragma mark - Methods

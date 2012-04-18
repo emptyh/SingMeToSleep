@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    NSArray *array=[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
+    NSArray *array=[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"Sci_Fi.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
     [self setAlarms:array];
     [alarmPicker setDelegate:self];
 }
@@ -77,5 +77,8 @@
     [delegate setAlarmSound:selected];
    [[delegate currentAlarmLabel]setText:[NSString stringWithFormat:@"%@",selected]];
     return selected;
+}
+- (IBAction)donePressed:(id)sender {
+    [self dismissModalViewControllerAnimated:YES];
 }
 @end

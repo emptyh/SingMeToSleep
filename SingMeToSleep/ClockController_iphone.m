@@ -118,6 +118,7 @@
 
 -(void)updateScreen{
     [super blink];
+    [super weatherUpdate];
 }
 
 

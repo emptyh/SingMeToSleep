@@ -24,7 +24,8 @@
 }
 
 - (void)viewDidLoad{
-    [self setTimeSelector:[[UIDatePicker alloc]init]];
+    UIDatePicker *selector=[[[UIDatePicker alloc]init]autorelease];
+    [self setTimeSelector:selector];
     [[self timeSelector]setDatePickerMode:UIDatePickerModeTime];
     
     [super viewDidLoad];

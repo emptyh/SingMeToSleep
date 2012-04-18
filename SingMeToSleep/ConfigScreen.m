@@ -75,7 +75,7 @@
     BOOL isMillitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
     NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
     NSMutableArray *daysActive=[alarm valueForKey:@"daysActive"];
-    NSNumber *on=[[NSNumber alloc]initWithInt:1];
+    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     NSString *alarmTime=[alarm valueForKey:@"alarmTime"];
     NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
     [formatter setDateFormat:@"HH:mm"];
@@ -119,7 +119,7 @@
     [alarmPicker setDelegate:self];
     
     
-    NSArray *array=[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
+    NSArray *array=[NSArray arrayWithObjects:@"alarm1.mp3",@"alarm2.mp3",@"BurglarAlarm.mp3",@"robot_dog.mp3",@"Sci_Fi.mp3",@"School_Bell.mp3",@"Sub_Dive.mp3",@"Train.mp3", nil];
     [self setAlarms:array];
 
 }

@@ -17,7 +17,7 @@
 
 -(id)init{
     if(self=[super init]){
-        NSNumber *off=[[NSNumber alloc]initWithInt:0];
+        NSNumber *off=[[[NSNumber alloc]initWithInt:0]autorelease];
         activeDays=[[NSMutableArray alloc]initWithObjects:off,off,off,off,off,off,off,off, nil];
         nextAlarmTime=[[NSDate alloc]init];
         active=NO;
@@ -59,8 +59,8 @@
     int alarmTimeSeconds=[self convertStringTimeToIntSeconds:alarmTime];
     
    
-    
-    if([[activeDays objectAtIndex:day] isEqual:[[NSNumber alloc]initWithInt:1]]){
+    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
+    if([[activeDays objectAtIndex:day] isEqual:on]){
         if (day>today || (day==today && alarmTimeSeconds>nowTimeSeconds)){
             int daysAdd=0;
             if(today==Wrap){
@@ -108,12 +108,12 @@
     
 }
 -(void)addActiveDay:(WeekDay)day{
-    NSNumber *on=[[NSNumber alloc]initWithInt:1];
+    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     [activeDays replaceObjectAtIndex:day withObject:on];
     
 }
 -(void)removeActiveDay:(WeekDay)day{
-    NSNumber *off=[[NSNumber alloc]initWithInt:0];
+    NSNumber *off=[[[NSNumber alloc]initWithInt:0]autorelease];
     [activeDays replaceObjectAtIndex:day withObject:off];
 }
 -(int)convertStringTimeToIntSeconds:(NSString*)time{

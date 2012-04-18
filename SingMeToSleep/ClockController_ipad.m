@@ -23,13 +23,7 @@
 @synthesize titleLabel;
 @synthesize playPauseButton;
 @synthesize volumeSlider;
-@synthesize currentTempLabel;
-@synthesize todayHigh;
-@synthesize todayLow;
-@synthesize tomorrowHigh;
-@synthesize tomorrowLow;
-@synthesize tomorrowIcon;
-@synthesize todayIcon;
+
 @synthesize PMLabel;
 @synthesize AMLabel;
 
@@ -49,14 +43,7 @@
     [playPauseButton release];
     [volumeSlider release];
     [titleLabel release];
-    [currentTempLabel release];
-    [currentTempLabel release];
-    [todayHigh release];
-    [todayLow release];
-    [tomorrowHigh release];
-    [tomorrowLow release];
-    [tomorrowIcon release];
-    [todayIcon release];
+   
     [PMLabel release];
     [AMLabel release];
     [super dealloc];
@@ -180,27 +167,7 @@
 -(void)setCurrentTemp:(NSString *)temp{
     [[self currentTempLabel] setText:temp];
 }
--(void)setWeatherCurrent:(NSString *)current 
-               todayHigh:(NSString *)todayHigh 
-                todayLow:(NSString *)todayLow 
-            todayIconUrl:(NSString *)todayIconUrl
-            tomorrowHigh:(NSString *)tomorrowHigh 
-             tomorrowLow:(NSString *)tomorrowLow
-            tomorrowIconUrl:(NSString *)tomorrowIconUrl{
-    
-    [[self currentTempLabel] setText:current];
-    [[self todayHigh] setText:todayHigh];
-    [[self todayLow] setText:todayLow];
-    [[self tomorrowHigh] setText:tomorrowHigh];
-    [[self tomorrowLow] setText:tomorrowLow];
-    NSString *base=@"http://www.google.com";
-    todayIconUrl=[base stringByAppendingString:todayIconUrl];
-    tomorrowIconUrl=[base stringByAppendingString:tomorrowIconUrl];
-    UIImage *todayImage =    [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:todayIconUrl]]];
-    UIImage *tomorrowImage = [UIImage imageWithData:[NSData dataWithContentsOfURL:[NSURL URLWithString:tomorrowIconUrl]]];
-    [[self todayIcon]setImage:todayImage];
-    [[self tomorrowIcon]setImage:tomorrowImage];
-}
+
 -(void)isPM:(BOOL)pm{
     UIColor *on=[UIColor redColor];
     UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.1];
