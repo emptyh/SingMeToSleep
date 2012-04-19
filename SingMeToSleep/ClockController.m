@@ -141,63 +141,10 @@
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
--(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels{
-    MTHNumber *tempNumber=[[[MTHNumber alloc]init]autorelease];
-    MTHNumber *number=tempNumber;
-    
-    for(UILabel *label in labels){
-        if([label tag]==0){
-            [number setTopBar:label];
-        }else if([label tag]==1){
-            [number setRightUpperBar:label];
-        }else if([label tag]==2){
-            [number setRightLowerBar:label];
-        }else if([label tag]==3){
-            [number setBottomBar:label];
-        }else if([label tag]==4){
-            [number setLeftLowerBar:label];
-        }else if([label tag]==5){
-            [number setLeftUpperBar:label];
-        }else if([label tag]==6){
-            [number setMiddleBar:label];
-        }
-    }
-   // [tempNumber release];
-    return number;
-}
-#pragma mark - Alarm Methods
--(void)soundAlarm{
-    MPMusicPlaybackState playbackState=[musicPlayer playbackState];
-    if(playbackState==MPMusicPlaybackStatePlaying){
-        [musicPlayer pause];
-    }
-        
-    [self alarmSounding];
-    [audioPlayer play];
-}
--(void)stopAlarm{
-    [audioPlayer pause];
-    [self setHasAlarmStopped:YES];
-    [musicPlayer setVolume:oldVolume];
-  //  [alarm setActive:NO];
-}
--(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    if ([musicPlayer volume]<1) {
-        [musicPlayer setVolume:[musicPlayer volume]+.1];
-    }
-    if([self hasAlarmStopped]){
-        
-    }else{
-        [audioPlayer play];
-    }
-    NSLog(@"hi there");
-}
-
-#pragma Universal Screen Updates
-
+#pragma mark Clock Methods
 -(void)blink{
-    if([[self alarm]shouldAlarmSound]){
-        [alarm setActive:NO];
+    if([[self alarm]active] && [[self alarm]shouldAlarmSound]){
+    //    [alarm setActive:NO];
         NSLog(@"bong");
         [[self alarm]calcNextAlarmTime];
         oldVolume=[[self musicPlayer]volume];
@@ -248,16 +195,65 @@
     [dformat release];
     
 }
-- (IBAction)selectMusicPressed:(id)sender {
-  //  UIButton *button=(UIButton*)sender;
-     NSLog([[SelectMusicButton titleLabel]text]);
-    if([[SelectMusicButton titleForState:UIControlStateNormal] isEqualToString: @"I'm Up Damnit"]){
-        [self stopAlarm];
-        [[self SelectMusicButton]setTitle:@"Select Music" forState:UIControlStateNormal];
-    }else{
-        [self selectMusic];
+-(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels{
+    MTHNumber *tempNumber=[[[MTHNumber alloc]init]autorelease];
+    MTHNumber *number=tempNumber;
+    
+    for(UILabel *label in labels){
+        if([label tag]==0){
+            [number setTopBar:label];
+        }else if([label tag]==1){
+            [number setRightUpperBar:label];
+        }else if([label tag]==2){
+            [number setRightLowerBar:label];
+        }else if([label tag]==3){
+            [number setBottomBar:label];
+        }else if([label tag]==4){
+            [number setLeftLowerBar:label];
+        }else if([label tag]==5){
+            [number setLeftUpperBar:label];
+        }else if([label tag]==6){
+            [number setMiddleBar:label];
+        }
     }
+   // [tempNumber release];
+    return number;
 }
+#pragma mark - Alarm Methods
+-(void)alarmSounding{
+    [[self SelectMusicButton]setTitle:@"I'm Up Damnit" forState:UIControlStateNormal];
+}
+-(void)soundAlarm{
+    MPMusicPlaybackState playbackState=[musicPlayer playbackState];
+    if(playbackState==MPMusicPlaybackStatePlaying){
+        [musicPlayer pause];
+    }
+        
+    [self alarmSounding];
+    [audioPlayer play];
+}
+-(void)stopAlarm{
+    [audioPlayer pause];
+    [self setHasAlarmStopped:YES];
+    [musicPlayer setVolume:oldVolume];
+  //  [alarm setActive:NO];
+}
+-(void)audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
+    if ([musicPlayer volume]<1) {
+        [musicPlayer setVolume:[musicPlayer volume]+.1];
+    }
+    if([self hasAlarmStopped]){
+        
+    }else{
+        [audioPlayer play];
+    }
+    NSLog(@"hi there");
+}
+
+#pragma Universal Screen Updates
+
+
+
 
 -(NSTimer *)createTimer{
     return [NSTimer scheduledTimerWithTimeInterval:.2 target:self selector:@selector(updateScreen) userInfo:nil repeats:YES];
@@ -360,6 +356,16 @@
     [self moveVolumeSlider:[musicPlayer volume]];
 }
 #pragma mark - Music related methods
+- (IBAction)selectMusicPressed:(id)sender {
+    //  UIButton *button=(UIButton*)sender;
+    NSLog([[SelectMusicButton titleLabel]text]);
+    if([[SelectMusicButton titleForState:UIControlStateNormal] isEqualToString: @"I'm Up Damnit"]){
+        [self stopAlarm];
+        [[self SelectMusicButton]setTitle:@"Select Music" forState:UIControlStateNormal];
+    }else{
+        [self selectMusic];
+    }
+}
 -(void)startTimer{
     NSDate *date=[[NSDate alloc] init];
     [self setTimeStarted:date];
@@ -405,6 +411,7 @@
     [self presentModalViewController:mediaPicker animated:YES];
     [mediaPicker release];
 }
+#pragma mark Config Methods
 -(void)configScreenDidUnload{
     [self applyConfig];
 }
@@ -425,6 +432,7 @@
     [self setFloydProtection:isFloydProtection];
     
     NSMutableDictionary *newAlarm=[config valueForKey:@"alarm"];
+    BOOL isAlarmActive=[[newAlarm valueForKey:@"active"]boolValue];
     NSString *newAlarmTime=[newAlarm valueForKey:@"alarmTime"];
     NSMutableArray *activeDays=[newAlarm valueForKey:@"daysActive"];
     MTHAlarm *tempAlarm=[[[MTHAlarm alloc]init]autorelease];
@@ -454,6 +462,7 @@
     if([activeDays objectAtIndex:7]==on){
         [[self alarm] addActiveDay:Saturday];
     }
+    [[self alarm]setActive:isAlarmActive];
     [[self alarm] calcNextAlarmTime];
     
     NSString *alarmSound=[config valueForKey:@"alarmSound"];
@@ -521,9 +530,7 @@
 
 }
 
--(void)alarmSounding{
-    [[self SelectMusicButton]setTitle:@"I'm Up Damnit" forState:UIControlStateNormal];
-}
+
 
 
 

@@ -154,12 +154,19 @@
 -(void)isPM:(BOOL)pm{
     UIColor *on=[UIColor redColor];
     UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.1];
-    if(pm){
-        [[self PMLabel]setTextColor:on];
-        [[self AMLabel]setTextColor:off];
-    }else{
+    if([super millitaryTime]){
         [[self PMLabel]setTextColor:off];
-        [[self AMLabel]setTextColor:on];
+        [[self AMLabel]setTextColor:off];
+    }else {
+        
+    
+        if(pm){
+            [[self PMLabel]setTextColor:on];
+            [[self AMLabel]setTextColor:off];
+        }else{
+            [[self PMLabel]setTextColor:off];
+            [[self AMLabel]setTextColor:on];
+        }
     }
     [off release];
     // [on release];

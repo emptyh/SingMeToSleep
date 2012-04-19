@@ -13,12 +13,14 @@
 
 @implementation ConfigScreen
 
+#pragma mark Properties
 @synthesize minutesOfMusicSpinner;
 @synthesize minutesOfMusicText;
 @synthesize delegate;
 @synthesize shuffleSwitch;
 @synthesize floydProtectionSwitch;
 @synthesize millitaryTime;
+@synthesize alarmActiveSwitch;
 @synthesize currentAlarmLabel;
 @synthesize SundayLabel;
 @synthesize MondayLabel;
@@ -33,6 +35,7 @@
 @synthesize audioPlayer;
 @synthesize alarmSound;
 
+#pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil{
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
@@ -64,7 +67,7 @@
     // Release any cached data, images, etc that aren't in use.
 }
 
-#pragma mark - View lifecycle
+
 
 - (void)viewDidLoad{
     [super viewDidLoad];
@@ -73,7 +76,9 @@
     BOOL floydProtection=[[config valueForKey:@"floydProtection"]boolValue];
     BOOL shuffle=[[config valueForKey:@"shuffle"]boolValue];
     BOOL isMillitaryTime=[[config valueForKey:@"millitaryTime"]boolValue];
+    
     NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
+    BOOL isAlarmActive=[[alarm valueForKey:@"active"]boolValue];
     NSMutableArray *daysActive=[alarm valueForKey:@"daysActive"];
     NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     NSString *alarmTime=[alarm valueForKey:@"alarmTime"];
@@ -110,6 +115,7 @@
     NSString *minutesOfMusic=[config valueForKey:@"minutesOfMusic"];
     [[self minutesOfMusicText]setText:minutesOfMusic];
     [[self minutesOfMusicSpinner]setValue:[minutesOfMusic intValue]];
+    [[self alarmActiveSwitch]setOn:isAlarmActive];
     [[self millitaryTime]setOn:isMillitaryTime];
     [[self shuffleSwitch]setOn:shuffle];
     [[self floydProtectionSwitch]setOn:floydProtection];
@@ -127,6 +133,7 @@
 - (void)viewDidUnload{
   //  [self setSelectAlarmButton:nil];
     [self setCurrentAlarmLabel:nil];
+    [self setAlarmActiveSwitch:nil];
     [super viewDidUnload];
     [self setMinutesOfMusicText:nil];
     [self setMinutesOfMusicSpinner:nil];
@@ -171,10 +178,11 @@
     [audioPlayer release];
     [alarmSound release];
     [currentAlarmLabel release];
+    [alarmActiveSwitch release];
     [super dealloc];
 }
 
-
+#pragma mark UI actions
 - (IBAction)backPressed:(id)sender {
     NSString *mins=[[self minutesOfMusicText]text];
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
@@ -183,6 +191,7 @@
     BOOL shuffle=[[self shuffleSwitch] isOn];
     BOOL isMillitaryTime=[[self millitaryTime]isOn];
     BOOL floydProtection=[[self floydProtectionSwitch] isOn];
+    BOOL isAlarmActive=[[self alarmActiveSwitch]isOn];
     [config setValue:[NSNumber numberWithBool:isMillitaryTime] forKey:@"millitaryTime"];
     [config setValue:[NSNumber numberWithBool:shuffle] forKey:@"shuffle"];
     [config setValue:[NSNumber numberWithBool:floydProtection] forKey:@"floydProtection"];
@@ -221,6 +230,7 @@
     [formatter stringFromDate:date];
     NSString *alarmTime=[formatter stringFromDate:date];
     [alarm setValue:alarmTime forKey:@"alarmTime"];
+    [alarm setValue:[NSNumber numberWithBool:isAlarmActive] forKey:@"active"];
     [config setValue:alarm forKey:@"alarm"];
     [config setValue:alarmSound  forKey:@"alarmSound"];
     [userDefault setValue:config forKey:@"config"];

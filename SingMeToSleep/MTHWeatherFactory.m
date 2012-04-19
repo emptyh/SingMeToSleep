@@ -9,10 +9,12 @@
 #import "MTHWeatherFactory.h"
 
 @implementation MTHWeatherFactory
+#pragma mark Properties
 @synthesize tags;
 @synthesize weather;
 @synthesize forcast;
 
+#pragma mark Object Lifecycle
 -(id)init{
     if( self=[super init] ){
         tags=[[HSUStack alloc]init];
@@ -26,6 +28,7 @@
     [forcast release];
     [weather release];
 }
+
 -(MTHWeather*)getWeatherFromURL:(NSURL*)url{
     
     NSXMLParser *parser=[[NSXMLParser alloc]initWithContentsOfURL:url];
@@ -34,6 +37,7 @@
     [parser release];
     return weather;
 }
+#pragma mark Parser Methods
 -(void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string{
   
 }
