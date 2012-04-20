@@ -20,7 +20,7 @@ typedef enum{
     Wednesday=4,
     Thursday=5,
     Friday=6,
-    Saturday=0
+    Saturday=7
 }WeekDay;
 
 @property (nonatomic, retain)NSString *alarmSoundName;

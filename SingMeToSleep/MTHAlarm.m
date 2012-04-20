@@ -55,7 +55,8 @@
     NSString *currentTime=[formatter stringFromDate:date];
     int nowTimeSeconds= [self convertStringTimeToIntSeconds:currentTime];
     int alarmTimeSeconds=[self convertStringTimeToIntSeconds:alarmTime];
-    WeekDay day=(daysOut+today) % 7;
+    WeekDay day=(daysOut+today) % 8;
+    
    
     NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     if([[activeDays objectAtIndex:day] isEqual:on]){
