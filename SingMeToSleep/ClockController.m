@@ -16,7 +16,6 @@
 @implementation ClockController
 #pragma mark - Properties
 @synthesize SelectMusicButton;
-@synthesize timeLeftLabel;
 @synthesize tenSecondsNumber;
 @synthesize secondsNumber;
 @synthesize tenMinutesNumber;
@@ -40,6 +39,7 @@
 @synthesize tomorrowLow;
 @synthesize tomorrowIcon;
 @synthesize todayIcon;
+@synthesize timeLeftLabel;
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -79,14 +79,15 @@
     [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     [locationManager startUpdatingLocation];
     
-    
+    [self applyConfig];
     
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
+    songTimes=[[NSMutableArray alloc]init];
     //[musicPlayer setShuffleMode:MPMusicShuffleModeSongs]; 
     [self registerMediaPlayerNotifications];
     [self initScreen];
-    [self applyConfig];
+    
     
     
     //debug alarm
@@ -109,6 +110,8 @@
     [tomorrowLow release];
     [tomorrowIcon release];
     [todayIcon release];
+    [songTimes release];
+    [timeLeftLabel release];
     [super dealloc];
 }
 
@@ -116,6 +119,7 @@
 - (void)viewDidUnload
 {
     [self setSelectMusicButton:nil];
+    [self setTimeLeftLabel:nil];
     [self setTimeLeftLabel:nil];
     [super viewDidUnload];
     [musicPlayer release];
@@ -150,6 +154,15 @@
         oldVolume=[[self musicPlayer]volume];
         [[self musicPlayer] setVolume:.1];
         [self soundAlarm];
+    }
+    if (timeOfSongLeft>0) {
+        int currentProgress=[musicPlayer currentPlaybackTime];
+        int timeLeft=timeOfSongLeft-currentProgress;
+        int minutesLeft=timeLeft/60;
+        int secondsLeft=timeLeft % 60;
+        [[self timeLeftLabel]setText:[NSString stringWithFormat:@"Time Left: %d:%d",minutesLeft,secondsLeft]];
+    }else {
+        [[self timeLeftLabel]setText:@""];
     }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
@@ -278,6 +291,13 @@
 }
 -(void)mediaPicker:(MPMediaPickerController *) mediaPicker didPickMediaItems:(MPMediaItemCollection *)mediaItemCollection{
     if(mediaItemCollection){
+        [songTimes removeAllObjects];
+        totalSongs=[mediaItemCollection count];
+        for(int i=0;i< totalSongs;i++ ){
+            MPMediaItem *item=[[mediaItemCollection items]objectAtIndex:i];
+            int time=[[item valueForProperty:MPMediaItemPropertyPlaybackDuration]intValue];
+            [songTimes addObject:[[NSNumber alloc]initWithInt:time]];
+        }
         [musicPlayer setQueueWithItemCollection:mediaItemCollection];
         [musicPlayer play];
     }
@@ -313,6 +333,7 @@
         }
     }
     MPMediaItemCollection *collection=[[MPMediaItemCollection alloc]initWithItems:playList];
+    
     [musicPlayer setQueueWithItemCollection:collection];
     [musicPlayer play];
     [collection release];
@@ -326,6 +347,7 @@
    
     
     MPMediaItem *song=[musicPlayer nowPlayingItem];
+    
     if(([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0) || !song){
         [self startWhiteNoise];
 
@@ -340,6 +362,11 @@
         artist=[song valueForProperty:MPMediaItemPropertyArtist];
     }
     [self updateDisplayWithArtist:artist andTitle:title];
+    currentIndex=[musicPlayer indexOfNowPlayingItem];
+    timeOfSongLeft=0;
+    for (int i=currentIndex; i<[songTimes count]; i++) {
+        timeOfSongLeft=timeOfSongLeft + [[songTimes objectAtIndex:i]intValue];
+    }
 }
 -(void)handle_playbackStateChanged:(id) notification{
     MPMusicPlaybackState playbackState = [musicPlayer playbackState];
@@ -350,6 +377,7 @@
         
        
     }
+    
 }
 -(void)handle_VolumeChanged:(id)notification{
     

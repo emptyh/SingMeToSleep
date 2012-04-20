@@ -34,7 +34,7 @@
 -(void)calcNextAlarmTime{
    // NSDate *alarm=[[NSDate alloc]init];
    long oneDay=86400;
-    for (int i=1; i<8; i++) {
+    for (int i=0; i<7; i++) {
         if([self shouldSetOnDay:i]){
             NSLog(@"today %d",i);
             break;
@@ -43,30 +43,28 @@
    // [alarm release];
     
 }
--(Boolean)shouldSetOnDay:(WeekDay)day{
+-(Boolean)shouldSetOnDay:(int)daysOut{
     NSCalendar *gregorian = [[[NSCalendar alloc]
                              initWithCalendarIdentifier:NSGregorianCalendar]autorelease];
     NSDate *date = [[[NSDate alloc]init]autorelease];
     NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:date];
     WeekDay today = [weekdayComponents weekday];
-    if (today==Saturday) {
-        today=Wrap;
-    }
+
     NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
     [formatter setDateFormat:@"HH:mm"];
     NSString *currentTime=[formatter stringFromDate:date];
     int nowTimeSeconds= [self convertStringTimeToIntSeconds:currentTime];
     int alarmTimeSeconds=[self convertStringTimeToIntSeconds:alarmTime];
-    
+    WeekDay day=(daysOut+today) % 7;
    
     NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
     if([[activeDays objectAtIndex:day] isEqual:on]){
-        if (day>today || (day==today && alarmTimeSeconds>nowTimeSeconds)){
+        if (day>today || day<today || (day==today && alarmTimeSeconds>nowTimeSeconds)){
             int daysAdd=0;
-            if(today==Wrap){
-                daysAdd=7-(today-day);
-            }else{
+            if(today<day){
                 daysAdd=day-today;
+            }else if (today>day){
+                daysAdd=(7-today)+day;
             }
             if (daysAdd>0) {
                 date=[date dateByAddingTimeInterval:daysAdd*20*60*60];
@@ -88,6 +86,7 @@
     }else {
         return NO;
     }
+    return NO;
 }
 -(Boolean)shouldAlarmSound{
     if(active && nextAlarmTime && [nextAlarmTime timeIntervalSinceNow]<0){

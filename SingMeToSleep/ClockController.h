@@ -29,12 +29,15 @@
     NSString *zipcode;
     CLLocationManager *locationManager;
     CLGeocoder * geoCoder;
+    NSMutableArray *songTimes;
+    int currentIndex;
+    int timeOfSongLeft;
+    int totalSongs;
     
 }
 
 #pragma mark - Properties
 @property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
-@property (retain, nonatomic) IBOutlet UILabel *timeLeftLabel;
 @property (nonatomic,retain) MTHNumber *tenSecondsNumber;
 @property (nonatomic,retain) MTHNumber *secondsNumber;
 @property (nonatomic,retain) MTHNumber *tenMinutesNumber;
@@ -58,6 +61,7 @@
 @property (retain, nonatomic) IBOutlet UILabel *tomorrowLow;
 @property (retain, nonatomic) IBOutlet UIImageView *tomorrowIcon;
 @property (retain, nonatomic) IBOutlet UIImageView *todayIcon;
+@property (retain, nonatomic) IBOutlet UILabel *timeLeftLabel;
 
 
 #pragma mark - Methods

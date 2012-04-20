@@ -13,14 +13,14 @@
     
 }
 typedef enum{
-    Wrap=0,
+    
     Sunday=1,
     Monday=2,
     Tuesday=3,
     Wednesday=4,
     Thursday=5,
     Friday=6,
-    Saturday=7
+    Saturday=0
 }WeekDay;
 
 @property (nonatomic, retain)NSString *alarmSoundName;
@@ -38,7 +38,7 @@ typedef enum{
 -(void)stopAlarm;
 -(void)addActiveDay:(WeekDay) day;
 -(void)removeActiveDay:(WeekDay)day;
--(Boolean)shouldSetOnDay:(WeekDay)day;
+-(Boolean)shouldSetOnDay:(int)daysOut;
 -(int)convertStringTimeToIntSeconds:(NSString*)time;
 
 
