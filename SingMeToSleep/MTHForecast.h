@@ -10,9 +10,9 @@
 
 @interface MTHForecast : NSObject
 #pragma mark - Properties
-@property (nonatomic,retain) NSString *highTemp;
-@property (nonatomic,retain) NSString *lowTemp;
-@property (nonatomic,retain) NSString *forecastIcon;
-@property (nonatomic,retain) NSString *day;
+@property (nonatomic) NSString *highTemp;
+@property (nonatomic) NSString *lowTemp;
+@property (nonatomic) NSString *forecastIcon;
+@property (nonatomic) NSString *day;
 
 @end

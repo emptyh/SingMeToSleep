@@ -17,7 +17,7 @@
 
 -(id)init{
     if(self=[super init]){
-        NSNumber *off=[[[NSNumber alloc]initWithInt:0]autorelease];
+        NSNumber *off=[[NSNumber alloc]initWithInt:0];
         activeDays=[[NSMutableArray alloc]initWithObjects:off,off,off,off,off,off,off,off, nil];
         nextAlarmTime=[[NSDate alloc]init];
         active=NO;
@@ -25,12 +25,6 @@
     return self;
 }
 
--(void)dealloc{
-    [activeDays release];
-    [alarmSoundName release];
-    [nextAlarmTime release];
-    
-}
 -(void)calcNextAlarmTime{
    // NSDate *alarm=[[NSDate alloc]init];
    long oneDay=86400;
@@ -44,13 +38,13 @@
     
 }
 -(Boolean)shouldSetOnDay:(int)daysOut{
-    NSCalendar *gregorian = [[[NSCalendar alloc]
-                             initWithCalendarIdentifier:NSGregorianCalendar]autorelease];
-    NSDate *date = [[[NSDate alloc]init]autorelease];
+    NSCalendar *gregorian = [[NSCalendar alloc]
+                             initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDate *date = [[NSDate alloc]init];
     NSDateComponents *weekdayComponents = [gregorian components:NSWeekdayCalendarUnit fromDate:date];
     WeekDay today = [weekdayComponents weekday];
 
-    NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"HH:mm"];
     NSString *currentTime=[formatter stringFromDate:date];
     int nowTimeSeconds= [self convertStringTimeToIntSeconds:currentTime];
@@ -58,7 +52,7 @@
     WeekDay day=(daysOut+today) % 8;
     
    
-    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
+    NSNumber *on=[[NSNumber alloc]initWithInt:1];
     if([[activeDays objectAtIndex:day] isEqual:on]){
         if (day>today || day<today || (day==today && alarmTimeSeconds>nowTimeSeconds)){
             int daysAdd=0;
@@ -91,7 +85,7 @@
 }
 -(Boolean)shouldAlarmSound{
     if(active && nextAlarmTime && [nextAlarmTime timeIntervalSinceNow]<0){
-        NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
+        NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
         [formatter setDateFormat:@"HH:mm"];
         NSLog(@"time set %@",[formatter stringFromDate:nextAlarmTime]);
         return YES;
@@ -108,12 +102,12 @@
     
 }
 -(void)addActiveDay:(WeekDay)day{
-    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
+    NSNumber *on=[[NSNumber alloc]initWithInt:1];
     [activeDays replaceObjectAtIndex:day withObject:on];
     
 }
 -(void)removeActiveDay:(WeekDay)day{
-    NSNumber *off=[[[NSNumber alloc]initWithInt:0]autorelease];
+    NSNumber *off=[[NSNumber alloc]initWithInt:0];
     [activeDays replaceObjectAtIndex:day withObject:off];
 }
 -(int)convertStringTimeToIntSeconds:(NSString*)time{

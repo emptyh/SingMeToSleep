@@ -24,17 +24,5 @@
     }
     return self;
 }
--(void)dealloc{
-    
-    [city release];
-    [humidity release];
-    [temp release];
-    [wind release];
-    [conditions release];
-    [forecasts release];
-    
-    [super dealloc];
-    
-}
 
 @end

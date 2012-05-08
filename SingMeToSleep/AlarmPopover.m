@@ -48,10 +48,6 @@
 	return YES;
 }
 
-- (void)dealloc {
-    [alarmPicker release];
-    [super dealloc];
-}
 #pragma mark - Picker Delegage Methods
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
     return 1;
@@ -70,9 +66,8 @@
     NSError *error=Nil;
     if(audioPlayer){
         [audioPlayer pause];
-        [audioPlayer release];
     }
-    audioPlayer=[[AVPlayer playerWithURL:url ]retain];
+    audioPlayer=[AVPlayer playerWithURL:url ];
     [audioPlayer play];
     [delegate setAlarmSound:selected];
    [[delegate currentAlarmLabel]setText:[NSString stringWithFormat:@"%@",selected]];

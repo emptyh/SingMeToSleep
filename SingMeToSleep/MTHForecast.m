@@ -14,12 +14,5 @@
 @synthesize forecastIcon;
 @synthesize day;
 
--(void)dealloc{
-    [highTemp release];
-    [lowTemp release];
-    [forecastIcon release];
-    [day release];
-    [super dealloc];
-}
 
 @end

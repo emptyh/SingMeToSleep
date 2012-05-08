@@ -11,9 +11,9 @@
 #import "MTHWeather.h"
 #import "MTHForecast.h"
 @interface MTHWeatherFactory : NSObject<NSXMLParserDelegate>
-@property (nonatomic,retain) HSUStack *tags;
-@property (nonatomic,retain) MTHWeather *weather;
-@property (nonatomic,retain) MTHForecast *forcast;
+@property (nonatomic) HSUStack *tags;
+@property (nonatomic) MTHWeather *weather;
+@property (nonatomic) MTHForecast *forcast;
 #pragma mark - Properties
 
 #pragma mark - Static Methods

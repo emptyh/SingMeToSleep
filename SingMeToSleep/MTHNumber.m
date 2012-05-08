@@ -123,7 +123,6 @@
         [leftLowerBar setBackgroundColor:off];
         [rightLowerBar setBackgroundColor:off];
     }
-    [off release];
     
 }
 

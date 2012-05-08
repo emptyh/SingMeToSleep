@@ -12,12 +12,12 @@
 @interface MTHWeather : NSObject
 
 #pragma mark - Properties
-@property (nonatomic,retain)NSString *city;
-@property (nonatomic,retain)NSString *conditionIcon;
-@property (nonatomic,retain)NSString *temp;
-@property (nonatomic,retain)NSString *humidity;
-@property (nonatomic,retain)NSString *wind;
-@property (nonatomic,retain)MTHForecast *conditions;
-@property (nonatomic,retain)NSMutableArray *forecasts;
+@property (nonatomic)NSString *city;
+@property (nonatomic)NSString *conditionIcon;
+@property (nonatomic)NSString *temp;
+@property (nonatomic)NSString *humidity;
+@property (nonatomic)NSString *wind;
+@property (nonatomic)MTHForecast *conditions;
+@property (nonatomic)NSMutableArray *forecasts;
 
 @end

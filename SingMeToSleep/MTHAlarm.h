@@ -23,11 +23,11 @@ typedef enum{
     Saturday=7
 }WeekDay;
 
-@property (nonatomic, retain)NSString *alarmSoundName;
+@property (nonatomic)NSString *alarmSoundName;
 @property Boolean active;
 @property Boolean alarmVolumeShouldRise;
-@property (nonatomic, retain)NSString *alarmTime;
-@property (nonatomic, retain)NSDate *nextAlarmTime;
+@property (nonatomic)NSString *alarmTime;
+@property (nonatomic)NSDate *nextAlarmTime;
 
 
 

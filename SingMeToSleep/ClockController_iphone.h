@@ -19,19 +19,19 @@
     NSArray *tensHoursLabel;
 }
 #pragma mark - Properties
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *dotLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tenSecondsLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *secondsLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensMinutesLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *minutesLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *hoursLabel;
-@property (nonatomic, retain) IBOutletCollection(UILabel) NSArray *tensHoursLabel;
-@property (retain, nonatomic) IBOutlet UILabel *artistLabel;
-@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-@property (retain, nonatomic) IBOutlet UISlider *volumeSlider;
-@property (retain, nonatomic) IBOutlet UIButton *playPauseButton;
-@property (retain, nonatomic) IBOutlet UILabel *AMLabel;
-@property (retain, nonatomic) IBOutlet UILabel *PMLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *dotLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *tenSecondsLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *secondsLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *tensMinutesLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *minutesLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *hoursLabel;
+@property (nonatomic) IBOutletCollection(UILabel) NSArray *tensHoursLabel;
+@property ( nonatomic) IBOutlet UILabel *artistLabel;
+@property ( nonatomic) IBOutlet UILabel *titleLabel;
+@property ( nonatomic) IBOutlet UISlider *volumeSlider;
+@property ( nonatomic) IBOutlet UIButton *playPauseButton;
+@property ( nonatomic) IBOutlet UILabel *AMLabel;
+@property ( nonatomic) IBOutlet UILabel *PMLabel;
 
 #pragma mark - Actions
 - (IBAction)startTimerPressed:(id)sender;

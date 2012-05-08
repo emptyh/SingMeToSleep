@@ -12,8 +12,8 @@
 
 @interface AlarmPopover : UIViewController<UIPickerViewDelegate>
 - (IBAction)donePressed:(id)sender;
-@property (retain, nonatomic) IBOutlet UIPickerView *alarmPicker;
-@property (retain, nonatomic) NSArray *alarms;
-@property (retain, nonatomic) AVPlayer *audioPlayer;
-@property (retain, nonatomic) ConfigScreen *delegate;
+@property ( nonatomic) IBOutlet UIPickerView *alarmPicker;
+@property ( nonatomic) NSArray *alarms;
+@property ( nonatomic) AVPlayer *audioPlayer;
+@property ( nonatomic) ConfigScreen *delegate;
 @end

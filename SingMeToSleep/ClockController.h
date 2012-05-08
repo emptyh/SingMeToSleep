@@ -39,33 +39,34 @@
 }
 
 #pragma mark - Properties
-@property (retain, nonatomic) IBOutlet UIButton *SelectMusicButton;
-@property (nonatomic,retain) MTHNumber *tenSecondsNumber;
-@property (nonatomic,retain) MTHNumber *secondsNumber;
-@property (nonatomic,retain) MTHNumber *tenMinutesNumber;
-@property (nonatomic,retain) MTHNumber *minutesNumber;
-@property (nonatomic,retain) MTHNumber *tenHoursNumber;
-@property (nonatomic,retain) MTHNumber *hoursNumber;
-@property (nonatomic,retain) MPMusicPlayerController *musicPlayer;
-@property (nonatomic,retain) NSDate *timeTillSleep;
-@property (nonatomic,retain) NSDate *timeStarted;
-@property (nonatomic, retain)NSDate *lastWeatherUpdate;
+@property ( nonatomic) IBOutlet UIButton *SelectMusicButton;
+@property (nonatomic) MTHNumber *tenSecondsNumber;
+@property (nonatomic) MTHNumber *secondsNumber;
+@property (nonatomic) MTHNumber *tenMinutesNumber;
+@property (nonatomic) MTHNumber *minutesNumber;
+@property (nonatomic) MTHNumber *tenHoursNumber;
+@property (nonatomic) MTHNumber *hoursNumber;
+@property (nonatomic) MPMusicPlayerController *musicPlayer;
+@property (nonatomic) NSDate *timeTillSleep;
+@property (nonatomic) NSDate *timeStarted;
+@property (nonatomic)NSDate *lastWeatherUpdate;
 @property int minutesOfMusic;
 @property BOOL floydProtection;
 @property BOOL millitaryTime;
-@property (nonatomic, retain) MTHAlarm *alarm;
+@property (nonatomic) MTHAlarm *alarm;
 @property Boolean hasAlarmStopped;
 
-@property (retain, nonatomic) IBOutlet UIProgressView *timeLeftBar;
-@property (retain, nonatomic) IBOutlet UILabel *currentTempLabel;
-@property (retain, nonatomic) IBOutlet UILabel *todayHigh;
-@property (retain, nonatomic) IBOutlet UILabel *todayLow;
-@property (retain, nonatomic) IBOutlet UILabel *tomorrowHigh;
-@property (retain, nonatomic) IBOutlet UILabel *tomorrowLow;
-@property (retain, nonatomic) IBOutlet UIImageView *tomorrowIcon;
-@property (retain, nonatomic) IBOutlet UIImageView *todayIcon;
-@property (retain, nonatomic) IBOutlet UILabel *timeLeftLabel;
+@property ( nonatomic) IBOutlet UIProgressView *timeLeftBar;
+@property ( nonatomic) IBOutlet UILabel *currentTempLabel;
+@property ( nonatomic) IBOutlet UILabel *todayHigh;
+@property ( nonatomic) IBOutlet UILabel *todayLow;
+@property ( nonatomic) IBOutlet UILabel *tomorrowHigh;
+@property ( nonatomic) IBOutlet UILabel *tomorrowLow;
+@property ( nonatomic) IBOutlet UIImageView *tomorrowIcon;
+@property ( nonatomic) IBOutlet UIImageView *todayIcon;
+@property ( nonatomic) IBOutlet UILabel *timeLeftLabel;
 
+@property (strong, nonatomic) IBOutletCollection(UILabel) NSArray *days;
 
 #pragma mark - Methods
 - (IBAction)selectMusicPressed:(id)sender;

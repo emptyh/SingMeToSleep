@@ -18,11 +18,6 @@
     }
     return self;
 }
-- (void)dealloc {
-    [m_array release];
-  //  [self dealloc];
-    [super dealloc];
-}
 -(BOOL)containsString:(id)string{
     for (NSString *element in m_array){
         if([element isEqualToString:string]){
@@ -41,7 +36,7 @@
     id obj = nil;
     if(m_array.count > 0)
     {
-        obj = [[[m_array lastObject]retain]autorelease];
+        obj = [m_array lastObject];
         [m_array removeLastObject];
         count = m_array.count;
     }

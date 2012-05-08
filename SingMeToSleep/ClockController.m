@@ -41,6 +41,8 @@
 @synthesize tomorrowIcon;
 @synthesize todayIcon;
 @synthesize timeLeftLabel;
+@synthesize days;
+
 
 #pragma mark - View lifecycle
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -99,24 +101,6 @@
     //end debug
     //[self setMinutesOfMusic:15];
 }
-- (void)dealloc {
-    [SelectMusicButton release];
-    [timeLeftLabel release];
-    [geoCoder release];
-    
-    [currentTempLabel release];
-    [currentTempLabel release];
-    [todayHigh release];
-    [todayLow release];
-    [tomorrowHigh release];
-    [tomorrowLow release];
-    [tomorrowIcon release];
-    [todayIcon release];
-    [songTimes release];
-    [timeLeftLabel release];
-    [timeLeftBar release];
-    [super dealloc];
-}
 
 
 - (void)viewDidUnload
@@ -125,8 +109,9 @@
     [self setTimeLeftLabel:nil];
     [self setTimeLeftLabel:nil];
     [self setTimeLeftBar:nil];
+    [self setDays:nil];
+    [self setDays:nil];
     [super viewDidUnload];
-    [musicPlayer release];
     [[NSNotificationCenter defaultCenter] removeObserver: self
                                                     name: MPMusicPlayerControllerNowPlayingItemDidChangeNotification
                                                   object: musicPlayer];
@@ -178,7 +163,24 @@
     }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
-    NSString *now=[dformat stringFromDate:[NSDate date]];
+    NSDate *currentDate=[NSDate date];
+    NSCalendar *calendar=[[NSCalendar alloc]initWithCalendarIdentifier:NSGregorianCalendar];
+    NSDateComponents *components=[calendar components:NSWeekdayCalendarUnit fromDate:currentDate];
+    int weekDay=[components weekday];
+    UIColor *on=[UIColor redColor];
+    UIColor *off=[[UIColor alloc] initWithRed:255/255 green:0 blue:0 alpha:.3];
+    for (UILabel *day in days) {
+        if ([day tag]==weekDay) {
+            [day setTextColor:on];
+        }else{
+            [day setTextColor:off];
+        }
+    }
+    
+    NSString *now=[dformat stringFromDate:currentDate];
+   
+   
+    
     NSArray *dateTime=[now componentsSeparatedByString:@" "];
     NSArray *parts=[[dateTime objectAtIndex:1] componentsSeparatedByString:@":"];
     NSString *hours=[parts objectAtIndex:0];
@@ -219,11 +221,10 @@
     [[self hoursNumber]setNumber:oneHours];
     
     
-    [dformat release];
     
 }
 -(MTHNumber *) createNumberFromLabelArray:(NSArray *) labels{
-    MTHNumber *tempNumber=[[[MTHNumber alloc]init]autorelease];
+    MTHNumber *tempNumber=[[MTHNumber alloc]init];
     MTHNumber *number=tempNumber;
     
     for(UILabel *label in labels){
@@ -331,7 +332,6 @@
     
     
     NSArray *whiteNoise=[query items];
-    [query release];
     int totalSeconds=0;
     for(MPMediaItem *item in whiteNoise){
         NSNumber *duruation= [item valueForProperty:MPMediaItemPropertyPlaybackDuration];
@@ -351,9 +351,6 @@
     
     [musicPlayer setQueueWithItemCollection:collection];
     [musicPlayer play];
-    [collection release];
-    [playList release];
-    [formatter release];
     
     [self setTimeTillSleep:nil];
 }
@@ -415,7 +412,6 @@
 -(void)startTimer{
     NSDate *date=[[NSDate alloc] init];
     [self setTimeStarted:date];
-    [date release];
     NSTimeInterval seconds=minutesOfMusic*60;
     NSDate *newDate= [[self timeStarted]dateByAddingTimeInterval:seconds];
     [self setTimeTillSleep:newDate];
@@ -427,7 +423,6 @@
     NSLog(@"%@",start);
     NSString *stop=[formatter stringFromDate:timeTillSleep];
     NSLog(@"%@",stop);
-    [formatter release];
     
 }
 -(void)playPause{
@@ -455,7 +450,6 @@
     [mediaPicker setAllowsPickingMultipleItems:YES];
     [mediaPicker setPrompt:@"Pick songs to sleep to"];
     [self presentModalViewController:mediaPicker animated:YES];
-    [mediaPicker release];
 }
 #pragma mark Config Methods
 -(void)configScreenDidUnload{
@@ -481,11 +475,11 @@
     BOOL isAlarmActive=[[newAlarm valueForKey:@"active"]boolValue];
     NSString *newAlarmTime=[newAlarm valueForKey:@"alarmTime"];
     NSMutableArray *activeDays=[newAlarm valueForKey:@"daysActive"];
-    MTHAlarm *tempAlarm=[[[MTHAlarm alloc]init]autorelease];
+    MTHAlarm *tempAlarm=[[MTHAlarm alloc]init];
     [self setAlarm:tempAlarm];
     [[self alarm] setAlarmTime:newAlarmTime];
    // NSNumber *off=[[NSNumber alloc]initWithInt:0];
-    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
+    NSNumber *on=[[NSNumber alloc]initWithInt:1];
     
     if([activeDays objectAtIndex:1]==on){
         [[self alarm] addActiveDay:Sunday];
@@ -517,9 +511,6 @@
     }
     NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],alarmSound]];
     NSError *error=Nil;
-    if(audioPlayer){
-        [audioPlayer release];
-    }
     audioPlayer=[[AVAudioPlayer alloc]initWithContentsOfURL:url error:&error];
     [audioPlayer setDelegate:self];
 }
@@ -528,7 +519,7 @@
     
     [locationManager stopUpdatingLocation];
     
-    geoCoder = [[[CLGeocoder alloc] init]autorelease];
+    geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:newLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         for (CLPlacemark * placemark in placemarks) {
             zipcode=[placemark postalCode];
@@ -541,7 +532,6 @@
         return;
     }
     if(!lastWeatherUpdate || [lastWeatherUpdate timeIntervalSinceNow]<10*60*-1){
-        [lastWeatherUpdate release];
         lastWeatherUpdate=[[NSDate alloc]init];
         MTHWeatherFactory *factory=[[MTHWeatherFactory alloc]init];
         NSString *urlString=[NSString stringWithFormat: @"http://www.google.com/ig/api?weather=%@",zipcode];
@@ -551,19 +541,17 @@
         NSString *temp=[weather temp];
         MTHForecast *today=[[weather forecasts] objectAtIndex:0];
         MTHForecast *tomorrow=[[weather forecasts] objectAtIndex:1];
-        NSString *todayHigh=[[[NSString alloc]initWithFormat:@"%@",[today highTemp]]autorelease];
-        NSString *todayLow= [[[NSString alloc]initWithFormat:@"%@",[today lowTemp]]autorelease];
-        NSString *todayIconUrl=[[[NSString alloc]initWithFormat:@"%@",[today forecastIcon]]autorelease];
+        NSString *todayHigh=[[NSString alloc]initWithFormat:@"%@",[today highTemp]];
+        NSString *todayLow= [[NSString alloc]initWithFormat:@"%@",[today lowTemp]];
+        NSString *todayIconUrl=[[NSString alloc]initWithFormat:@"%@",[today forecastIcon]];
         
-        NSString *tomorrowHigh=[[[NSString alloc]initWithFormat:@"%@",[tomorrow highTemp]]autorelease];
-        NSString *tomorrowLow=[[[NSString alloc]initWithFormat:@"%@",[tomorrow lowTemp]]autorelease];
-        NSString *tomorrowIconUrl=[[[NSString alloc] initWithFormat:@"%@",[tomorrow forecastIcon]]autorelease];
+        NSString *tomorrowHigh=[[NSString alloc]initWithFormat:@"%@",[tomorrow highTemp]];
+        NSString *tomorrowLow=[[NSString alloc]initWithFormat:@"%@",[tomorrow lowTemp]];
+        NSString *tomorrowIconUrl=[[NSString alloc] initWithFormat:@"%@",[tomorrow forecastIcon]];
         
         [self setWeatherCurrent: temp todayHigh:todayHigh todayLow:todayLow todayIconUrl:todayIconUrl tomorrowHigh:tomorrowHigh tomorrowLow:tomorrowLow tomorrowIconUrl:tomorrowIconUrl];
  //       [self setCurrentTemp:temp];
        
-        [factory release];
-        [weatherURL release];
     //    [weather release];
         
     }

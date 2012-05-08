@@ -24,7 +24,7 @@
 }
 
 - (void)viewDidLoad{
-    UIDatePicker *selector=[[[UIDatePicker alloc]init]autorelease];
+    UIDatePicker *selector=[[UIDatePicker alloc]init];
     [self setTimeSelector:selector];
     [[self timeSelector]setDatePickerMode:UIDatePickerModeTime];
     
@@ -61,7 +61,6 @@
     [popupQuery setFrame:CGRectMake(0,115,320, 680)];
     [popupQuery addSubview:[super alarmPicker]];
     [[self alarmPicker] setFrame:CGRectMake(0, 150,320,300)];
-    [popupQuery release];
 }
 
 - (IBAction)setTimePressed:(id)sender {
@@ -79,7 +78,6 @@
     [popupQuery setFrame:CGRectMake(0,115,320, 680)];
     [popupQuery addSubview:[self timeSelector]];
     [[self timeSelector] setFrame:CGRectMake(0, 150,320,300)];
-    [popupQuery release];
 }
 
 @end

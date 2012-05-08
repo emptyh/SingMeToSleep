@@ -29,25 +29,6 @@
 
 
 #pragma mark - View lifecycle
-- (void)dealloc {
-    [dotLabel release];
-    [tenSecondsLabel release];
-    [secondsLabel release];
-    [tensMinutesLabel release];
-    [minutesLabel release];
-    [hoursLabel release];
-    [tensHoursLabel release];
-    [artistLabel release];
-    [titleLabel release];
-    [volumeSlider release];
-    [playPauseButton release];
-    [volumeSlider release];
-    [titleLabel release];
-   
-    [PMLabel release];
-    [AMLabel release];
-    [super dealloc];
-}
 
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -150,7 +131,6 @@
     ConfigScreen_iPad *config=[[ConfigScreen_iPad alloc]initWithDelegate:self];
     [config setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:config animated:YES];
-    [config release];                                                        
                                                     
 }
 -(void)changePlayPauseState{
@@ -178,7 +158,6 @@
         [[self PMLabel]setTextColor:off];
         [[self AMLabel]setTextColor:on];
     }
-    [off release];
    // [on release];
 }
 -(void)updateDisplayWithArtist:(NSString *)artist andTitle:(NSString *)title{

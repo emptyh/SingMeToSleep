@@ -26,8 +26,8 @@
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
     NSMutableDictionary *tempConfig=[userDefault valueForKeyPath:@"config"];
     if(!tempConfig){
-        NSNumber *yes=[[[NSNumber alloc]initWithBool:NO]autorelease];
-        tempConfig=[[[NSMutableDictionary alloc]init]autorelease];
+        NSNumber *yes=[[NSNumber alloc]initWithBool:NO];
+        tempConfig=[[NSMutableDictionary alloc]init];
         [tempConfig setValue:@"15" forKey:@"minutesOfMusic"];
         [tempConfig setValue:yes forKey:@"floydProtection"];
         [tempConfig setValue:yes forKey:@"shuffle"];
@@ -44,11 +44,9 @@
     if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad){
         ClockController_ipad *clock=[[ClockController_ipad alloc]initWithNibName:nil bundle:nil];
         [[self window]addSubview:[clock view]];
-        [clock release];
     }else{
         ClockController_iphone *clock=[[ClockController_iphone alloc]initWithNibName:nil bundle:nil];
         [[self window]addSubview:[clock view]];
-        [clock release];
     }
     
 
@@ -95,12 +93,6 @@
      */
 }
 
-- (void)dealloc
-{
-    [_window release];
-    [super dealloc];
-    
-}
 
 
 

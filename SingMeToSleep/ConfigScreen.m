@@ -80,9 +80,9 @@
     NSMutableDictionary *alarm=[config valueForKey:@"alarm"];
     BOOL isAlarmActive=[[alarm valueForKey:@"active"]boolValue];
     NSMutableArray *daysActive=[alarm valueForKey:@"daysActive"];
-    NSNumber *on=[[[NSNumber alloc]initWithInt:1]autorelease];
+    NSNumber *on=[[NSNumber alloc]initWithInt:1];
     NSString *alarmTime=[alarm valueForKey:@"alarmTime"];
-    NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"HH:mm"];
     if (!alarmTime) {//first time through, no values to read
         alarmTime=@"12:00";
@@ -160,33 +160,12 @@
 }
 
 
-- (void)dealloc {    
-    [minutesOfMusicText release];
-    [minutesOfMusicSpinner release];
-    [shuffleSwitch release];
-    [floydProtectionSwitch release];
-    [millitaryTime release];
-    [SundayLabel release];
-    [MondayLabel release];
-    [TuesdayLabel release];
-    [WedLabel release];
-    [ThursdayLabel release];
-    [FridayLabel release];
-    [SaturdayLabel release];
-    [timeSelector release];
-    [alarmPicker release];
-    [audioPlayer release];
-    [alarmSound release];
-    [currentAlarmLabel release];
-    [alarmActiveSwitch release];
-    [super dealloc];
-}
 
 #pragma mark UI actions
 - (IBAction)backPressed:(id)sender {
     NSString *mins=[[self minutesOfMusicText]text];
     NSUserDefaults *userDefault=[NSUserDefaults standardUserDefaults];
-    NSMutableDictionary *config=[[[NSMutableDictionary alloc]init]autorelease];
+    NSMutableDictionary *config=[[NSMutableDictionary alloc]init];
     [config setValue:mins forKey:@"minutesOfMusic"];
     BOOL shuffle=[[self shuffleSwitch] isOn];
     BOOL isMillitaryTime=[[self millitaryTime]isOn];
@@ -196,7 +175,7 @@
     [config setValue:[NSNumber numberWithBool:shuffle] forKey:@"shuffle"];
     [config setValue:[NSNumber numberWithBool:floydProtection] forKey:@"floydProtection"];
 
-    NSMutableDictionary *alarm=[[[NSMutableDictionary alloc]init]autorelease];
+    NSMutableDictionary *alarm=[[NSMutableDictionary alloc]init];
 
     NSNumber *off=[[NSNumber alloc]initWithInt:0];
     NSNumber *on=[[NSNumber alloc]initWithInt:1];
@@ -225,7 +204,7 @@
     }
     [alarm setValue:daysActive forKey:@"daysActive"];
     NSDate *date=[timeSelector date];
-    NSDateFormatter *formatter=[[[NSDateFormatter alloc]init]autorelease];
+    NSDateFormatter *formatter=[[NSDateFormatter alloc]init];
     [formatter setDateFormat:@"HH:mm"];
     [formatter stringFromDate:date];
     NSString *alarmTime=[formatter stringFromDate:date];
@@ -237,8 +216,6 @@
     [userDefault synchronize];
     [delegate configScreenDidUnload];
     [self dismissModalViewControllerAnimated:YES];
-    [on release];
-    [off release];
     
 }
 
@@ -255,7 +232,6 @@
     int minF=[minutesOfMusicSpinner value];
     NSString *mins=[[NSString alloc] initWithFormat:@"%d",minF];
     [[self minutesOfMusicText] setText:mins];
-    [mins release];
 }
 #pragma mark - Picker Delegage Methods
 -(NSInteger)numberOfComponentsInPickerView:(UIPickerView *)pickerView{
@@ -268,19 +244,18 @@
     
     return [[self alarms]objectAtIndex:row];
 }
--(NSString *)pickerView:(UIPickerView*)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
+-(void)pickerView:(UIPickerView*)pickerView didSelectRow:(NSInteger)row inComponent:(NSInteger)component{
     NSString *selected=[[self alarms]objectAtIndex:row];
     NSLog([NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],selected]);
     NSURL *url=[NSURL fileURLWithPath:[NSString stringWithFormat: @"%@/%@",[[NSBundle mainBundle] resourcePath],selected]];
     NSError *error=Nil;
     if(audioPlayer){
         [audioPlayer pause];
-        [audioPlayer release];
     }
-    audioPlayer=[[AVPlayer playerWithURL:url ]retain];
+    audioPlayer=[AVPlayer playerWithURL:url ];
     [audioPlayer play];
     alarmSound=selected;
     [[self currentAlarmLabel]setText:[NSString stringWithFormat:@"%@",selected]];
-    return selected;
+    
 }
 @end

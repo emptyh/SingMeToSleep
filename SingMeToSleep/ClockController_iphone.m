@@ -28,22 +28,6 @@
 
 
 #pragma mark - View lifecycle
-- (void)dealloc {
-    [dotLabel release];
-    [tenSecondsLabel release];
-    [secondsLabel release];
-    [tensMinutesLabel release];
-    [minutesLabel release];
-    [hoursLabel release];
-    [tensHoursLabel release];
-    [artistLabel release];
-    [titleLabel release];
-    [volumeSlider release];
-    [playPauseButton release];
-    [AMLabel release];
-    [PMLabel release];
-    [super dealloc];
-}
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -113,7 +97,6 @@
     ConfigScreen_iPhone *config=[[ConfigScreen_iPhone alloc]initWithDelegate:self];
     [config setModalTransitionStyle:UIModalTransitionStyleFlipHorizontal];
     [self presentModalViewController:config animated:YES];
-    [config release];   
 }
 
 -(void)updateScreen{
@@ -168,7 +151,6 @@
             [[self AMLabel]setTextColor:on];
         }
     }
-    [off release];
     // [on release];
 }
 -(void)moveVolumeSlider:(float)newValue{

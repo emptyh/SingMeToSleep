@@ -21,13 +21,13 @@
     
 }
 #pragma mark - properties
-@property (nonatomic, retain) UILabel *topBar;
-@property (nonatomic, retain) UILabel *middleBar;
-@property (nonatomic, retain) UILabel *bottomBar;
-@property (nonatomic, retain) UILabel *leftUpperBar;
-@property (nonatomic, retain) UILabel *rightUpperBar;
-@property (nonatomic, retain) UILabel *leftLowerBar;
-@property (nonatomic, retain) UILabel *rightLowerBar;
+@property (nonatomic) UILabel *topBar;
+@property (nonatomic) UILabel *middleBar;
+@property (nonatomic) UILabel *bottomBar;
+@property (nonatomic) UILabel *leftUpperBar;
+@property (nonatomic) UILabel *rightUpperBar;
+@property (nonatomic) UILabel *leftLowerBar;
+@property (nonatomic) UILabel *rightLowerBar;
 
 #pragma mark - Methods
 -(void)setNumber:(int) number;
