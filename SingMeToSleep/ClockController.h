@@ -26,12 +26,14 @@
     AVAudioPlayer *audioPlayer;
     float oldVolume;
     
+    
     NSString *zipcode;
     CLLocationManager *locationManager;
     CLGeocoder * geoCoder;
     NSMutableArray *songTimes;
     int currentIndex;
     int timeOfSongLeft;
+    int totalTime;
     int totalSongs;
     
 }
@@ -54,6 +56,7 @@
 @property (nonatomic, retain) MTHAlarm *alarm;
 @property Boolean hasAlarmStopped;
 
+@property (retain, nonatomic) IBOutlet UIProgressView *timeLeftBar;
 @property (retain, nonatomic) IBOutlet UILabel *currentTempLabel;
 @property (retain, nonatomic) IBOutlet UILabel *todayHigh;
 @property (retain, nonatomic) IBOutlet UILabel *todayLow;

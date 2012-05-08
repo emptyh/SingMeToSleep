@@ -31,6 +31,7 @@
 @synthesize millitaryTime;
 @synthesize alarm;
 @synthesize hasAlarmStopped;
+@synthesize timeLeftBar;
 
 @synthesize currentTempLabel;
 @synthesize todayHigh;
@@ -79,6 +80,7 @@
     [locationManager setDesiredAccuracy:kCLLocationAccuracyHundredMeters];
     [locationManager startUpdatingLocation];
     
+    
     [self applyConfig];
     
     NSTimer *timer=[self createTimer];
@@ -112,6 +114,7 @@
     [todayIcon release];
     [songTimes release];
     [timeLeftLabel release];
+    [timeLeftBar release];
     [super dealloc];
 }
 
@@ -121,6 +124,7 @@
     [self setSelectMusicButton:nil];
     [self setTimeLeftLabel:nil];
     [self setTimeLeftLabel:nil];
+    [self setTimeLeftBar:nil];
     [super viewDidUnload];
     [musicPlayer release];
     [[NSNotificationCenter defaultCenter] removeObserver: self
@@ -160,7 +164,15 @@
         int timeLeft=timeOfSongLeft-currentProgress;
         int minutesLeft=timeLeft/60;
         int secondsLeft=timeLeft % 60;
-        [[self timeLeftLabel]setText:[NSString stringWithFormat:@"Time Left: %d:%d",minutesLeft,secondsLeft]];
+        float percentLeft=(float)timeLeft/totalTime;
+        [[self timeLeftBar]setProgress:percentLeft];
+        NSString *stringSeconds;
+        if (secondsLeft<10) {
+            stringSeconds=[NSString stringWithFormat:@"0%d",secondsLeft];
+        }else{
+            stringSeconds=[NSString stringWithFormat:@"%d",secondsLeft];
+        }
+        [[self timeLeftLabel]setText:[NSString stringWithFormat:@"Time Left: %d:%@",minutesLeft,stringSeconds]];
     }else {
         [[self timeLeftLabel]setText:@""];
     }
@@ -183,6 +195,8 @@
     }else if (hoursInt==0){
         hours=@"12";
         [self isPM:NO];
+    }else if(hoursInt==12){
+        [self isPM:YES];
     }else{
         [self isPM:NO];
     }
@@ -300,6 +314,7 @@
         }
         [musicPlayer setQueueWithItemCollection:mediaItemCollection];
         [musicPlayer play];
+        totalTime=0;
     }
     [self dismissModalViewControllerAnimated:YES];
 }
@@ -366,6 +381,9 @@
     timeOfSongLeft=0;
     for (int i=currentIndex; i<[songTimes count]; i++) {
         timeOfSongLeft=timeOfSongLeft + [[songTimes objectAtIndex:i]intValue];
+    }
+    if(totalTime==0){
+        totalTime=timeOfSongLeft;
     }
 }
 -(void)handle_playbackStateChanged:(id) notification{
