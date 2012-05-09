@@ -28,7 +28,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "367"
          endingLineNumber = "367"
-         landmarkName = "-applyConfig"
+         landmarkName = "-handle_nowPlayingChanged:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -84,21 +84,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "352"
          endingLineNumber = "352"
-         landmarkName = "-configScreenDidUnload"
-         landmarkType = "5">
-      </FileBreakpoint>
-      <FileBreakpoint
-         shouldBeEnabled = "No"
-         ignoreCount = "0"
-         continueAfterRunningActions = "No"
-         isPathRelative = "1"
-         filePath = "SingMeToSleep/ClockController.m"
-         timestampString = "355970968.696966"
-         startingColumnNumber = "9223372036854775807"
-         endingColumnNumber = "9223372036854775807"
-         startingLineNumber = "154"
-         endingLineNumber = "154"
-         landmarkName = "-blink"
+         landmarkName = "-startWhiteNoise"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -126,7 +112,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "278"
          endingLineNumber = "278"
-         landmarkName = "-handle_nowPlayingChanged:"
+         landmarkName = "-audioPlayerDidFinishPlaying:successfully:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -140,7 +126,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "271"
          endingLineNumber = "271"
-         landmarkName = "-handle_nowPlayingChanged:"
+         landmarkName = "-audioPlayerDidFinishPlaying:successfully:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -168,7 +154,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "335"
          endingLineNumber = "335"
-         landmarkName = "-previousTrack"
+         landmarkName = "-startWhiteNoise"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -233,7 +219,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "399"
          endingLineNumber = "399"
-         landmarkName = "-applyConfig"
+         landmarkName = "-handle_VolumeChanged:"
          landmarkType = "5">
       </FileBreakpoint>
       <FileBreakpoint
@@ -272,7 +258,7 @@
          endingColumnNumber = "9223372036854775807"
          startingLineNumber = "391"
          endingLineNumber = "391"
-         landmarkName = "-applyConfig"
+         landmarkName = "-handle_playbackStateChanged:"
          landmarkType = "5">
       </FileBreakpoint>
    </FileBreakpoints>
