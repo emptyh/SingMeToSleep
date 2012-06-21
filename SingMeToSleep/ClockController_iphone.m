@@ -101,7 +101,15 @@
 
 -(void)updateScreen{
     [super blink];
-    [super weatherUpdate];
+    @try {
+        [super weatherUpdate];
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Error getting weather");
+    }
+    @finally {
+        
+    }
 }
 
 
