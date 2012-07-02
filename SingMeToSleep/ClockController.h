@@ -35,6 +35,7 @@
     int timeOfSongLeft;
     int totalTime;
     int totalSongs;
+    Boolean isMusicDone;
     
 }
 

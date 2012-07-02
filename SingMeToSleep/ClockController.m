@@ -84,6 +84,7 @@
     
     
     [self applyConfig];
+    isMusicDone=YES;
     
     NSTimer *timer=[self createTimer];
     musicPlayer=[MPMusicPlayerController iPodMusicPlayer];
@@ -144,7 +145,7 @@
         [[self musicPlayer] setVolume:.1];
         [self soundAlarm];
     }
-    if (timeOfSongLeft>0) {
+    if (timeOfSongLeft>0  && !isMusicDone) {
         int currentProgress=[musicPlayer currentPlaybackTime];
         int timeLeft=timeOfSongLeft-currentProgress;
         int minutesLeft=timeLeft/60;
@@ -160,6 +161,7 @@
         [[self timeLeftLabel]setText:[NSString stringWithFormat:@"Time Left: %d:%@",minutesLeft,stringSeconds]];
     }else {
         [[self timeLeftLabel]setText:@""];
+        [[self timeLeftBar]setProgress:0];
     }
     NSDateFormatter *dformat=[[NSDateFormatter alloc] init];
     [dformat setDateFormat:@"dd-MM-yyyy HH:mm:ss"];
@@ -314,6 +316,7 @@
             [songTimes addObject:[[NSNumber alloc]initWithInt:time]];
         }
         [musicPlayer setQueueWithItemCollection:mediaItemCollection];
+        isMusicDone=NO;
         [musicPlayer play];
         totalTime=0;
     }
@@ -362,6 +365,7 @@
     
     if(([self timeTillSleep] && [[self timeTillSleep] timeIntervalSinceNow]<0) || !song){
         [self startWhiteNoise];
+        isMusicDone=YES;
 
     }
     
